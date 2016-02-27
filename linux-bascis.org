@@ -1,0 +1,132 @@
+* 26-feb-2016
+** Linux-Basic Commands
+*** LINUX:
+Linux is a free and open-source operating system,which is invented by Linus Torvald's
+
+*** SHELL:
+shell is a programm which is interact with kernal. 
+In general, operating system shells use either a command-line interface (CLI) or graphical user interface (GUI), 
+
+*** OPERATING SYSTEM:
+An operating system (OS) is system software that manages computer hardware and software resources.
+
+*** SHELL SCRIPT:
+Shell script is series of Linux commands.which is usually create our own commands for which a user has a repeated need.
+
+*** KERNAL:
+Kernel is hart of Linux O/S. It manages resource of Linux O/S. Resources means facilities available in Linux.
+
+*** GRUB:
+GRUB (GRand Unified Bootloader) is a boot loader package developed to support multiple operating systems
+and allow the user to select among them during boot-up. or list of o/s.
+
+*** SUDO:
+sudo‘ is a root binary (superuser do) setupid, which is used to executes root commands, on behalf of authorized users and the users need to enter 
+their own password to execute system command followed by ‘sudo‘.
+
+*** Source code:
+source code is any collection of computer instructions writting using some human readable computer language.
+
+*** Open source:
+Open source software is a software whose source code is available for modification or enhancement by anyone.
+
+*** Proprietry Software:
+Some softwares has source code that cannot be modified.who created it and maintains exclusive control over it.
+
+*** SSH:
+SSH is a protocol which is used for secure communication.
+
+*** SCP:
+SCP is a secure copy from remote machine to local machine.
+
+*** Variable:
+A variable is a character string to which we assign a value. The value assigned could be a number, text, filename, device, or any other type of data.
+
+*** Commands 
+*** ls:
+list of name files or directory.
+
+*** pwd:
+print working directory.
+
+*** cat >> filename:
+to creat to add/update text file.
+
+*** cat filename:
+to see the contents of the file.
+
+*** mv source destination:
+move rename or file/directory.
+
+*** ln {oldfile} {newfile}:
+To create multiple file copies with various link.After this both oldfile newfile refers to same name
+
+*** rm file:
+To remove file
+
+*** rm -rf dirname:
+Remove all files in given directory/subdirectory. Use it very carefully.
+
+*** chmod {u|g|o|a} {+|-} {r|w|x} {filename}:
+To change file access
+permissions
+u - User who owns the
+file
+g - Group file owner
+o - User classified as
+other
++ Set permission
+- Remove permission
+r - Read permission
+w - Write permission
+x - Execute permission
+
+*** who am i:
+To See more about currently login person (i..e. yourself)
+
+*** grep {word-to-lookup} {filename}:
+To searches file for line that match a pattern. 
+
+*** tail -|+ { linenumber } {filename}:
+To print last | first line of given file
+
+*** uname -a:
+To know the os architecture,kernal,version
+
+*** echo:
+display a line of text
+Displays text or variables value on screen.
+
+*** Pips:
+A pipe is a way to connect the output of one program to the input of another program without any temporary file.
+
+*** Filter
+If a Linux command accepts its input from the standard input and produces its output on standard output is know as a filter.
+A filter performs some kind of process on the input and gives output.
+
+IF:
+IF statement is checks to see if a statement is true or false.if true the condition then then executed otherwise skip.
+
+IF-ELSE:
+if...else statement - executes some code if a condition is true and another code if that condition is false.
+
+if...elseif....else statement:
+executes different codes for more than two conditions.
+
+Loop or for loop:
+A loop is a sequence of instructions that is continuosly repeated until a certain condition is true.
+
+The While Loop:
+The while loop loops through a block of code as long as a specified condition is true.
+
+Do-while loop:
+This loop will execute the code block once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.
+
+Functions:
+Function is series of instruction/commands.To perform specific task in shell.
+function fname()
+{
+command1..
+command2..
+return
+}
