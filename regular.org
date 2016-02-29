@@ -1,0 +1,39 @@
+* Regular Language:
+ - Regula language is a foraml language, that will support regular expression.
+* Regular Expression:
+ - A regular expression is a special text string for describing a string pattern.
+* Advantage of RE:
+ - Regular expressions can be used to perform all types of text search and text replace operations.
+** Regular Expressions of  Basic Commands.
+ + mkdir abc      (created dirctory)
+ + touch file1 file2 file123 file1234 sample1 sample123 sample1234 1234 (Created text file)
+ + rm -f file*     ( * means removing after anything)
+ + rm -rf file*file (which means removing start with file and end with file)
+ + rm -f file?     ( ? which indicates removed after file one matching occurence)
+ + rm -f file??    ( ?? which indicates removed after file two matching occurence)
+ + rm -f [A-Z]* or [a-z]* (which indicates from a-z or A-z matching files then removed)
+ + rm -f [0-9]* (which indicates from 0-9 matching files then removed)
+
+* Grep Command
+- which is used to search word or number in files
+ + mkdir abc
+ + touch file.txt number.txt
+ + grep raghu file.txt (which means search raghu word in file.txt)
+ + grep 123 file.txt number.txt (which means search number in file.txt)
+ + grep ^a file.txt ( ^ carot means start the line of a in file.txt)
+ + grep a$ file.txt ( $ means end with line in file.txt)
+ + (^, $ are metachaecters which is used to match empty string at the beginning and ending of line)
+ + grep '[[[[:alpha:]]]]\>' * file.txt (which is used to alphabets ending of a line)
+ + grep '\<[[[[:alpha:]]]]' * file.txt (which is used to alphabets begining of a line)
+ + grep '\+[[[[:alpha:]]]]\+' * file.txt (which is used to alphabets ending begining of a line)
+ + grep '\<[[[[:alpha:]]]]\{3\}' * file.txt (which is used to specify 3 alphabets ending begining of a line)
+ + grep '\+[[[[:alpha:]]]]\{3,\}' * {1,3\} file.txt (which is used to specify 3 or more alphabets ending begining of a line) 
+
+* Sed Command
+- sed is a command, which is used to inline edit the file.
+- for example i have file in that 1000 lines their, i want to edit perticular word.
+ + mkdir abc
+ + touch file.txt myfile.txt
+ + sed -e 's/original/edit/g' myfile.txt (s indicates source, 'g' option after the last slash tells sed to perform a global replace.)
+ + sed -e 's/original*/edit/g' myfile.txt (* it indicates the all the charecters edit at once)
+ +
