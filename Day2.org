@@ -1,0 +1,138 @@
+* [[http://www.doc.ic.ac.uk/~wjk/UnixIntro/index.html][For More Information Click Here Online to Introduction Linux Course]]
+
+* Linux Basic Commands:
+#+begin_example
+    +  echo hello world  (To display text line)
+    +  passwd (to change the user password)
+    +  date   (Display system date and time)
+    +  hostname (domai name)
+    +  arch (=linux= version architecture)
+    +  uname -a (operating system version and kernal version)
+    +  uptime (sytem time)
+    +  who am i (user name)
+    +  who (computer name)
+    +  id (username and groups id)
+    +  w (show who is logged and what they are doing)
+    +  echo $SHELL (shell name)
+    +  man (manual=menu in the list)
+    +  man ls (you may need to press q to quit)
+    +  man who (you may need to press q to quit)
+    +  clear
+    +  cal 2000
+    +  echo 5+4 | bc -l
+    +  time sleep 5
+    +  history
+#+end_example
+
+* Directory and File Handling Commands:
+#+begin_example
+    + cd path
+    + pwd
+    + ls -al
+    + cd .
+    + cd ..
+    + rm filename
+    + rm -rf filename
+    + rmdir dirname
+    + cp source destination
+    + cp -rd source destination
+    + mv source destination
+    + mkdir dirname
+    + cat >>filename
+    + cat filename
+    + ls -l | more
+#+end_example
+
+* Making Hard and Soft (Symbolic) Links:
+ - Direct (hard) and indirect (soft or symbolic) links from one file or directory to another can be created using the ln command.
+#+begin_example
+   +  $ ln filename linkname
+#+end_example    
+ - creates another directory entry for filename called linkname (i.e. linkname is a hard link). Both directory entries appear identical
+   (and both now have a link count of 2). If either filename or linkname is modified,
+   the change will be reflected in the other file (since they are in fact just two different directory entries pointing to the same file).
+#+begin_example
+   +  $ ln -s filename linkname
+#+end_example 
+ - creates a shortcut called linkname (i.e. linkname is a soft link). The shortcut appears as an entry with a special type ('l'):
+#+begin_example
+   +  $ ln -s hello.txt bye.txt 
+#+end_example 
+
+* File and Directory Permissions:
+ - which is assign permissions or access to rights to users and groups of users. These systems control the ability of the users to view or make changes
+   to the contents of the file system
+
+#+begin_example
+   * Owner  - a single person who owns the file.
+   * Group  - every file belongs to a single group.
+   * Others - everyone else who is not in the group or the owner.
+#+end_example 
+
+#+begin_example
+  + chmod options files
+#+end_example 
+
+#+begin_example
+ read = 4
+ write = 2
+ execute = 1
+#+end_example 
+
+#+begin_example
+ chmod 777 file
+#+end_example 
+ - -R option which can be used to recursively modify file permissions.
+#+begin_example
+ chmod -R 777 file
+#+end_example 
+
+* Finding Files:
+ - Find is a command which is used to search for files in a directory.
+
+#+begin_example
+ + find path -name filename
+#+end_example 
+
+* Finding Text in Files:
+- grep is a command which is used to search word or number in files
+
+#+begin_example
+ +  grep options pattern files 
+ +  grep hello *.txt
+ +  grep 123 *
+ +  grep '[0-9]' filename
+ +  grep '[A-Z]' filename
+ +  grep '[a-z]' filename
+ +  grep '[[[[:alpha:]]]]' * file.txt
+#+end_example 
+
+* Sorting files:
+- sort is a command which is used for sorting lines in a group of files
+#+begin_example
+ +  sort filenames
+#+end_example 
+
+* Regular Language:
+ - Regula language is a foraml language, that will support regular expression.
+* Regular Expression:
+ - A regular expression is a special text string for describing a string pattern.
+* Advantage of RE:
+ - Regular expressions can be used to perform all types of text search and text replace operations.
+** Regular Expressions of  Basic Commands.
+#+begin_example
+ + rm -f file*     ( * means removing after anything)
+ + rm -rf file*file (which means removing start with file and end with file)
+ + rm -f file?     ( ? which indicates removed after file one matching occurence)
+ + rm -f file??    ( ?? which indicates removed after file two matching occurence)
+ + rm -f [A-Z]* or [a-z]* (which indicates from a-z or A-z matching files then removed)
+ + rm -f [0-9]* (which indicates from 0-9 matching files then removed)
+#+end_example 
+
+* Tail Command:
+ - tail is a command which is used to output the last part of files
+#+begin_example
+ + tail -2 filename (output of last two lines)
+ + tail +2 filename (output of first two lines)
+#+end_example 
+
