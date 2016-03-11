@@ -1,0 +1,122 @@
+* Virtualization:
+ - Virtualization is a technology to run multiple same or different os, which is completely isolated from each other.
+   ex:- run both linux and windows on the same machine
+   Which means separating hardware from a single operating system.
+   each “guest” OS is managed by a Virtual Machine Monitor (VMM), also known as a hypervisor.
+*** Advantages:
+ + Reduce number of servers.
+ + Reduce TCO (Total Cost Ownership).
+ + Improve availability and business continuity.
+ + Increase efficiency for development and test environments.
+ + Improve availability of your virtual environment.
+** Hypervisor:
+ - Hypervisor is a software layer sits between hardware and oses which will interact with hardware and resourses and provide interface to share the available
+   to virtual containers.
+* Hardware virtualization
+ - Hardware virtualization refers to taking the components of a real machine and making them virtual. 
+   This virtual machine works like the real machine and is usually a computer with an operating system. 
+#+begin_example
+VMware ESX, MS Virtual Server, Xen and others.
+#+end_example
+
+* OS-level Virtualization:
+ - OS-level virtualization is in single os, where the os kernel allows for multiple isolated user space instances
+ - good for server consolidation.
+#+begin_example
+Chroot, Openvz, Jails
+#+end_example
+
+* Openvz:
+- OpenVZ is a container-based virtualization solution for Linux. We can create ‘n’ number of Virtual machines depending upon the configuration of our physical system.
+  Each virtual machine will act like a separate standalone physical system, and doesn’t conflict with one another.
+  The virtual machines created using OpenVZ can be rebooted independently, and have root access, users, IP addresses, memory, processes, files, applications,
+  system libraries and configuration files.  Since it uses operating system level virtualization technology, unlike other virtualization methods
+  such as VirtualBox, KVM, and Vmware, the guest systems uses the same kernel of the host system.
+  Each virtual machine will efficiently share the CPU, Memory, Disk space, and network of your Physical server.
+** Container:
+ - The Virtual machines are known as Containers in OpenVZ.the main advantage of Containers is that they will share the resources of the physical machine dynamically.
+   That means, a particular amount of RAM or Disk space will not be allocated to any particular container.
+
+** System Requirements:
+
+  + A decent Intel or AMD PC;
+  + Atleast 128MB of RAM;
+  + Hard drives with atleast 4GB free disk space;
+  + Atleast 2NICs;
+  + Internet connection.
+  - It is recommended to use a separate partition for containers (by default /vz) and format it to ext4.
+    You need to have set two IP addresses to your physical machine. One is for the original host and another IP is for Virtual machine.
+** Install Openvz:
+   1. Add OpenVZ Repository
+      Download OpenVZ Repository and put it in /etc/yum.repos.d/ directory.
+      yum install wget
+      wget -P /etc/yum.repos.d/ http://ftp.openvz.org/openvz.repo
+      Import OpenVZ GPG key:
+      rpm --import http://ftp.openvz.org/RPM-GPG-Key-OpenVZ
+   2. Install OpenVZ kernel
+      yum install vzkernel
+   3. Setting up Kernel parameters
+      Make sure you have added the following kernel parameters before logging into vz kernel.
+      vi sysctl.conf
+      Add the following lines:
+#+begin_example
+# On Hardware Node we generally need
+# packet forwarding enabled and proxy arp disabled
+net.ipv4.ip_forward = 1
+net.ipv6.conf.default.forwarding = 1
+net.ipv6.conf.all.forwarding = 1
+net.ipv4.conf.default.proxy_arp = 0
+# Enables source route verification
+net.ipv4.conf.all.rp_filter = 1
+# Enables the magic-sysrq key
+kernel.sysrq = 1
+# We do not want all our interfaces to send redirects
+net.ipv4.conf.default.send_redirects = 1
+net.ipv4.conf.all.send_redirects = 0
+#+end_example
+   4. Disable SELinux
+      Edit /etc/sysconfig/selinux file:
+      vi /etc/sysconfig/selinux
+      Set as disabled:
+      SELINUX=disabled
+   5. Install OpenVz usage statistics tools
+      The following tools to be installed to gather the OpenVZ usage statistics. Here is the reason why you should install these tools.
+      yum install vzctl vzquota ploop
+      That’s it. We have successfully installed OpenVZ.
+
+
+* Creating Containers in Openvz:
+ - The list of available pre-created templates availale [[ http://openvz.org/Download/template/precreated][here]] for dowbload centos minimal template
+ + vzctl (It is a command, which is used to manage containers)
+ + cd /vz/template/cache/ (which is the default directory to store the downloaded templates.)
+ + vzctl create 101 --ostemplate centos-7-x86_64-minimal (which is used to create the first virtual machine)
+ + 101 – Container ID (It typically starts from 100)
+ + Next, we have to setup the IP address to the Container, for example: 192.168.1.103.
+ + vzctl set 101 --ipadd 192.168.1.103 --save (which is used to set ip address)
+ + vzctl set 101 --nameserver 8.8.8.8 --save (which is used to assign DNS server)
+ + vzctl start 101 (To start container)
+ + vzctl enter 101 (Entering the container)
+
+* Openvz Commands:
+ + vzctl (It is a command, which is used to manage containers)
+ + vzlist (It is a command, which is used to list the running vpss(virtual private service))
+ + vzctl start CTID (which is used to start container)
+ + vzctl stop CTID (which is used to stop container)
+ + vzctl status CTID (which is used to view the status of vpps)
+ + vzctl enter CTID (which is used to entering container)
+ + vzctl set CTID --hostname New_hostname --save (Set hostname for a Server)
+ + vzctl set CTID --ipadd xx.xx.xx.xx --save (Set IP address)
+ + vzctl set CTID --ipdel xx.xx.xx.xx --save (Delete IP address)
+ + vzctl set CTID --nameserver xx.xx.xx.xx --save (Add name server)
+ + vzctl set CTID --userpasswd root:new_password --save (Reset userpassword and rootpassword)
+ + vzctl destroy CTID (Delete container)
+ + vzctl suspend CTID (suspended container)
+ + vzctl restart 101 (To Restart container)
+ + vzyum 101 -y update (Updating system)
+ + vzyum 101 -y install package (To intall package)
+ + vzctl set {ctid} --ram {ram} --swap {swap} --save (Set the ram size)
+ + vzctl set 101 --diskspace 10485760 --save  (set diskspace)
+ + vzctl set CTID --diskspace $SoftLimit$:$HardLimit$ --save
+ + vzctl exec 101 command (replace command with the command you need to execute)
+ + vzctl exec 101 df -h (replace command with the command you need to execute)
+
