@@ -48,17 +48,17 @@ Chroot, Openvz, Jails
     You need to have set two IP addresses to your physical machine. One is for the original host and another IP is for Virtual machine.
 ** Install Openvz:
    1. Add OpenVZ Repository
-      Download OpenVZ Repository and put it in /etc/yum.repos.d/ directory.
-      yum install wget
-      wget -P /etc/yum.repos.d/ http://ftp.openvz.org/openvz.repo
-      Import OpenVZ GPG key:
-      rpm --import http://ftp.openvz.org/RPM-GPG-Key-OpenVZ
-   2. Install OpenVZ kernel
-      yum install vzkernel
-   3. Setting up Kernel parameters
-      Make sure you have added the following kernel parameters before logging into vz kernel.
-      vi sysctl.conf
-      Add the following lines:
+   - Download OpenVZ Repository and put it in /etc/yum.repos.d/ directory.
+   - yum install wget
+   - wget -P /etc/yum.repos.d/ http://ftp.openvz.org/openvz.repo
+   - Import OpenVZ GPG key:
+   - rpm --import http://ftp.openvz.org/RPM-GPG-Key-OpenVZ
+   2.Install OpenVZ kernel
+   - yum install vzkernel
+   3.Setting up Kernel parameters
+     Make sure you have added the following kernel parameters before logging into vz kernel.
+   - vi sysctl.conf
+     Add the following lines:
 #+begin_example
 # On Hardware Node we generally need
 # packet forwarding enabled and proxy arp disabled
@@ -75,14 +75,14 @@ net.ipv4.conf.default.send_redirects = 1
 net.ipv4.conf.all.send_redirects = 0
 #+end_example
    4. Disable SELinux
-      Edit /etc/sysconfig/selinux file:
-      vi /etc/sysconfig/selinux
-      Set as disabled:
-      SELINUX=disabled
+   - Edit /etc/sysconfig/selinux file:
+   - vi /etc/sysconfig/selinux
+   - Set as disabled:
+   - SELINUX=disabled
    5. Install OpenVz usage statistics tools
-      The following tools to be installed to gather the OpenVZ usage statistics. Here is the reason why you should install these tools.
-      yum install vzctl vzquota ploop
-      That’s it. We have successfully installed OpenVZ.
+   -  The following tools to be installed to gather the OpenVZ usage statistics. Here is the reason why you should install these tools.
+   -  yum install vzctl vzquota ploop
+   -  That’s it. We have successfully installed OpenVZ.
 
 
 * Creating Containers in Openvz:
