@@ -58,7 +58,7 @@ Chroot, Openvz, Jails
    3.Setting up Kernel parameters
      Make sure you have added the following kernel parameters before logging into vz kernel.
    - vi sysctl.conf
-     Add the following lines:
+   - Add the following lines:
 #+begin_example
 # On Hardware Node we generally need
 # packet forwarding enabled and proxy arp disabled
