@@ -1,8 +1,8 @@
 * Virtualization:
  - Virtualization is a technology to run multiple same or different os, which is completely isolated from each other.
-   ex:- run both linux and windows on the same machine
    Which means separating hardware from a single operating system.
    each “guest” OS is managed by a Virtual Machine Monitor (VMM), also known as a hypervisor.
+   ex:- run both linux and windows on the same machine
 *** Advantages:
  + Reduce number of servers.
  + Reduce TCO (Total Cost Ownership).
