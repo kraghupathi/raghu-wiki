@@ -36,4 +36,3 @@
  + touch file.txt myfile.txt
  + sed -e 's/original/edit/g' myfile.txt (s indicates source, 'g' option after the last slash tells sed to perform a global replace.)
  + sed -e 's/original*/edit/g' myfile.txt (* it indicates the all the charecters edit at once)
- +
