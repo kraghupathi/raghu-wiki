@@ -1,0 +1,315 @@
+* Network Topology:
+- Network topology is the arrangement of the various elements (links, nodes, etc.) of a computer network. 
+  Essentially, it is the topological structure of a network and may be depicted physically or logically.
+* Network:
+- Network can be defined as a group of computers and other services connected together to exchangble data.
+* Protocol:
+- which is a rules and govern the communication between two computers connected by the network.
+  IP address port range from 0-255
+* Internet Protocol (IP):
+- IP address is a number, which is used to indicate the location of a computer.
+* IPV4:
+- IPv4 stands for Internet Protocol Version 4. which is 32-bit addressing space used as TCP/IP host addressing mechanism. 
+* IPV6:
+- IPv4 stands for Internet Protocol Version 4.which is 128-bit addressing space.
+* Public IP:
+- A public IP address is an IP address that can be accessed over the Internet. Like postal address used to deliver a postal mail to your home.
+- A public IP address is the globally unique IP address assigned to a computing device.
+** Public Addresses
+| 1.0.0.0      | 9.255.255.255   |
+| 11.x.x.x     | 126.255.255.255 |
+| 129.0.0.0    | 169.253.255.255 |
+| 169.255.0.0  | 172.15.255.255  |
+| 172.32.0.0   | 191.0.1.255     |
+| 192.0.3.0    | 192.88.98.255   |
+| 192.88.100.0 | 192.167.255.255 |
+| 192.169.0.0  | 198.17.255.255  |
+| 198.20.0.0   | 223.255.255.255 |
+
+* Private IP:
+- A private IP address is the address space allocated by InterNIC to allow organizations to create their own private network.
+* Private IP Range:
++ CLASS A: from 10.0.0.0    to 10.255.255.255   
++ CLASS B: from 172.16.0.0  to 172.31.255.255   
++ CLASS C: from 192.168.0.0 to 192.168.255.255
+* Static IP:
+- Static IP is a fixed ip,it will not change
+* Dynamic IP:
+- Dynamic IP address is temporary and it will change over time.
+* FTP(File Transfer Protocol):
+- FTP is standard internet protocol, which is used to exchange files on the internet.
+* HTTP:
+- HTTP protocol for communication between web browsers and servers.
+* SMTP(Simple Mail Transfer Protocol):
+- SMTP stands for Simple Mail Transfer Protocol, which is generally used to send messages from a mail client to a mail server. 
+* URL(Uniform Resource Locator):
+- URL stands for Uniform Resource Locator, which is used to specify addresses on the World Wide Web.
+* TCP/IP (Transmission Control Protocol):
+- TCP/IP is the basic communication language or protocol of the Internet. 
+- It can also be used as a communications protocol in a private network
+* VPN(Virtual Private Network):
+- A Virtual Private Network (VPN) is a network technology that creates a secure network connection over a public network such as the Internet or a 
+  private network owned by a service provider. And VPN can connect multiple sites over a large distance just like a Wide Area Network (WAN).
+* PING:
+- Ping is a networking utility program. Which is used for verification of IP connectivity.
+#+begin_example
+ping www.google.com
+#+end_example
+* Network Classes:
++ CLASS A: from 0 to 127 for internet communication
++ CLASS B: from 128 to 191 ""
++ CLASS C: from 192 to 223 ""
++ CLASS D: from 224 to 239 Reserved for Multicasting
++ CLASS E: from 240 to 254 used for researching and experiments
+* LAN(Local Area Network):
+- LAN is a Local Area Network it covers buildings and or a set of closely related buildings.
++ Ex:= Ethernet.
+* WAN(Wired Area Network):
+- WAN is a Wired Area Network it covers cities, towns and countries.
++ Ex: ATM
+* Gateway:
+- A gateway is a data communication device, that joins together two different networks. In the most scenario an internal network with the internet.
+- A router is an example of a gateway device. A router is a device that does routing, deciding where packets are sent to based on its IP address.
+* Netmask:
+- A netmask is a 32-bit number,that mask is used to divide an IP address into subnets and specify the network's available hosts.
++ CLASS A:255.0.0.0
++ CLASS B:255.255.0.0
++ CLASS C:255.255.255.0
+* Port:
+- which specifies the process in the machine
+- Port values range from 0-65535
+* Port Numbers for given following Protocols:
++ SSH - 22
++ HTTP - 80
++ HTTPS- 443
++ FTP - 20(for data) 21(for control)
++ SMTP - 25
++ DNS - 53
++ DHCP - 67
+* Server:
+- server is a computer program that provides services to other computer programs (and their users) in the same or other computers.
+* Router:
+- Router is a device which is used to connect to the different network elements.
+* Switch:
+- switch is a device which is used to connect the same network elements.
+* Web Server:
+ - A web server is an information technology that processes requests via HTTP, 
+   the basic network protocol used to distribute information on the World Wide Web.
+ - The server is machine or programme that process the client request and send back the response.
+* Client:
+ - Cleint is a machine in which request a service from the server.
+* XAMPP:
+XAMPP is available with various distributions depends upon the OS.
+- LAMP : For Linux
+- WAMP : For Windows
+- MAMP  : For MAC OS
+ - LAMP is a free and open source Linux web server tool kit package, It consisting of the Apache HTTP Server, 
+   MySQL database, and interpreters for scripts written in the PHP and Perl programming languages.
+  
+ - It is used as a development tool, to allow website designers and programmers to test their work on their own computers without any access to the Internet. .
+* Apache Web server:
+- Apache Web Server is an open source Web server for creation, deployment and management web applications.
+- Which is designed to host one or more Web applications,
+- It is also widely used by Web server many companies uses this server to host their internal web applications by configuring shared/virtual hosting,
+  as by default, Apache Web Server supports and distinguishes between different hosts that reside on the same machine.
++ To install Apache-server on Linux, use the following command
+#+begin_example
+For Linux:= sudo apt-get install apache2
+For CentOS:= yum install httpd
+#+end_example
+** How to host a website?:
+1) To start the apache server, use the following command:
+#+begin_example
+For Linux:= service apache2 start
+For CentOS:= service httpd start
+#+end_example
+2) open browser and type =localhost= or =127.0.0.1= then, browser displays the default apache page. If the default page is not found, then restart the apache server by using the following command.
+#+begin_example
+For Linux: service apache2 restart
+For CentOS: service httpd restart
+#+end_example
+3) create a sample html, js and css files and place them in a folder. 
+4) move the contents of the folder to  =/var/www/html= or =/var/www/=
+5) open browser and type =localhost/<file name> or 127.0.0.1/<file name>.
+#+begin_example
+localhost/example.html
+#+end_example
+6) To stop the apache server, use the following command:
+#+begin_example
+For Linux:= service apache2 stop
+For CentOS:= service httpd stop
+#+end_example
+
+* DNS-Server 
+ - Domain Name System (or Service or Server), an Internet service that translates domain names into IP addresses. Because domain names are alphabetic,
+   they're easier to remember. The Internet however, is really based on IP addresses. Every time you use a domain name, therefore,
+   a DNS service must translate the name into the corresponding IP address.
+   EX : - 
+   - To find the IP address of www.example.com. We use command as below
+#+begin_example
+nslookup www.example.com
+#+end_example
+The above command will give the ip address associated with =www.example.com= using DNS server.
+* DHCP(Dynamic Host Configuration Protocol):
+ - DHCP is a Network protocol that automatically provides an Internet Protocol (IP), Netmask, Default gateway, DNS entries to the host.
+** Advantages of DHCP-Server:
+ - DHCP is useful for automatic configuration of client network interfaces. When configuring the client system, the administrator chooses DHCP instead of
+   specifying an IP address, netmask, gateway, or DNS servers. The client retrieves this information from the DHCP server. 
+ - There is no need to manually configure each client with an IP address.
+ - You don't need to keep a record of the IP addresses that you have assigned.
+ - You can automatically assign a new IP address if you move a client to a different subnet.
+* SSH-Server:
+ - Secure Shell, is a protocol used to securely log onto remote systems. It is the most common way to access remote Linux and Unix-like servers,
+   such as VPS instances.
+****** Syntax:= The tool on Linux for connecting to a remote system using SSH is called
+#+begin_example
+ssh remote_host
+#+end_example
+ - The remote_host in this example is the IP address or domain name that you are trying to connect to.
+ - This command assumes that your username on the remote system is the same as your username on your local system.
+ - If your username is different on the remote system, you can specify it by using this syntax:
+#+begin_example
+ssh remote_username@remote_host
+#+end_example
+ - Once you have connected to the server, you will probably be asked to verify your identity by providing a password.
+** Type the following yum command to install openssh client and server.
+#+begin_example
+yum -y install openssh-server openssh-clients
+#+end_example
+*** How Does SSH Work?
+ - SSH works by connecting a client program to an ssh server.
+ - In the above commands, ssh is the client program. The ssh server is already running on the remote_host that we specified.
+ - The process needed to start an ssh server depends on the distribution of Linux that you are using.
+ - You can start the ssh server on the VPS by typing:
+#+begin_example
+sudo service ssh start
+#+end_example
+ - That should start the sshd server and you can then log in remotely.
+*** How Does Key-based Authentication Work?
+ - Key-based authentication works by creating a pair of keys: a private key and a public key.
+ - The private key is located on the client machine and is secured and kept secret.
+ - The public key can be given to anyone or placed on any server you wish to access.
+ - When you attempt to connect using a key-pair, the server will use the public key to create a message for the client computer that can only be read with the private key.
+ - The client computer then sends the appropriate response back to the server and the server will know that the client is legitimate.
+ - This entire process is done in the background automatically after you set up keys.
+**** How To Create SSH Keys
+ - SSH keys should be generated on the computer you wish to log in from. This is usually your local computer.
+ - Enter the following into the command line:
+#+begin_example
+ssh-keygen
+#+end_example 
+ - Press enter to accept the defaults. Your keys will be created at ~/.ssh/id_rsa.pub and ~/.ssh/id_rsa.
+ - Change into the .ssh directory by typing:
+#+begin_example
+cd ~/.ssh
+#+end_example
+ - As you can see, the id_rsa file is readable and writable only to the owner. This is how it should be to keep it secret.
+ - The id_rsa.pub file, however, can be shared and has permissions appropriate for this activity.
+***** How To Transfer Your Public Key to the Server
+ - You can copy the public key to the remote server by issuing this command:
+#+begin_example
+ssh-copy-id remote_host
+#+end_example
+ - This will start an SSH session, which you will need to authenticate with your password.
+ - After you enter your password, it will copy your public key to the server's authorized keys file, which will allow you to log in without the password next time.
+
+* Bridge:
+- Bridge is a device that connects two LANs and controls data flow between them.
+- Especially bridge is a store & forward device. During the connection of different LANs, it receives the frame from one LAN and transfer the same
+  frame without encapsulating or without modification to other LAN. By using local and remote bridge, a network administrator can easily extend the network distance.
+* Switch:
+ - Switch is a device, Which is used to connect same network elements.
+** The difference between switch and bridge are
+-  Bridge is is device which divides a network into two. Switch connects multiple networks.
+-  Bridge are software based and switch is a hardware based.
+-  Bridge can have upto 16 ports while switch can handle many ports.
+-  Bridge is rarely used. Switches are frequently used. 
+* Setting Up Bridge Network
+** Introduction:
+- This page explains about creating a bridge and setting up of a bridge network on base machine.
+- The document further explains the step by step creation of this network.
+- Seen below is the diagram of bridged network along with its Containers.
+[[/home/raghu/Downloads/Untitled drawing(1).jpg]]
+** Setting Up Bridge Network:
+*** Connecting LAN Interface and Bridge:
+- To make a connection to the bridge, LAN interface name should be known. It can be identified by using the following command
+#+begin_example
+ifconfig -a
+#+end_example
+- The first task is to create a bridge, let us call it br0 (br0=bridgename). Bridge is basically a file configured with essential
+  settings which mentions the bridge name, boot protocol, on boot settings, type and if it is to be network manager controlled.
+  Move to the network-scripts directory in =/etc/sysconfig= by following command
+#+begin_example
+cd /etc/sysconfig/network-scripts/
+#+end_example
+- And create a file with name =ifcfg-br0= and write the following settings:
+#+begin_example
+DEVICE=br0
+TYPE=Bridge
+ONBOOT=yes
+NM_CONTROLLED=no
+BOOTPROTO=none
+#+end_example
+- Restart network service to effect the changes.
+#+begin_example
+service network restrat
+#+end_example
+- Following command can be issued to list all the bridges created and the interfaces they are connected to.
+#+begin_example
+brctl show
+#+end_example
+- The output has to bridge and any other bridges previously created with connected interfaces.
+- With current configuration used, a sample output can be seen below:
+#+begin_example
+bridge name	bridge id		STP enabled	interfaces
+br0		8000.5cf9dd75d1f8	no		
+#+end_example
+*** Creating Container:
+- We next move ahead in creation of a container with following settings:
+#+begin_example
+Syntax:= vzctl create <CT-ID> --ostemplate <template> --hostname <host-name>
+Ex:= vzctl create 201 --ostemplate centos-6-x86_64-minimal --hostname centos
+#+end_example
+- set the netfilter to full for the container.
+#+begin_example
+Syntax:= vzctl set <CT-ID> --netfilter full --save
+Ex:= vzctl set 201 --netfliter full --save
+#+end_example
+- The Container need to be connected to the bridge br0 and this is achieved by connecting with the respective interface. This is done by the following commands
+#+begin_example
+Syntax:= vzctl set <CT-ID> --netif_add eth0,,,,br0 --save
+Ex:= vzctl set 201 --netif_add eth0,,,,br0 --save
+#+end_example
+- Start the container and set its status to running.
+#+begin_example
+Syntax:= vzctl start <CT-ID>
+Ex:= vzctl start 201
+#+end_example
+*** Configuring Container:
+- Enter the contianer
+#+begin_example
+Syntax:= vzctl enter <CT-ID>
+Ex:= vzctl enter 201
+#+end_example
+- The ifcfg-eth0 file present in =/etc/sysconfig/network-script= directory for the container need to be configured with following settings
+#+begin_example
+Syntax:= DEVICE=eth0
+         HWADDR=<<Hardware address of eth0>>
+	 BOOTPROTO=static
+	 ONBOOT=yes
+	 NM_CONTROLLED=no
+	 IPADDR=<<IP address of container>>
+	 NETMASK=<<IP address of netmask>>
+Ex:=     DEVICE=eth0
+         HWADDR=00:18:51:20:58:72
+	 BOOTPROTO=static
+	 ONBOOT=yes
+	 NM_CONTROLLED=no
+	 IPADDR=10.11.12.1
+	 NETMASK=255.0.0.0
+#+end_example
+- Restart the network service and check if the eth0 is assigned to ip-address or not (ifconfig command)
+- The hardware address can be known by the command ifconfig -a.
+- Note: Hardware address will be only available after adding the configuration files. The process is to first add the configuration without the hardware address,
+  restart the service and later update it.
+
