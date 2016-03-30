@@ -1,0 +1,30 @@
+* File Permissions:   
+ - Permissions are access to rights to users and groups of users.Every file or directory in linux has 3 permssions defined as owners, those are
+
+   * Owner  - a single person who owns the file.
+   * Group  - every file belongs to a single group.
+   * Others - everyone else who is not in the group or the owner.
+   
+*** User rights/Permissions
+#+begin_example
+chmod rwxrwxrwx <filename>
+#+end_example
+    + The first set of three characters (rwx) is for the owner permissions.
+    + The second set of three characters (rwx) is for the Group permissions.
+    + The third set of three characters (rwx) is for the All Users permissions.
+    - The permission settings as a series of bits. Here's how it works:
+    + rwx = 111 in binary = 7 in decimal
+    + rw- = 110 in binary = 6 in decimal
+    + r-x = 101 in binary = 5 in decimal
+    + r-- = 100 in binary = 4 in decimal
+    + --x = 001 in binary = 1 in decimal
+    + -w- = 010 in binary = 2 in deciaml
+    + -wx = 011 in binary = 3 in decimal
+#+begin_example
+Syntax:- chmod <options> <mode> <files>
+chmod 777 filename
+#+end_example 
+
+#+begin_example
+chmod -R 777 foldername (R is recursive)
+#+end_example 
