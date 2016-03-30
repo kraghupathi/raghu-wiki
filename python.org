@@ -400,3 +400,285 @@ NameError: name 'principle' is not defined
 - *type*: A category of values. The types we have seen so far are integers (type int), floating-point numbers (type float), and strings (type str).
 - *value*: One of the basic units of data, like a number or string, that a program manipulates.
 - *variable*: A name that refers to a value.
+
+* Conditinal Execution
+** Boolean Expressions:
+- A boolean expression is an expression that is either true or false. The following examples use the operator ==, which compares two operands and produces True
+  if they are equal and False otherwise
+#+begin_example
+>>> 5 == 5
+True
+>>> 5 == 6
+False
+#+end_example
++True and False are special values that belong to the type bool; they are not strings:
+#+begin_example
+>>> type(True)
+<type 'bool'>
+>>> type(False)
+<type 'bool'>
+#+end_example
+- The == operator is one of the comparison operators; the others are:
+#+begin_example
+x != y # x is not equal to y
+x > y  # x is greater than y
+x < y  # x is less than y
+x >= y # x is greate than or equal to y
+x <= y # x is less than or equal to y
+x is y # x is the same as y
+x is not y # x is the same as y
+#+end_example
+- Although these operations are probably familiar to you, the Python symbols are different from the mathematical symbols for the same operations. A common error
+  is to use a single equal sign (=) instead of a double equal sign (==). Remember that = is an assignment operator and == is a comparison operator. There is no such thing as =< or =>.
+** Logical Operators:
+- There are three logical operators: and, or, and not. The semantics (meaning) of these operators is similar to their meaning in English. For example,
+#+begin_example
+x > 0 and x < 10
+#+end_example
+is true only if x is greater than 0 and less than 10.
+#+begin_example
+n%2 == 0 or n%3 == 0
+#+end_example
+is true if either of the conditions is true, that is, if the number is divisible by 2 or 3.
+Finally, the not operator negates a boolean expression, so not (x > y) is true if x > y is false; that is, if x is less than or equal to y.
+Strictly speaking, the operands of the logical operators should be boolean expres-
+sions, but Python is not very strict. Any nonzero number is interpreted as “true.”
+#+begin_example
+>>> 17 and True
+True
+#+end_example
+This flexibility can be useful, but there are some subtleties to it that might be confusing. You might want to avoid it until you are sure you know what you are doing.
+
+** Conditional Execution:
+- In order to write useful programs, we almost always need the ability to check con-ditions and change the behavior of the program accordingly. Conditional state-ments give us this ability. The simplest form is the if statement:
+#+begin_example
+if x > 0 :
+print 'x is positive'
+#+end_example
+- The boolean expression after the if statement is called the condition. We end thef statement with a colon character (:) and the line(s) after the if statement are indented.
+- If you enter an if statement in the Python interpreter, the prompt will change from three chevrons to three dots to indicate you are in the middle of a block of statements, as shown below:
+#+begin_example
+>>> x = 3
+>>> if x < 10:
+...
+print 'Small'
+...
+Small
+>>>
+#+end_example
+** Alternative Execution:
+- A second form of the if statement is alternative execution, in which there are two possibilities and the condition determines which one gets executed. The syntax looks like this:
+#+begin_example
+if x%2 == 0 :
+print 'x is even'
+else :
+print 'x is odd'
+#+end_example
+- If the remainder when x is divided by 2 is 0, then we know that x is even, and the program displays a message to that effect. If the condition is false, the second set of statements is executed.
+- Since the condition must either be true or false, exactly one of the alternatives will be executed. The alternatives are called branches, because they are branches in the flow of execution.
+** Chained conditionals:
+- Sometimes there are more than two possibilities and we need more than two branches. One way to express a computation like that is a chained conditional:
+#+begin_example
+if x < y:
+print 'x is less than y'
+elif x > y:
+print 'x is greater than y'
+else:
+print 'x and y are equal'
+#+end_example
+- elif is an abbreviation of “else if.” Again, exactly one branch will be executed.
+- There is no limit on the number of elif statements. If there is an else clause, it has to be at the end, but there doesn’t have to be one.
+#+begin_example
+if choice == 'a':
+print 'Bad guess'
+elif choice == 'b':
+print 'Good guess'
+elif choice == 'c':
+print 'Close, but not correct'
+#+end_example
+- Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch executes, and the statement
+  ends. Even if more than one condition is true, only the first true branch executes.
+** Nested conditionals:
+- One conditional can also be nested within another. We could have written the three-branch example like this:
+#+begin_example
+if x == y:
+print 'x and y are equal'
+else:
+if x < y:
+print 'x is less than y'
+else:
+print 'x is greater than y'
+#+end_example
+- The outer conditional contains two branches. The first branch contains a sim-ple statement. The second branch contains another if statement, which has two branches of its own.
+  Those two branches are both simple statements, although they could have been conditional statements as well.
+- Although the indentation of the statements makes the structure apparent, nested conditionals become difficult to read very quickly. In general, it is a good idea to
+  avoid them when you can.
+- Logical operators often provide a way to simplify nested conditional statements.
++ For example, we can rewrite the following code using a single conditional:
+#+begin_example
+if 0 < x:
+if x < 10:
+print 'x is a positive single-digit number.'
+#+end_example
+- The print statement is executed only if we make it past both conditionals, so we can get the same effect with the and operator:
+#+begin_example
+if 0 < x and x < 10:
+print 'x is a positive single-digit number.'
+#+end_example
+
+
+** Short-circuit evaluation of logical expressions:
+- When Python is processing a logical expression such as x >= 2 and (x/y) >2, it evaluates the expression from left to right. Because of the definition of and,
+  if x is less than 2, the expression x >= 2 is False and so the whole expression is False regardless of whether (x/y) > 2 evaluates to True or False.
+- When Python detects that there is nothing to be gained by evaluating the rest of a logical expression, it stops its evaluation and does not do the computations in
+  the rest of the logical expression. When the evaluation of a logical expression stops because the overall value is already known, it is called short-circuiting the evaluation.
+- While this may seem like a fine point, the short-circuit behavior leads to a clever technique called the guardian pattern. Consider the following code sequence in the Python interpreter:
+#+begin_example
+>>> x = 6
+>>> y = 2
+>>> x >= 2 and (x/y) > 2
+True
+>>> x = 1
+>>> y = 0
+>>> x >= 2 and (x/y) > 2
+False
+>>> x = 6
+>>> y = 0
+>>> x >= 2 and (x/y) > 2
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+ZeroDivisionError: integer division or modulo by zero
+>>>
+#+end_example
+- The third calculation failed because Python was evaluating (x/y) and y was zero,which causes a runtime error. But the second example did not fail because the first part of the expression x >= 2 evaluated to False so,
+  the (x/y) was not ever executed due to the short-circuit rule and there was no error.
+- We can construct the logical expression to strategically place a guard evaluation just before the evaluation that might cause an error as follows:
+#+begin_example
+>>> x = 1
+>>> y = 0
+>>> x >= 2 and y != 0 and (x/y) > 2
+False
+>>> x = 6
+>>> y = 0
+>>> x >= 2 and y != 0 and (x/y) > 2
+False
+>>> x >= 2 and (x/y) > 2 and y != 0
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+ZeroDivisionError: integer division or modulo by zero
+>>>
+#+end_example
+- In the first logical expression, x >= 2 is False so the evaluation stops at the and. In the second logical expression, x >= 2 is True but y != 0 is False so we never reach (x/y).
+- In the third logical expression, the y != 0 is after the (x/y) calculation so the expression fails with an error.
+- In the second expression, we say that y != 0 acts as a guard to insure that we only execute (x/y) if y is non-zero.
+** Glossary:
+- *body*: The sequence of statements within a compound statement.
+- *boolean expression*: An expression whose value is either True or False.
+- *branch*: One of the alternative sequences of statements in a conditional state-ment.
+- *chained conditional*: A conditional statement with a series of alternative branches.
+- *comparison operator*: One of the operators that compares its operands: ==, !=, >, <, >=, and <=.
+- *conditional statement*: A statement that controls the flow of execution depend-ing on some condition.
+- *condition*: The boolean expression in a conditional statement that determines which branch is executed.
+- *compound statement*: A statement that consists of a header and a body. The header ends with a colon (:). The body is indented relative to the header.
+- *guardian pattern*: Where we construct a logical expression with additional com-parisons to take advantage of the short-circuit behavior.
+- *logical operator*: One of the operators that combines boolean expressions: and, or, and not.
+- *nested conditional*: A conditional statement that appears in one of the branches of another conditional statement.
+- *traceback*: A list of the functions that are executing, printed when an exception occurs.
+- *short circuit*: When Python is part-way through evaluating a logical expression and stops the evaluation because,
+  Python knows the final value for the ex-pression without needing to evaluate the rest of the expression.
+* Functions
+** Function calls:
+- In the context of programming, a function is a named sequence of statements, that performs a computation. When you define a function, you specify the name and the sequence of statements. Later, you can “call” the function by name. We have
+  already seen one example of a function call:
+#+begin_example
+>>> type(32)
+<type 'int'>
+#+end_example
+- The name of the function is type. The expression in parentheses is called the argument of the function. The argument is a value or variable, that we are passing into the function as input to the function.
+  The result, for the type function, is the type of the argument.
+- It is common to say that a function “takes” an argument and “returns” a result. The result is called the return value.
+** Why functions?
+- It may not be clear why it is worth the trouble to divide a program into functions. There are several reasons:
++ Creating a new function gives you an opportunity to name a group of state-ments, which makes your program easier to read, understand, and debug.
++ Functions can make a program smaller by eliminating repetitive code. Later, if you make a change, you only have to make it in one place.
++ Dividing a long program into functions allows you to debug the parts one at a time and then assemble them into a working whole.
++ Well-designed functions are often useful for many programs. Once you write and debug one, you can reuse it.
+** Built-in functions:
+- Python provides a number of important built-in functions that we can use without needing to provide the function definition. The creators of Python wrote a set of
+  functions to solve common problems and included them in Python for us to use.
+- The max and min functions give us the largest and smallest values in a list, respec-tively:
+#+begin_example
+>>> max('Hello world')
+'w'
+>>> min('Hello world')
+' '
+>>>
+#+end_example
+- The max function tells us the “largest character” in the string (which turns out to be the letter “w”) and the min function shows us the smallest character (which turns out to be a space).
+- Another very common built-in function is the len function which tells us how many items are in its argument. If the argument to len is a string, it returns the number of characters in the string.
+#+begin_example
+>>> len('Hello world')
+11
+>>>
+#+end_example
+- These functions are not limited to looking at strings. They can operate on any set of values, as we will see in later chapters.
+- You should treat the names of built-in functions as reserved words (i.e., avoid using “max” as a variable name).
+** Type conversion functions:
+- Python also provides built-in functions that convert values from one type to an-other. The int function takes any value and converts it to an integer, if it can, or complains otherwise:
+#+begin_example
+>>> int('32')
+32
+>>> int('Hello')
+ValueError: invalid literal for int(): Hello
+#+end_example
+- int can convert floating-point values to integers, but it doesn’t round off; it chops off the fraction part:
+#+begin_example
+>>> int(3.99999)
+3
+>>> int(-2.3)
+-2
+#+end_example
+- float converts integers and strings to floating-point numbers:
+#+begin_example
+>>> float(32)
+32.0
+>>> float('3.14159')
+3.14159
+#+end_example
+- Finally, str converts its argument to a string:
+#+begin_example
+>>> str(32)
+'32'
+>>> str(3.14159)
+'3.14159'
+#+end_example
+
+** Parameters and arguments:
+ - The arguments are assigned to variables called parameters. Here is an example of a user-defined function that takes an argument:
+#+begin_example
+def apple(fruit):
+    print fruit
+apple("red")
+#+end_example
+- This function assigns the argument to a parameter named fruit. When the func-tion is called, it prints the value of the parameter.
+
+** Glossary:
+- *algorithm*: A general process for solving a category of problems.
+- *argument*: A value provided to a function when the function is called. This value is assigned to the corresponding parameter in the function.
+- *body*: The sequence of statements inside a function definition.
+- *composition*: Using an expression as part of a larger expression, or a statement as part of a larger statement.
+- *deterministic*: Pertaining to a program that does the same thing each time it runs, given the same inputs.
+- *dot notation*: The syntax for calling a function in another module by specifying the module name followed by a dot (period) and the function name.
+- *flow of execution*: The order in which statements are executed during a program run.
+- *fruitful function*: A function that returns a value.
+- *function*: A named sequence of statements that performs some useful operation. Functions may or may not take arguments and may or may not produce a result.
+- *function call*: A statement that executes a function. It consists of the function name followed by an argument list.
+- *function definition*: A statement that creates a new function, specifying its name, parameters, and the statements it executes.
+- *function object*: A value created by a function definition. The name of the func-tion is a variable that refers to a function object.
+- *header*: The first line of a function definition.
+- *import statement*: A statement that reads a module file and creates a module object.
+- *module object*: A value created by an import statement that provides access to the data and code defined in a module.
+- *parameter*: A name used inside a function to refer to the value passed as an argument.
+- *return value*: The result of a function. If a function call is used as an expression, the return value is the value of the expression.
+- *void function*: A function that does not return a value.
+
