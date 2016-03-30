@@ -1,4 +1,9 @@
 * What is Python?:
+Python is an interpreted, interactive object-oriented programming
+language suitable (amongst other uses) for distributed application
+development, scripting, numeric computing and system testing.  Python
+is often compared to Tcl, Perl, Java, JavaScript, Visual Basic or
+Scheme.
  - Python is an interpreted, Object-Oriented and high-level programming language. Which is used for internet scripting and database programming.
  - Python's simple, easy to learn syntax emphasizes readability and therefore reduces the cost of program maintenance. Python supports modules and packages,
    which encourages program modularity and code reuse. The Python interpreter and the extensive standard library are available in source or binary form without
