@@ -8,7 +8,7 @@ The successful candidate will be able to build high-quality, innovative and full
  * Automate infrastructure including apache web server, apache reverse proxy, Bind DNS, SSH, etc. using ansible for a cluster of 100+ nodes
  * Manage AWS VM cluster of 100+ VMs remotely.  
  * Be comfortable with multiple Linux flavors such as CentOS, Ubuntu
- * Understand basic networking :: IP addresses, Firewalls, ports
+ * Understand basic networking:: IP addresses, Firewalls, ports
  * Demonstrate understanding of Linux security.  To be a quick self learner, passionate, proactive, and be a good communicators. 
  * Be a great team player, work with all the stake holders.
 ** Requirements
