@@ -1,0 +1,23 @@
+
+* Jobdescription
+* Job Title: Systems Engineer 
+** Job brief
+We are looking for a passionate Systems Engineer to automate infrastructure, manage the infrastructure with high uptime requirements
+The successful candidate will be able to build high-quality, innovative and fully performing Infrastructure systems  in compliance with standards, quality guidelines and relevant best practices.
+** Responsibilities
+ * Automate infrastructure including apache web server, apache reverse proxy, Bind DNS, SSH, etc. using ansible for a cluster of 100+ nodes
+ * Manage AWS VM cluster of 100+ VMs remotely.  
+ * Be comfortable with multiple Linux flavors such as CentOS, Ubuntu
+ * Understand basic networking :: IP addresses, Firewalls, ports
+ * Demonstrate understanding of Linux security.  To be a quick self learner, passionate, proactive, and be a good communicators. 
+ * Be a great team player, work with all the stake holders.
+** Requirements
+1. Proven working experience of 3-4 years  in day to day server and network infrastructure operations 3 to 4 year degree or diploma in Computer Science or EngineeringHands on experience in automating infrastructure 
+2. Comfortable in dealing with  apache webservers, reverse proxy, Bind DNS, SSH etc for clusters of 100+ nodes 
+3. Good in working with Linux Flavors such as CentOS, Ubuntu. Basically should have managed multiple Internet facing Linux servers.
+4. Experience in managing Linux Security
+5. 
+6. Be a quick learner adapting to new technologies and making changes as required to the servers and network. 
+7. Be able to document requirements and specifications
+
+Post your details at  jobs@vlabs.ac.in 
