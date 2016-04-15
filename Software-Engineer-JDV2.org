@@ -16,8 +16,7 @@ The successful candidate will be able to build high-quality, innovative and full
 2. Comfortable in dealing with  apache webservers, reverse proxy, Bind DNS, SSH etc for clusters of 100+ nodes 
 3. Good in working with Linux Flavors such as CentOS, Ubuntu. Basically should have managed multiple Internet facing Linux servers.
 4. Experience in managing Linux Security
-5. 
-6. Be a quick learner adapting to new technologies and making changes as required to the servers and network. 
-7. Be able to document requirements and specifications
+5. Be a quick learner adapting to new technologies and making changes as required to the servers and network. 
+6. Be able to document requirements and specifications
 
 Post your details at  jobs@vlabs.ac.in 
