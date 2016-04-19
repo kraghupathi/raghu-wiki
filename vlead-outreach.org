@@ -1,0 +1,143 @@
+* User-Tbl
+| UsrId         | PK |   
+| UsrFirstName  | NOT NULL | 
+| UsrLastName   | NOT NULL | 
+| LogEmailId    | Uniq, NOT NULL |   
+| UsrAltEmailId | NULL | 
+| UsrTelNo      | NOT NULL | 
+| UsrAltTelNo   | NULL |   
+| UsrRoleId     | NOT  NULL |  
+| UsrInst_Id    | NOT NULL | 
+| UsrOCId       | NULL (selfmapping..emp/mgrrelationship) |  
+| UsrStatus     | A/I (NOT NULL,Default-A) |
+| CreaDt        | System Generated |   
+| ModiDt        | System Generated |  
+
+(User EmailId, UsrOutInst_Id and UsrRoleId - Unique)
+* Role-Tbl
+| RoleId     | PK              |   
+| RoleName   | Uniq, NOT NULL  |       
+| RoleCode   | Uniq, NOT NULL  |     
+| RoleStatus | A/I (NOT NULL Default - A)       |
+| CreaDt     | System Generated | 
+| ModiDt     | System Generated |   
+* Priv-Tbl
+| PrivId     | PK              |  
+| PrivName   | Uniq, NOT NULL                | 
+| PrivStatus | A/I (NOT NULL, Default - A) |
+| CreaDt     | System Generated |  
+| ModiDt     | System Generated | 
+* RolePriv-Tbl
+| RolePrivId | PK               |         
+| RoleId     | NOT NULL { Composite   Unique Key }       |
+| PrivId     | NOT NULL {  }                                     | 
+| PrivStatus | A/I (NOT NULL, Default - A)                |   
+| CreaDt     | System Generated | 
+| ModiDt     | System Generated |
+* OutInst-Tbl
+| OutInst_Id       | PK                                   |
+| OutInstName      | Unique and NOT NULL                  |
+| OutInstCity/Town | NOT NULL(compositekey with CollegeName)  |  
+| OutInstAddr1     | NOT NULL |
+| OutInstAddr2     |                                      | 
+| CreaDt           | System Generated                     | 
+| ModiDt           | System Generated                     |
+* Workshop-Tbl
+| Workshop_Id       | PK                                         |
+| Workshop_Name     | NOT NULL {compositekey with WorkshopCond_Date} |
+| WorkshopCond_Date | NOT NULL                                   |
+| WorkshopTargID    | NOT NULL                                   |
+| CreaDt            | System Generated                           |
+| ModiDt            | System Generated                           |
+* WorkshopOutInst-Tbl
+| WorkshopOutInst_Id | PK                                 |
+| Workshop_Id        | NOT NULL {compositekey with CollegeId} |
+| OutInst_Id         | NOT NULL                           |
+| UserID             | NOT NULL                           |
+| CreaDt             | System Generated                   |
+| ModiDt             | System Generated                   |
+* Stream-Tbl
+| Stream_Id  |   
+| StreamName |  
+| StreamCode |   
+| OutInst_Id | (Mapped to Inst Id) |
+| CreaDt     |   
+| ModiDt     |  
+* Lab-Tbl
+| Lab_Id        | 
+| LabName       |
+| LabURL        |
+| LabOutInst_Id | (owner) |
+| LabCreaDt     |  
+| LabModiDt     | 
+* Experi-Tbl
+| Exp_Id    |
+| ExpName   |
+| ExpCreaDt |
+| ExpModiDt |
+* LabExp-Tbl
+| LabExp_Id    |
+| Lab_Id       |
+| Exp_Id       |
+| LabExpCreaDt |
+| LabExpModiDt |
+* Feedback-Tbl
+| Feedback_Id     |      |
+| Feedback_Name   |      |
+| OutInst_Id      | NULL |
+| LabId           | NULL |
+| ExpId           | NULL |
+| Feedback_Email  | NULL |
+| Feedback_Like   |      |
+| Feedback_Impr   |      |
+| Feedback_Rating |      |
+| IPAddress       | NULL |
+| FeedbackDoc_Id  | NULL |
+| CreaDt          |      |
+| ModiDt          |      |
+* FeedbackDoc-Tbl
+| FeedbackDoc_Id |
+| Feedback_Link  |
+| CreaDt         |
+| ModiDt         |
+* TargetWorkshop-Tbl
+| TargetWorkshop_Id |
+| TargetWorkshops   |
+| TargetStartDate   |
+| TargetEndDate     |
+| TargetOutInst_Id  |
+| CreaDt            |
+| ModiDt            |
+* WorkshopNC-Tbl
+| WorkshopNC_Id        | NOT NULL |
+| TargetWorkshop_Id    | NOT NULL |
+| Workshop_Id          | NOT NULL |
+| OutInst_Id           | NOT NULL |
+| Conducted_Sessions   | NOT NULL |
+| Attended_Participants  | NOT NULL |
+| Feedback_Id          | NOT NULL |
+| NCStatus_ID          | NOT NULL |
+| CreaDt               |         |
+| ModiDt               |         |
+* NCStatus-Tbl
+| NCStatus_Id     |                    |
+| NCStatus_Code   | NOT NULL and UNIQUE |
+| NCStatus_PrevID | (emp/manager table) |
+| CreaDt          |                    |
+| ModiDt          |                    |
+* Audit-Tbl
+| Audit_Id                                     | NOT NULL |
+| AuditTbl_Name (validate against data dictionary) | NOT NULL |
+| Audit_Action (Insert/Update/Delete)          | NOT NULL |
+| Audit_PrevId                                 | NOT NULL |
+| Audit_Rec                                    | NOT NULL |
+| CreaDt                                       |         |
+| ModiDt                                       |         |
+* WebUsStats-Tbl
+| WebUsStats_Id       |
+| Exp_Id              |
+| StartTime           |
+| EndTime             |
+| IPAddress           |
+| WebUsageStatsCreaDt |
+| WebUsageStatsModiDt |

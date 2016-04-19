@@ -1,0 +1,43 @@
+* Outreach Portal
+** Users - Admin, Outreach Coordinators, Nodal Coordinators, PIC, IIC
+  +  Nodal Coordinators - Add colleges, add feedback file, add feedback, usage - workshop, stream, labs, experiments, count
+  +  Outreach coordinators - Add NCs and performs activities of NCs
+  +  IIC - view only
+  +  PIC - view only
+  +  Admin - Add different user types and assigns permissions
+  +  Name, Email ID, Status, Contact(Telephone,Alt Tele,Alt EmailID), Role, ManagerID(Null)
+** Feedback
+  +  Feedback - Experiment/Lab/Session/Workshop
+  +  Feedback contains - Ids of  Experiment/Lab/Session/Workshop, Like rating(1-5), Improv Suggestion, What they liked, IP address, Email ID, Date and Time of feedback
+** Workshop	
+  +  Workshop and Sessions - targets and actuals (against target) for a period.. 
+  +  Workshop - college name(s), date of NC (one/many NCs only under IOC)
+  +  Workshop status
+  +  Workflow for Workshop targets and updates if filled by NCs
+** Audit Trial
+  +  Of Update, Delete of every table. Date time of change, old values.. Update - of all columns, Column Name - value
+  +  All data is soft delete only !!!
+** Reports
+  1. View of User and their role
+	*  Colleges, Status on Workshop
+  2. Workshop, sessions, users - stats at Global/OC/NC/Workshop level for a period.. landing page - <= current time
+  3. Feedback at OC/NC/Workshop/Stream/Lab/Experiment level
+	*  Summary
+	*  Detail
+  4. Colleges under OC/NC...colleges covered for a stream/lab
+  5. SQL Query - Provision --> Table Name,Where = equal,>,<,etc
+** Add User Info
+  1.  Add Roles
+  2.  Map permissions to roles
+  3.  Add users (OC)
+       *  Assign Roles
+  4.  OC adds
+       *  NC
+  5.  NC adds
+       *  colleges
+** Workshop
+   1.  IC
+    * Add targets, add workshop
+   2.  NC
+    * Add targets, add workshop
+		
