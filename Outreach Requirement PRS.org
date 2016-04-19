@@ -1,0 +1,139 @@
+* Outreach Portal Requirements 
+** CONCEPT: 
+Core Functionality to be built around workshops being conducted
+
+         Key participants in the doing of workshops- 
+         1. Students
+         2. Nodal Coordinator
+         3. Colleges
+         4. Nodal Centers
+         5. Outreach Coordinators
+         6. Ministry of HRD
+         7. Virtual Lab 
+         8. Institutes
+** Needs of each Stakeholder
+
+[This not part of the Outreach Portal. 
+However, in this version, we should have the process of getting the feedback from the students
+captured throught the transaction process data and also get feedback after the experiments are done
+by the students – like which experiments he did, which worked and which did not, time he took etc. 
+This is a great value add and makes the reporting easy. TASK too has expressed the need for this.  
+
+Students – (To be added to the Main VL application). Written here for completeness since a lot of new 
+functionality of the VL and OP comes out of this real time inputs
+         a. Student Logs in with email id and password
+	 b. List of Experiments relevant to Student (provide a list of experiments- he chooses a few from 
+	 the list by clicking or by checking specific experiments – open experiment )
+	 c. Enable Choice of experiments based on stream or other preference-
+	 d. (Do it) - give feedback - come out of the experiment
+	 e. Repeat for another experiment and so on. 
+	 f. Each experiment capture the total time taken, feedback given sheet and populate in relevant
+	 location indicated.  The data relating to the time taken for each experiment will be recorded. 
+	 The student feedback in the Outreach Portal will display all the experiments done, the time taken. 
+	 This will default in the feedback form. The student will enter his remarks on these and 
+	 respond to the Eckert Scale also in this online form 
+	 g. Print Feedback 
+	 h. Upload feedback to common mail id  ]
+
+** Nodal Coordinator
+         a. Creates a Workshop plan 
+	     i. Add Colleges – Register with additional Info – Name, College ID, Location, # of students in college who are potential users of VL, Usage Potential as on date
+	b. Coordinates with Colleges and announces the dates – Calendar for each NC
+	c. Conducts Workshop
+	d. Collects Feedback
+	e. Populates Workshop Data
+	f. Submits data of workshop for approval
+	g. Approval Rejected
+	h. Re-logs in and corrects data and submits for approval
+	i. Approved by IOC
+	j. Edit Workshop data for changes after previous approval
+	k. Submits for Approval
+	l. Approval Rejected
+	m. Relogs in and corrects data and submits for approval
+	n. Edited record Uploaded 
+	o. Generate Reports:
+   	     i. Generate Feedback Reports for each of the students- 
+	     ii. Generate Consolidated Feedback for all students in a session.
+	     iii. Generate Common Report of all sessions in a college/Workshop
+	     iv. Colleges under NC
+	p. College Statistics -  Usage Potential, Usage already delivered, 
+	
+
+*** Add Search facility on all reports 
+
+
+** Outreach Coordinator
+
+      a. Add and Edit Nodal Center
+      b. Add  and Edit Nodal Coordinator
+      c. Add and Edit Workshops
+      d. Approve Workshops
+      e. Plan and Create  a Workshop
+      f. Plan and create Multiple Workshops
+      g. Approve Workshops
+      h. Approve Changes to previously Approved workshop
+      i. Create Backup OC for short durations
+      j. Reports:
+         a. Performance of Nodal Coordinator (individual)
+	 b. Performance of Nodal Center
+	 c. Usage by Nodal Center
+	 d. Usage by Experiment
+	 e. Usage by Lab
+
+** Colleges
+
+a. Register College on Outreach Portal
+b. Create Report on Workshops conducted ( They will Print the Report on their Letterhead and 
+    sign it as  Workshop conducted report)
+c. Specific Feedback on Experiments and Virtual Lab alignment to their colleges
+d. Request Workshop
+e. Request Experiments
+
+** Institutes:
+----
+** Log in to Outreach Portal 
+
+View Usage  by  Experiments 
+View Issues faced by Students Using  experiments developed by the Institutes.
+
+** Admin
+Add User Info -  - Add Roles, Map permissions to roles, Add users (OC), Assign Roles,  
+ - NC adds
+  colleges
+Issues faced during usage of experiments  
+
+** DASH BOARD
+
+The Dash Board has the following parameters  displayed and Hyperlinked. 
+1. From and To date or As on Date
+2. Workshops Run, Students Touched, Colleges Touched, Usages, States Touched, Faculty Involved
+3. Outreach Coordinators, Nodal Coordinators, 
+
+** WORKSHOP RUN
+
+S.No, 	(1)Workshop Name, ( To be formatted as – OC abbreviation- NC Abbreviation ), 
+(2)Location,(3) Workshop Date,(4) Participating Institutes ( Drop down menu populated from 
+the Colleges registered  by the NCs earlier )  	(5)# of Participants Attended, 
+Labs Planned 	Total Sessions 	Duration of Session (In hrs) 	Experiments Conducted,  
+(6) Usage ( No.of experiments done ) ( Extracted from the Student feedback form )
+
+The  screen should allow the data to be indexed on any of the 6 parameters.  
+
+The Screen also displays
+
+ Total # of Usages, Date from (the earliest workshop date)  and To Date ( to the latest workshop date)
+
+** OUTREACH COORDINATOR DETAIL
+
+S.NO 	Name ( By Role definition ), OC Number ( Will be present in item (1) of the Workshop detail above ), Email, Last Active, Institute Name
+
+** NODAL COORDINATORS DETAIL
+
+S.NO 	Name ( By Role definition ), OC Number ( Defaults from “Add  NC” in Outreach Coordinator  Functionality), Email, Last Active, Institute Name. All these parameters default from the DB
+
+** USAGE 
+
+This link is Hyperlinked another screen, giving Usage detail. The NEW SCREEN, will display  - 
+OC Name  the Usage . A Hyperlink on each OC’s  Usage will show the Workshops done under 
+the OC with all the data in the Screen under ‘Workshops Run’ 
+
