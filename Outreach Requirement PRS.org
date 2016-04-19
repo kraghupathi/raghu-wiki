@@ -50,17 +50,17 @@ comes out of this real time inputs
   7. Approval Rejected
   8. Re-logs in and corrects data and submits for approval
   9. Approved by IOC
-10. Edit Workshop data for changes after previous approval
-11. Submits for Approval
-12. Approval Rejected
-13. Relogs in and corrects data and submits for approval
-14. Edited record Uploaded 
-15. Generate Reports:
+  10. Edit Workshop data for changes after previous approval
+  11. Submits for Approval
+  12. Approval Rejected
+  13. Relogs in and corrects data and submits for approval
+  14. Edited record Uploaded 
+  15. Generate Reports:
       + Generate Feedback Reports for each of the students- 
       + Generate Consolidated Feedback for all students in a session.
       + Generate Common Report of all sessions in a college/Workshop
       + Colleges under NC
-16. College Statistics -  Usage Potential, Usage already delivered, 
+  16. College Statistics -  Usage Potential, Usage already delivered, 
 *** Add Search facility on all reports 
 ** Outreach Coordinator
   1. Add and Edit Nodal Center
@@ -72,7 +72,7 @@ comes out of this real time inputs
   7. Approve Workshops
   8. Approve Changes to previously Approved workshop
   9. Create Backup OC for short durations
-10. Reports:
+  10. Reports:
     + Performance of Nodal Coordinator (individual)
     + Performance of Nodal Center
     + Usage by Nodal Center
