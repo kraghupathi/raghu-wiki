@@ -1,4 +1,5 @@
 * Outreach Portal
+[[./Outreach DataFlow and ER.jpeg]]
 ** Users - Admin, Outreach Coordinators, Nodal Coordinators, PIC, IIC
   +  *Nodal Coordinators* - Add colleges, add feedback file, add feedback, usage - workshop, stream, labs, experiments, count
   +  *Outreach coordinators* - Add NCs and performs activities of NCs
