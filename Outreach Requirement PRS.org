@@ -21,41 +21,69 @@ This is a great value add and makes the reporting easy. TASK too has expressed t
 
 Students – (To be added to the Main VL application). Written here for completeness since a lot of new 
 functionality of the VL and OP comes out of this real time inputs
+
          a. Student Logs in with email id and password
+
 	 b. List of Experiments relevant to Student (provide a list of experiments- he chooses a few from 
+
 	 the list by clicking or by checking specific experiments – open experiment )
+
 	 c. Enable Choice of experiments based on stream or other preference-
+
 	 d. (Do it) - give feedback - come out of the experiment
+
 	 e. Repeat for another experiment and so on. 
+
 	 f. Each experiment capture the total time taken, feedback given sheet and populate in relevant
 	 location indicated.  The data relating to the time taken for each experiment will be recorded. 
 	 The student feedback in the Outreach Portal will display all the experiments done, the time taken. 
 	 This will default in the feedback form. The student will enter his remarks on these and 
 	 respond to the Eckert Scale also in this online form 
+
 	 g. Print Feedback 
+
 	 h. Upload feedback to common mail id  ]
 
 ** Nodal Coordinator
          a. Creates a Workshop plan 
 	     i. Add Colleges – Register with additional Info – Name, College ID, Location, # of students in college who are potential users of VL, Usage Potential as on date
+
 	b. Coordinates with Colleges and announces the dates – Calendar for each NC
+
 	c. Conducts Workshop
+
 	d. Collects Feedback
+
 	e. Populates Workshop Data
+
 	f. Submits data of workshop for approval
+
 	g. Approval Rejected
+
 	h. Re-logs in and corrects data and submits for approval
+
 	i. Approved by IOC
+
 	j. Edit Workshop data for changes after previous approval
+
 	k. Submits for Approval
+
 	l. Approval Rejected
+
 	m. Relogs in and corrects data and submits for approval
+
 	n. Edited record Uploaded 
+
 	o. Generate Reports:
+
    	     i. Generate Feedback Reports for each of the students- 
+
 	     ii. Generate Consolidated Feedback for all students in a session.
+
 	     iii. Generate Common Report of all sessions in a college/Workshop
+
 	     iv. Colleges under NC
+
 	p. College Statistics -  Usage Potential, Usage already delivered, 
 	
 
@@ -65,19 +93,33 @@ functionality of the VL and OP comes out of this real time inputs
 ** Outreach Coordinator
 
       a. Add and Edit Nodal Center
+
       b. Add  and Edit Nodal Coordinator
+
       c. Add and Edit Workshops
+
       d. Approve Workshops
+
       e. Plan and Create  a Workshop
+
       f. Plan and create Multiple Workshops
+
       g. Approve Workshops
+
       h. Approve Changes to previously Approved workshop
+
       i. Create Backup OC for short durations
+
       j. Reports:
+
          a. Performance of Nodal Coordinator (individual)
+
 	 b. Performance of Nodal Center
+
 	 c. Usage by Nodal Center
+
 	 d. Usage by Experiment
+
 	 e. Usage by Lab
 
 ** Colleges
