@@ -37,8 +37,8 @@ comes out of this real time inputs
        done, the time taken.  This will default in the feedback form. The
       student will enter his remarks on these and respond to the Eckert
       Scale also in this online form
-  7. Print Feedback 
-  8. Upload feedback to common mail id
+   7. Print Feedback 
+   8. Upload feedback to common mail id
 ** Nodal Coordinator
   1. Creates a Workshop plan 
       + Add Colleges – Register with additional Info – Name, College ID, Location, # of students in college who are potential users of VL, Usage Potential as on date
