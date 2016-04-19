@@ -83,24 +83,31 @@ functionality of the VL and OP comes out of this real time inputs
 ** Colleges
 
 a. Register College on Outreach Portal
+
 b. Create Report on Workshops conducted ( They will Print the Report on their Letterhead and 
     sign it as  Workshop conducted report)
+
 c. Specific Feedback on Experiments and Virtual Lab alignment to their colleges
+
 d. Request Workshop
+
 e. Request Experiments
 
 ** Institutes:
 ----
+
 ** Log in to Outreach Portal 
 
 View Usage  by  Experiments 
+
 View Issues faced by Students Using  experiments developed by the Institutes.
 
 ** Admin
 Add User Info -  - Add Roles, Map permissions to roles, Add users (OC), Assign Roles,  
- - NC adds
-  colleges
-Issues faced during usage of experiments  
+
+ - NC adds
+
+ - colleges Issues faced during usage of experiments  
 
 ** DASH BOARD
 
