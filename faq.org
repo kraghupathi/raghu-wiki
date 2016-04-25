@@ -1,6 +1,4 @@
-
 *Frequently Asked Questions*
-
 *Q1. What are Virtual labs?*
 
 Virtual Labs are intended to augment the learning of science and
