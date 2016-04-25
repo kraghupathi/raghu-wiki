@@ -1,0 +1,729 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Welcome to Virtual Labs - A MHRD Govt of india Initiative">
+    <meta name="author" content="Virtual Labs - A MHRD Govt of india Initiative">
+
+    <title>Welcome to Virtual Labs - A MHRD Govt of india Initiative</title>
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Important Owl stylesheet -->
+        <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.css">
+        <link rel="stylesheet" href="vendors/owl-carousel/owl.theme.css">
+
+        <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.css">
+
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+<!--    <link href="css/venk.css" rel="stylesheet">-->
+        <script type="text/javascript" src = 'tabs.js'></script>
+<!--    <script type="text/javascript" language="javascript">
+      window.onload = function() {
+      $.getJSON('http://analytics-server.base4.vlabs.ac.in/analytics', function(data) {
+      $("#visits").html(data["visits"]);
+      $("#usage").html(data["usage"]);
+-->
+        <script type="text/javascript" language="javascript">
+      window.onload = function() {
+      $.getJSON('http://stats.vlabs.ac.in/analytics', function(data) {
+      var visit = data["visits"] ;
+      $("#visits").html(visit.toString().slice(0,2)+","+visit.toString().slice(2,4)+","+visit.toString().slice(4,7));
+      //$("#usage").html(data["usage"]);
+
+      });
+      };
+      function myFunction() {
+      window.open("./analytics/usage.html");
+      }
+    </script>
+
+</head>
+<body id="page-top" class="index">
+<div id="top">
+        <header>
+        <!-- Navigation -->
+            <nav class="navbar navbar-default " style="background-color: white !important; margin-bottom: 0px !important;">
+                <div class="container-fluid">
+                                    <!-- Brand and toggle get grouped for better mobile display -->
+                                    <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle custom-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                            <span class="sr-only">Toggle navigation</span>
+                                            <span class="icon-bar" style="background-color: #77BB41"></span>
+                                            <span class="icon-bar" style="background-color: #77BB41"></span>
+                                            <span class="icon-bar" style="background-color: #77BB41"></span>
+                                        </button>
+                                        <a class="navbar-brand main-logo-a" href="index.html"><img src="images/logo-new.png" class="img-responsive main-logo" /></a>
+                                    </div>
+
+                                    <!-- Collect the nav links, forms, and other content for toggling -->
+                                    <div class="collapse navbar-collapse menu-div" id="bs-example-navbar-collapse-1" style="border: 0px;">
+
+                                        <ul class="nav navbar-nav navbar-right menu-ul search-ul" style="position: relative; top: -5px;">
+                                                <li>
+                                                        <form method="get" action="search-result.html">
+                                                <!--    <input type="text" class="search-textbox" placeholder="SEARCH FOR A LAB" name="q" id="q"/>
+                                                        <input type="submit" value="" class="search-button" />-->
+                                                </form>
+                                                </li>
+                                        </ul>
+
+                                        <ul class="nav navbar-nav navbar-right menu-ul">
+                                            <li class="page-scroll menu-li " >
+                                                <a href="index.html#aboutus" class="menu-a" >ABOUT</a>
+                                            </li>
+                                            <li class="page-scroll menu-li">
+                                                <a href="labs.html"  class="menu-a" >ALL LABS</a>
+                                            </li>
+                                            <li class="page-scroll menu-li " >
+                                                <a href="index.html#partner" class="menu-a" >PARTNERS</a>
+                                            <li class="page-scroll menu-li " >
+                                                <a href="index.html#contact" class="menu-a" >CONTACT</a>
+                                            </li>
+                                             <li class="page-scroll menu-li " >
+                                                <a href="http://vlabs-dev.vlabs.ac.in/"
+                                                class="menu-a"
+                                                target="_blank">VLABS DEV</a>
+                                            </li>
+                                          </ul>
+
+
+
+                                    </div>
+                                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+        </header>
+
+
+        <div id="content">
+                        <div class="container-fluid" style="height:180px">
+                                <div class="row" >
+                                        <img src="images/banner_img.jpg" class="img-responsive" />
+                                        <div class="banner-text">
+                                                <div class="baneer-text-sub-div banner-text-1">
+                                                        <span class="banner-text-small">Labs</span> <span class="banner-text-big">205</span> <sup class="banner-text-medium">+</sup>
+                                                </div>
+
+                                                <div class="baneer-text-sub-div banner-text-2">
+                                                        <span class="banner-text-small">Experiments</span> <span  class="banner-text-big">1515</span> <sup class="banner-text-medium">+</sup>
+                                                </div>
+                                                <!--<div class="baneer-text-sub-div banner-text-2">
+                                                        <span class="banner-text-small">Accessed</span> <span id="analytics" class="banner-text-big"></span> <sup class="banner-text-medium">+</sup>
+                                                </div> -->
+
+                                                <div class="baneer-text-sub-div banner-text-3">
+                                                        <span class="banner-text-small">Visits</span> <span id="visits" class="banner-text-big"></span> <sup class="banner-text-medium">+</sup>
+<!--
+                                                </div>
+                                                <div class="baneer-text-sub-div banner-text-4">
+                                                        <span class="banner-text-small" onclick="myFunction()" style="cursor:pointer">Usage</span> <span id="usage" class="banner-text-big">3,70,223</span> <sup class="banner-text-medium">+</sup>
+-->
+                                                </div>
+
+                                                <div class="baneer-text-sub-div banner-text-4">
+                                                        <span class="banner-text-small" onclick="myFunction()" style="cursor:pointer">Usage</span> <span id="usage" class="banner-text-big">7,12,743</span> <sup class="banner-text-medium">+</sup>
+                                                </div>
+                                        <!--    <div class="baneer-text-sub-div banner-text-4">
+                                                        <span class="banner-text-small" onclick="myFunction()">Usage</span> <span id="usage" class="banner-text-big">1784</span> <sup class="banner-text-medium">+</sup>
+                                                </div>-->
+                                        </div>
+
+                                        <div class="banner-caption-div">
+                                                <div class="banner-caption-text">
+
+                                                        <div style="margin-bottom:4px"><b>Online labs and experiments</b> from top</div><div>technology institutes. <span style="background-color: #2C99CE;
+  color: white; padding:3px">Take them for free!</span></div>
+
+                                                </div>
+                                        </div>
+                                </div> <!-- row end -->
+                        </div> <!-- container-fluid end for slider -->
+
+<div class="container-fluid"  style="margin-left: 35px; margin-right: 35px;">
+                                <div class="row">
+                                                <div class="col-md-12" style="background: url('images/bottom-line-n.png');  background-repeat: repeat-x; background-position: left bottom; " >
+                                                        <h2 class="text-h2-lightblue" style=" margin-bottom: 10px; margin-top: -25px;">Featured Labs</h2>
+                                                        <div id="owl-demo" class="owl-carousel owl-theme">
+                                                            <div id="featured_labs_subparent_5" class="item featured-labs-div" style="background: url('images/dotted-devider-v-o.png') no-repeat; background-position: left top; margin-bottom: 20px;">
+                                                                        <div id="featured_labs_6" class="featured-labs">
+                                                                                <a href="http://ps-iiith.vlabs.ac.in/" target="_blank"> <h3 class="text-h3-darkblue-bold" style="margin-top: 2px;">Problem Solving</h3></a>
+                                                                                <p class="text-normal-gray-small">Welcome to the Problem Solving Virtual Lab developed at IIIT Hyderabad. The interactive experiments...</p>
+                                                                        </div>
+                                                                        <hr style="background:#CCCCCC !important;  height: 1px;  margin-bottom: 10px !important;margin-top: 12px;">
+                                                                        <div class="featured-labs-experiment-div"  style="height: auto; overflow: hidden; ">
+                                                                                <table style="width: 100%">
+                                                                                        <tr>
+                                                                                                <td valign="bottom">
+                                                                                                        <div class="text-normal-gray-smallest" style="min-height:1px; float: left; padding-right:15px;  padding-left: 0px;">
+                                                                                                                 <a href="http://ps-iiith.vlabs.ac.in/" class="nounderline" target="_blank"> <span class="featured-labs-experiment-icon"> <img src="images/flask.png" style="vertical-align:text-bottom; width: 23px;" /> </span> <span  class="text-normal-gray-smallest">LAB</span></a>
+                                                                                                        </div>
+                                                                                                </td>
+                                                                                                <td valign="bottom">
+                                                                                                <div class="text-normal-gray-smallest" style="min-height:1px; float: left; padding-right:15px; padding-left: 0px; position: relative; bottom: -3px">
+                                                                                                         <a href="http://nptel.ac.in/video.php?subjectId=106104074" class="nounderline" target="_blank"> <span class="featured-labs-experiment-icon"> <img src="images/chat.png" style="vertical-align:text-bottom; width: 23px;" /> </span> <span  class="text-normal-gray-smallest">LECTURE</span></a>
+                                                                                                </div>
+                                                                                                </td>
+                                                                                        </tr>
+                                                                                </table>
+                                                                        </div>
+                                                                </div>
+                                                            <div id="featured_labs_subparent_1" class="item featured-labs-div" style="background: url('images/dotted-devider-v-o.png') no-repeat; background-position: left top; margin-bottom: 20px;">
+                                                                        <div id="featured_labs_5" class="featured-labs">
+                                                                                <a href="http://bmsip-iitr.vlabs.ac.in" target="_blank"> <h3 class="text-h3-darkblue-bold" style="margin-top: 2px;">Bio-Medical Signal and Image Processing Lab</h3></a>
+                                                                                <p class="text-normal-gray-small">Welcome to the Bio-Medical Signal and Image Processing Lab developed at IIT Roorkee...</p>
+                                                                        </div>
+                                                                        <hr style="background:#CCCCCC !important;  height: 1px;  margin-bottom: 10px !important;margin-top: 12px;">
+                                                                        <div class="featured-labs-experiment-div"  style="height: auto; overflow: hidden; ">
+                                                                                <table style="width: 100%">
+                                                                                        <tr>
+                                                                                                <td valign="bottom">
+                                                                                                        <div class="text-normal-gray-smallest" style="min-height:1px; float: left; padding-right:15px;  padding-left: 0px;">
+                                                                                                                 <a href="http://bmsip-iitr.vlabs.ac.in/" class="nounderline" target="_blank"> <span class="featured-labs-experiment-icon"> <img src="images/flask.png" style="vertical-align:text-bottom; width: 23px;" /> </span> <span  class="text-normal-gray-smallest">LAB</span></a>
+                                                                                                        </div>
+                                                                                                </td>
+                                                                                                <td valign="bottom">
+                                                                                                <div class="text-normal-gray-smallest" style="min-height:1px; float: left; padding-right:15px; padding-left: 0px; position: relative; bottom: -3px">
+                                                                                                         <a href="http://nptel.ac.in/courses/117101001/" class="nounderline" target="_blank"> <span class="featured-labs-experiment-icon"> <img src="images/chat.png" style="vertical-align:text-bottom; width: 23px;" /> </span> <span  class="text-normal-gray-smallest">LECTURE</span></a>
+                                                                                                </div>
+                                                                                                </td>
+                                                                                        </tr>
+                                                                                </table>
+                                                                        </div>
+                                                                </div>
+                                                                <div id="featured_labs_subparent_2" class="item featured-labs-div" style="background: url('images/dotted-devider-v-o.png') no-repeat; background-position: left top; margin-bottom: 20px;">
+                                                                        <div id="featured_labs_2" class="featured-labs">
+                                                                                <a href="http://cse01-iiith.vlabs.ac.in/" target="_blank"> <h3 class="text-h3-darkblue-bold" style="margin-top: 2px;"> Data Structures</h3></a>
+                                                                                <p class="text-normal-gray-small">Data structures lab has experiments about how several fundamental algorithms work, particularly those concerned with sorting and searching.</p>
+                                                                        </div>
+                                                                        <hr style="background:#CCCCCC !important;  height: 1px;  margin-bottom: 10px !important;margin-top: 12px;">
+                                                                        <div class="featured-labs-experiment-div"  style="height: auto; overflow: hidden; ">
+                                                                                <table style="width: 100%">
+                                                                                        <tr>
+                                                                                                <td valign="bottom">
+                                                                                                        <div class="text-normal-gray-smallest" style="min-height:1px; float: left; padding-right:15px;  padding-left: 0px;">
+                                                                                                                 <a href="http://cse01-iiith.vlabs.ac.in/" class="nounderline" target="_blank"> <span class="featured-labs-experiment-icon"> <img src="images/flask.png" style="vertical-align:text-bottom; width: 23px;" /> </span> <span  class="text-normal-gray-smallest">LAB</span></a>
+                                                                                                        </div>
+                                                                                                </td>
+                                                                                                <td valign="bottom">
+                                                                                                <div class="text-normal-gray-smallest" style="min-height:1px; float: left; padding-right:15px; padding-left: 0px; position: relative; bottom: -3px">
+                                                                                                         <a href="http://nptel.ac.in/video.php?subjectId=106102064" class="nounderline" target="_blank"> <span class="featured-labs-experiment-icon"> <img src="images/chat.png" style="vertical-align:text-bottom; width: 23px;" /> </span> <span  class="text-normal-gray-smallest">LECTURE</span></a>
+                                                                                                </div>
+                                                                                                </td>
+                                                                                        </tr>
+                                                                                </table>
+                                                                        </div>
+                                                                </div>
+
+                                                                <div id="featured_labs_subparent_3" class="item featured-labs-div" style="background: url('images/dotted-devider-v-o.png') no-repeat; background-position: left top; margin-bottom: 20px;">
+                                                                        <div id="featured_labs_3" class="featured-labs">
+                                                                                <a href="http://ce-iitb.vlabs.ac.in" target="_blank"> <h3 class="text-h3-darkblue-bold" style="margin-top: 2px;"> Chemical Engineering</h3></a>
+                                                                                <p class="text-normal-gray-small">A collection of undergraduate experiments in Chemical Engineering.</p>
+                                                                        </div>
+                                                                        <hr style="background:#CCCCCC !important;  height: 1px;  margin-bottom: 10px !important;margin-top: 12px;">
+                                                                        <div class="featured-labs-experiment-div"  style="height: auto; overflow: hidden; ">
+                                                                                <table style="width: 100%">
+                                                                                        <tr>
+                                                                                                <td valign="bottom">
+                                                                                                        <div class="text-normal-gray-smallest" style="min-height:1px; float: left; padding-right:15px;  padding-left: 0px;">
+                                                                                                                 <a href="http://ce-iitb.vlabs.ac.in" class="nounderline" target="_blank"> <span class="featured-labs-experiment-icon"> <img src="images/flask.png" style="vertical-align:text-bottom; width: 23px;" /> </span> <span  class="text-normal-gray-smallest">LAB</span></a>
+                                                                                                        </div>
+                                                                                                </td>
+                                                                                                <td valign="bottom">
+                                                                                                <div class="text-normal-gray-smallest" style="min-height:1px; float: left; padding-right:15px; padding-left: 0px; position: relative; bottom: -3px">
+                                                                                                         <a href="http://nptel.ac.in/courses/103103029/" class="nounderline" target="_blank"> <span class="featured-labs-experiment-icon"> <img src="images/chat.png" style="vertical-align:text-bottom; width: 23px;" /> </span> <span  class="text-normal-gray-smallest">LECTURE</span></a>
+                                                                                                </div>
+                                                                                                </td>
+                                                                                        </tr>
+                                                                                </table>
+                                                                        </div>
+                                                                </div>
+
+                                                                <div id="featured_labs_subparent_4" class="item featured-labs-div" style="background: url('images/dotted-devider-v-o.png') no-repeat; background-position: left top; margin-bottom: 20px;">
+                                                                        <div id="featured_labs_4" class="featured-labs">
+                                                                                <a href="http://fab-coep.vlabs.ac.in" target="_blank"> <h3 class="text-h3-darkblue-bold" style="margin-top: 2px;">FAB laboratory</h3></a>
+                                                                                <p class="text-normal-gray-small">Welcome to FAB LAB. Let us understand and implement anything and everything using 3D machining...</p>
+                                                                        </div>
+                                                                        <hr style="background:#CCCCCC !important;  height: 1px;  margin-bottom: 10px !important;margin-top: 12px;">
+                                                                        <div class="featured-labs-experiment-div"  style="height: auto; overflow: hidden; ">
+                                                                                <table style="width: 100%">
+                                                                                        <tr>
+                                                                                                <td valign="bottom">
+                                                                                                        <div class="text-normal-gray-smallest" style="min-height:1px; float: left; padding-right:15px;  padding-left: 0px;">
+                                                                                                                 <a href="http://fab-coep.vlabs.ac.in/" class="nounderline" target="_blank"> <span class="featured-labs-experiment-icon"> <img src="images/flask.png" style="vertical-align:text-bottom; width: 23px;" /> </span> <span  class="text-normal-gray-smallest">LAB</span></a>
+                                                                                                        </div>
+                                                                                                </td>
+                                                                                                <td valign="bottom">
+                                                                                                <div class="text-normal-gray-smallest" style="min-height:1px; float: left; padding-right:15px; padding-left: 0px; position: relative; bottom: -3px">
+                                                                                                         <a href="http://nptel.ac.in/courses/112107145/" class="nounderline" target="_blank"> <span class="featured-labs-experiment-icon"> <img src="images/chat.png" style="vertical-align:text-bottom; width: 23px;" /> </span> <span  class="text-normal-gray-smallest">LECTURE</span></a>
+                                                                                                </div>
+                                                                                                </td>
+                                                                                        </tr>
+                                                                                </table>
+                                                                        </div>
+                                                                </div>
+
+                                                                
+
+                                                                
+                                                        </div>
+                                                </div>
+                                </div>
+                        </div>
+
+<div class="container-fluid"  style="margin-left: 35px; margin-right: 35px;">
+                                <h2 class="text-h2-lightblue" style=" margin-bottom: 20px; margin-top: 20px; ">Disciplines and Domains</h2>
+
+                                        <div class="row">
+
+                                                <div class="col-md-2-5 border-bottom-img" style="  background: url('images/dotted-devider-v-o.png') no-repeat; background-position: right top;">
+                                                        <a href="electronics-and-communications-labs.html" class="broad-labs-a">
+                                                                <div class="col-md-2-5-1-withbg">
+                                                                        <div class="col-md-2-5-2">
+                                                                                <div> <img src="images/engineering/icon_1.png" /></div>
+                                                                                <h3 class="text-h3-darkblue-bold">Electronics & Communications</h3>
+                                                                                <p class="text-normal-gray-small">04 Labs | 04 Lectures</p>
+                                                                        </div>
+                                                                </div>
+                                                        </a>
+                                                </div>
+
+                                                <div class="col-md-2-5 border-bottom-img" style="  background: url('images/dotted-devider-v-o.png') no-repeat; background-position: right top;">
+                                                        <a href="computer-science-and-engineering-labs.html" class="broad-labs-a">
+                                                                <div class="col-md-2-5-1-withbg">
+                                                                        <div class="col-md-2-5-2">
+                                                                                <div> <img src="images/engineering/icon_2.png" /></div>
+                                                                                <h3 class="text-h3-darkblue-bold">Computer Science & Engineering</h3>
+                                                                                <p class="text-normal-gray-small">20 Labs | 18 Lectures</p>
+                                                                        </div>
+                                                                </div>
+                                                        </a>
+                                                </div>
+
+                                                <div class="col-md-2-5 border-bottom-img" style="  background: url('images/dotted-devider-v-o.png') no-repeat; background-position: right top;">
+                                                        <a href="electrical-engineering-labs.html" class="broad-labs-a">
+                                                                <div class="col-md-2-5-1-withbg">
+                                                                        <div class="col-md-2-5-2">
+                                                                                <div> <img src="images/engineering/icon_3.png" /></div>
+                                                                                <h3 class="text-h3-darkblue-bold">Electrical Engineering </h3>
+                                                                                <p class="text-normal-gray-small">08 Labs | 08 Lectures</p>
+                                                                        </div>
+                                                                </div>
+                                                        </a>
+                                                </div>
+
+                                                <div class="col-md-2-5 border-bottom-img" style="  background: url('images/dotted-devider-v-o.png') no-repeat; background-position: right top;">
+                                                        <a href="mechanical-engineering-labs.html" class="broad-labs-a">
+                                                                <div class="col-md-2-5-1-withbg">
+                                                                        <div class="col-md-2-5-2">
+                                                                                <div> <img src="images/engineering/icon_4.png" /></div>
+                                                        <h3 class="text-h3-darkblue-bold">Mechanical Engineering</h3>
+                                                <p class="text-normal-gray-small">07 Labs | 05 Lectures</p>
+                                                                        </div>
+                                                                </div>
+                                                        </a>
+                                                </div>
+
+                                                <div class="col-md-2-5 border-bottom-img" style="  background: url('images/dotted-devider-v-o.png') no-repeat; background-position: right top;">
+                                                        <a href="chemical-engineering-labs.html" class="broad-labs-a">
+                                                                <div class="col-md-2-5-1-withbg">
+                                                                        <div class="col-md-2-5-2">
+                                                                                <div> <img src="images/engineering/icon_5.png" /></div>
+                                                                                        <h3 class="text-h3-darkblue-bold">Chemical Engineering</h3>
+                                                                                        <p class="text-normal-gray-small">02 Labs | 02 Lectures</p>
+                                                                        </div>
+                                                                </div>
+                                                        </a>
+                                                </div>
+
+                                        </div>
+                                        <div class="row" style="background: url('images/bottom-line-n.png');  background-repeat: repeat-x; background-position: left bottom; ">
+
+
+                                                <div class="col-md-2-5" style="  background: url('images/dotted-devider-v-o.png') no-repeat; background-position: right top;">
+                                                        <a href="biotechnology-and-biochemical-engineering-labs.html" class="broad-labs-a">
+                                                                <div class="col-md-2-5-1-l">
+                                                                        <div class="col-md-2-5-2">
+                                                                                <div> <img src="images/engineering/icon_6.png" /></div>
+                                                                                <h3 class="text-h3-darkblue-bold">Biotechnology & Biochemical Engineering</h3>
+                                                                                <p class="text-normal-gray-small">06 Labs | 01 Lectures</p>
+                                                                        </div>
+                                                                </div>
+                                                        </a>
+                                                </div>
+
+                                                <div class="col-md-2-5" style="  background: url('images/dotted-devider-v-o.png') no-repeat; background-position: right top;">
+                                                        <a href="civil-engineering-labs.html " class="broad-labs-a">
+                                                                <div class="col-md-2-5-1-l">
+                                                                        <div class="col-md-2-5-2">
+                                                                                <div> <img src="images/engineering/icon_7.png" /></div>
+                                                                                <h3 class="text-h3-darkblue-bold">Civil Engineering</h3>
+                                                                                <p class="text-normal-gray-small">07 Labs | 07 Lectures</p>
+                                                                        </div>
+                                                                </div>
+                                                        </a>
+                                                </div>
+
+                                                <div class="col-md-2-5" style="  background: url('images/dotted-devider-v-o.png') no-repeat; background-position: right top;">
+                                                        <a href="physical-sciences-labs.html" class="broad-labs-a">
+                                                                <div class="col-md-2-5-1-l">
+                                                                        <div class="col-md-2-5-2">
+                                                                                <div> <img src="images/engineering/icon_8.png" /></div>
+                                                                                <h3 class="text-h3-darkblue-bold">Physical Sciences</h3>
+                                                                                <p class="text-normal-gray-small">01 Labs | 0 Lectures</p>
+                                                                        </div>
+                                                                </div>
+                                                        </a>
+                                                </div>
+
+                                                <div class="col-md-2-5" style="  background: url('images/dotted-devider-v-o.png') no-repeat; background-position: right top;">
+                                                        <a href="chemical-sciences-labs.html" class="broad-labs-a">
+                                                                <div class="col-md-2-5-1-l">
+                                                                        <div class="col-md-2-5-2">
+                                                                                <div> <img src="images/engineering/icon_9.png" /></div>
+                                                                                <h3 class="text-h3-darkblue-bold">Chemical Sciences</h3>
+                                                                                <p class="text-normal-gray-small">08 Labs | 04 Lectures</p>
+                                                                        </div>
+                                                                </div>
+                                                        </a>
+                                                </div>
+
+                                                <div class="col-md-2-5 border-bottom-img broad-labs-empty-div" style="  background: url('images/dotted-devider-v-o.png') no-repeat; background-position: right top;">
+                                                                <div class="col-md-2-5-1-l">
+                                                                        <div class="col-md-2-5-2">
+                                                                        </div>
+                                                                </div>
+                                                </div>
+
+
+                                        </div>
+
+                        </div>
+
+<div class="container-fluid"  style="margin-left: 35px; margin-right: 35px;" id="partner">
+                                <div class="row">
+                                        <div class="col-md-12">
+                                                <h2 class="text-h2-lightblue" style="margin-bottom: 10px; margin-top: 20px;">Partner Institutes</h2>
+                                                        <div id="owl-partner-institutions" class="owl-carousel owl-theme">
+                                                                <div class="item" style="text-align: center;">
+                                                                        <a href="iitdelhi-labs.html" class="nounderline"><img src="images/uni-logos/IIT_Delhi.png" />
+                                                                        <div class="text-normal-gray-small">IIT Delhi</div> </a>
+                                                                </div>
+
+                                                                <div class="item" style="text-align: center;">
+                                                                        <a href="iitbombay-labs.html"  class="nounderline"><img src="images/uni-logos/IIT_bombay.png" />
+                                                                        <div class="text-normal-gray-small">IIT BOMBAY</div> </a>
+                                                                </div>
+
+                                                                <div class="item" style="text-align: center;">
+                                                                        <a href="iitkanpur-labs.html"  class="nounderline"> <img src="images/uni-logos/IIT_kanpur.png" />
+                                                                        <div class="text-normal-gray-small">IIT Kanpur</div> </a>
+                                                                </div>
+
+                                                                <div class="item" style="text-align: center;">
+                                                                        <a href="iitkharagpur-labs.html"  class="nounderline"><img src="images/uni-logos/IIT_kharagpur.png" />
+                                                                        <div class="text-normal-gray-small">IIT Kharagpur</div> </a>
+                                                                </div>
+
+                                                                <div class="item" style="text-align: center;">
+                                                                        <a href="iitmadras-labs.html"  class="nounderline"><img src="images/uni-logos/IIT_madras.png" />
+                                                                        <div class="text-normal-gray-small">IIT Madras</div> </a>
+                                                                </div>
+
+                                                                <div class="item" style="text-align: center;">
+                                                                <a href="iitroorkee-labs.html"  class="nounderline">    <img src="images/uni-logos/IIT_roorkee.png" />
+                                                                        <div class="text-normal-gray-small">IIT Roorkee</div> </a>
+                                                                </div>
+
+                                                                <div class="item" style="text-align: center;">
+                                                                        <a href="iitguwahati-labs.html"  class="nounderline"><img src="images/uni-logos/IIT_guwahati.png" />
+                                                                        <div class="text-normal-gray-small">IIT Guwahati</div> </a>
+                                                                </div>
+
+                                                                <div class="item" style="text-align: center;">
+                                                                        <a href="iiithyderabad-labs.html"  class="nounderline"><img src="images/uni-logos/iiit_Hyd.png" />
+                                                                        <div class="text-normal-gray-small">IIIT Hyderabad</div> </a>
+                                                                </div>
+                                                                <div class="item" style="text-align: center;">
+                                                                        <a href="amrita-labs.html" class="nounderline"><img src="images/uni-logos/amrutauniversity.png" />
+                                                                        <div class="text-normal-gray-small">Amrita University</div> </a>
+                                                                </div>
+
+                                                                <div class="item" style="text-align: center;">
+                                                                        <a href="dayalbagh-labs.html"  class="nounderline"><img src="images/uni-logos/dayalbagh.png" />
+                                                                        <div class="text-normal-gray-small">Dayalbagh</div> </a>
+                                                                </div>
+
+                                                                <div class="item" style="text-align: center;">
+                                                                        <a href="nit-labs.html"  class="nounderline"> <img src="images/uni-logos/NIIT_karnataka.png" />
+                                                                        <div class="text-normal-gray-small">NIT Karnataka</div> </a>
+                                                                </div>
+
+                                                                <div class="item" style="text-align: center;">
+                                                                        <a href="pune-labs.html"  class="nounderline"><img src="images/uni-logos/COEP.png" />
+                                                                        <div class="text-normal-gray-small">COE Pune</div> </a>
+                                                                </div>
+
+
+
+                                                        </div>
+                                        </div>
+                                </div>
+                        </div>
+
+<div class="container-fluid"  style="margin-left: 35px; margin-right: 35px;" id="aboutus">
+                                <div class="row">
+                                        <div id="owl-aboutus" class="owl-carousel owl-theme">
+                                                                <div class="item">
+                                                                        <h2 class="text-h2-lightblue" style="padding-left:15px; margin-bottom: 20px; margin-top: 30px;">About Us | <span style="color: #5c5c5c">Virtual Labs</span></h2>
+                                                                        <div class="col-md-8 aboutus-col-8" style="padding-right: 50px;">
+                                                                                        <p class="text-normal-gray-small aboutUs responsive" style = "text-align: left; margin-left: 12px;">
+                                                                                                With 205<sup>+</sup> labs and about 1515<sup>+</sup> experiments across multiple disciplines, Virtual Labs is one of the largest educational initiatives in the world.
+                                                                                        </p>
+                                                                                        <p class="text-normal-gray-small responsive" align="justify" style = " text-align: left; margin-left: 12px;">
+                                                                                                These labs, developed by faculties from the top technical institutes of the country, address the issue of lack of good laboratory facilities, as well as trained teachers, by making remote and simulation-based experimentation possible through the Internet.
+                                                                                        </p>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                                <img src="images/about-us/img4.png" class="img-responsive">
+                                                                        </div>
+                                                                </div>
+
+                                                                <div class="item">
+                                                                        <h2 class="text-h2-lightblue" style="padding-left:15px; margin-bottom: 20px; margin-top: 30px;">About Us | <span style="color: #5c5c5c">Objectives</span></h2>
+                                                                        <div class="col-md-8 aboutus-col-8" style="padding-right: 50px;">
+                                                                                        <ol>
+                                                                                                <li style = "margin-left: -8px;">
+                                                                                                        <p class="text-normal-gray-small responsive" align="justify" style = "text-align: left;">
+                                                                                                                To provide remote-access to Labs in various disciplines of Science and Engineering for students at the undergraduate level, post graduate level and research scholars.
+                                                                                                        </p>
+                                                                                                </li>
+                                                                                                <li style = "margin-left: -8px;">
+                                                                                                        <p class="text-normal-gray-small responsive" align="justify" style = "text-align: left;">
+                                                                                                                To arouse curiosity in students and help them learn basic and advanced concepts through remote experimentation.
+                                                                                                        </p>
+                                                                                                </li>
+                                                                                                <li style = "margin-left: -8px;">
+                                                                                                        <p class="text-normal-gray-small responsive" align="justify" style = "text-align: left;">
+                                                                                                                To provide a complete Learning Management System around the Virtual Labs to provide students access to web-resources, video-lectures, animated demonstrations and self-evaluation.
+                                                                                                        </p>
+                                                                                                </li>
+                                                                                                <li style = "margin-left: -8px;">
+                                                                                                        <p class="text-normal-gray-small responsive" align="justify" style = "text-align: left;">
+                                                                                                                To provide remote access to costly equipment and resources, which are otherwise available to limited number of users due to constraints of time and physical locations.
+                                                                                                        </p>
+                                                                                                </li>
+                                                                                        </ol>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                                <img src="images/about-us/img2.png" class="img-responsive">
+                                                                        </div>
+                                                                </div>
+
+                                                                <div class="item">
+                                                                        <h2 class="text-h2-lightblue" style="padding-left:15px; margin-bottom: 20px; margin-top: 30px;">About Us | <span style="color: #5c5c5c">Philosophy</span></h2>
+                                                                        <div class="col-md-8 aboutus-col-8" style="padding-right: 50px;">
+                                                                                        <ol>
+                                                                                                <li style="margin-left: -8px;">
+                                                                                                        <p class="text-normal-gray-small responsive" align="justify" style="text-align: left;">
+                                                                                                                Often, physical distances and lack of sophisticated laboratory equipment make it difficult for students to perform experiments. Also, good teachers are always a scarce resource. While web-based and video-based courses address the issue of teaching, remote experimentation overcomes the problem of access to costly laboratory equipment.
+                                                                                                        </p>
+                                                                                                </li>
+                                                                                                <li style="margin-left: -8px;">
+                                                                                                        <p class="text-normal-gray-small responsive" align="justify" style="text-align: left;">
+                                                                                                                Web-enabled remote experiments ensures that costly instruments and equipment are shared with fellow researchers to the extent possible.
+                                                                                                        </p>
+                                                                                                </li>
+                                                                                                <li style="margin-left: -8px;">
+                                                                                                        <p class="text-normal-gray-small responsive" align="justify" style="text-align: left;">
+                                                                                                                Today most equipment has a computer interface for control and data storage. Internet-based experimentation permits use of resources such as knowledge, software, and data available on the web effectively.
+                                                                                                        </p>
+                                                                                                </li>
+                                                                                        </ol>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                                <img src="images/about-us/img3.png" class="img-responsive">
+                                                                        </div>
+                                                                </div>
+
+                                                                <div class="item">
+                                                                        <h2 class="text-h2-lightblue" style="padding-left:15px; margin-bottom: 20px; margin-top: 30px;">About Us | <span style="color: #5c5c5c">Key Features</span></h2>
+                                                                        <div class="col-md-8 aboutus-col-8" style="padding-right: 50px;">
+                                                                                        <p class="text-normal-gray-small responsive" align="justify" style="margin-left: 13px;">
+                                                                                                Virtual Labs offers various types of experiments for students to perform online.
+                                                                                        </p>
+                                                                                        <ol>
+                                                                                                <li style="margin-left: -8px;">
+                                                                                                        <p class="text-normal-gray-small responsive" align="left" style="text-align: left;">
+                                                                                                                Modeling or simulating the physical phenomenon by a set of equations to yield the result of a particular experiment.
+                                                                                                        </p>
+                                                                                                </li>
+                                                                                                <li style="margin-left: -8px;">
+                                                                                                        <p class="text-normal-gray-small responsive" align="left" style="text-align: left;">
+                                                                                                                Remotely triggering an experiment in an actual lab and providing the student the result of the experiment through a computer interface. This would entail carrying out the actual lab experiment remotely.
+                                                                                                        </p>
+                                                                                                </li>
+                                                                                                <li style="margin-left: -8px;">
+                                                                                                        <p class="text-normal-gray-small responsive" align="left" style="text-align: left;">
+                                                                                                                Accompanying audio and video streaming of an actual lab experiment and equipment.
+                                                                                                        </p>
+                                                                                                </li>
+                                                                                        </ol>
+
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                                <img src="images/about-us/img1.png" class="img-responsive">
+                                                                        </div>
+                                                                </div>
+                                        </div>
+
+                                </div>
+                        </div>
+
+</div> <!-- content div -->
+
+        <footer>
+                <div class="container-fluid footer-div" style="background: #404040; margin-top: 40px;  padding: 20px;">
+                        <div class="col-md-4 border-right-green-dotted" >
+                                <h2 class="text-h2-lightblue-small" style="font-weight: bold;margin-top: 0px;">Updates</h2>
+                                <a href="http://community.virtual-labs.ac.in/w/index.php/Download" class="text-normal-gray-small nounderline" style="color: white" > Lab Integration Kit Releases</a>
+                                <a href="http://community.virtual-labs.ac.in/w/index.php/First_Integration_workshop"
+                                class="text-normal-gray-small nounderline"
+                                style="color: white" >First Integration Workshop at IIIT Hyderabad</a>
+                                <a href="http://community.virtual-labs.ac.in/w/index.php/Summer_Sprint_Integration_workshop" class="text-normal-gray-small nounderline" style="color: white" > Summer Integration Workshop at IIT Guwahati</a>
+                                <a href="http://community.virtual-labs.ac.in/w/index.php/QA/Integration_workshop"
+                                class="text-normal-gray-small nounderline"
+                                style="color: white" > QA Integration
+                                Workshop at IIIT Hyderabad</a>
+                                <a href="http://community.virtual-labs.ac.in/w/index.php/A_new_set_of_25_Virtual_Labs_on_Portable_Media" class="text-normal-gray-small nounderline" style="color: white" > A new set of 25 Virtual Labs on Portable Media</a>
+                        </div>
+
+                        <div class="col-md-2 border-right-green-dotted" >
+<!--                            <h2 class="text-h2-lightblue-small" style="font-weight: bold;margin-top: 0px;">Nodal Centers</h2>
+                                <div><a href="#" class="text-a-lightgreen" style="text-decoration: underline;" > REGISTRATION</a></div>
+                                <div><a href="#" class="text-a-lightgreen" style="text-decoration: underline;" > LOGIN</a></div> -->
+                                <!-- <div><a href="#" class="text-a-lightgreen" style="text-decoration: underline;" > Outreach Portal</a></div> -->
+                                <a href="http://community.virtual-labs.ac.in/w/index.php/Main_Page" class="text-a-lightgreen" style="text-decoration: underline;" >Community</a>
+                                <a href="http://www.sakshat.ac.in/" class="text-a-lightgreen" style="text-decoration: underline;" > Sakshat Portal</a>
+                                <!--<a href="http://118.102.191.38/feedback/Registration.html" class="text-a-lightgreen" style="text-decoration: underline;" > Nodal Center</a>-->
+                                <a href="http://outreach.vlabs.ac.in/" class="text-a-lightgreen" style="text-decoration: underline;" > Outreach Portal</a>
+                                <a href="./faq.html" class="text-a-lightgreen" style="text-decoration: underline;" > FAQ</a>
+                        </div>
+
+                        <div class="col-md-3 border-right-green-dotted" id="contact" >
+<!--                            <div><a href="#" class="text-a-lightgreen" style="text-decoration: underline;" > FAQ</a></div>
+                                <div><a href="#" class="text-a-lightgreen" style="text-decoration: underline;" > FEEDBACK</a></div>
+                                <div><a href="#" class="text-a-lightgreen" style="text-decoration: underline;" > SAKSHAT PORTAL</a></div> -->
+                                <h2 class="text-h2-lightblue-small" style="font-weight: bold;margin-top: 0px;"> Contact us</h2>
+                                <a href="http://feedback.vlabs.ac.in/" class="text-a-lightgreen" style="text-decoration: underline;" > Feedback</a>
+                                <a class="text-a-lightgreen" style="text-decoration: underline;" href="mailto:support@vlabs.ac.in">support@vlabs.ac.in</a>
+                        </div>
+
+                        <div class="col-md-2 border-right-green-dotted" >
+                                <h2 class="text-h2-lightblue-small" style="font-weight: bold;margin-top: 0px;"> Follow us</h2>
+                                <a href="https://www.facebook.com/pages/Virtual-Labs-IIT-Delhi/301510159983871" class="text-a-lightgreen nounderline"   target="_blank"> <img src="images/social/fb.png"  style="border-radius: 50%;"/> </a>
+                                <a href="https://twitter.com/TheVirtualLabs" class="text-a-lightgreen nounderline"   target="_blank"> <img src="images/social/twitter.png"  style="border-radius: 50%;"/></a>
+                                <a href="http://linkedin.com" class="text-a-lightgreen nounderline"  target="_blank" > <img src="images/social/linkedin.png" style="border-radius: 50%;" /></a>
+                                <a href="https://www.youtube.com/watch?v=mVBYNXLaDdg"
+                                class="text-a-lightgreen nounderline"
+                                target="_blank" >
+                                <img src="images/social/youtube.png"
+                                style="border-radius: 50%; width: 38px;
+                                height: 38px" /></a>
+
+                        </div>
+
+                </div>
+        </footer>
+
+</div> <!-- top div -->
+
+</body>
+
+
+        <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+    <script src="js/custom.js"></script>
+
+    <!-- Include js plugin -->
+        <script src="vendors/owl-carousel/owl.carousel.js"></script>
+
+        <script type="text/javascript">
+        $(document).ready(function() {
+
+                  var owl = $("#owl-demo");
+                  owl.owlCarousel({
+                      navigation: true,
+                      navigationText: [
+                                       "<img src='images/left-arrow.png'>",
+                                       "<img src='images/right-arrow.png'>"
+                                       ],
+                                       itemsCustom : [
+                                                                                                [0, 1],
+                                                                                                [570, 2],
+                                                                                                [790, 3],
+                                                                                                [1020, 4],
+                                                                                                [1238, 5]
+                                                      ]
+
+                      /* autoPlay : 3000,
+                      stopOnHover : true */
+                  });
+
+                  //owl for partner institutions
+                  var owl = $("#owl-partner-institutions");
+                  owl.owlCarousel({
+                      navigation: true,
+                      navigationText: [
+                                       "<img src='images/left-arrow.png'>",
+                                       "<img src='images/right-arrow.png'>"
+                                       ],
+                      autoPlay : 3000,
+                      stopOnHover : true,
+                      itemsCustom : [
+                             [0, 3],
+                             [580, 4],
+                             [680, 5],
+                             [790, 6],
+                             [970,7],
+                             [1000, 8],
+                             [1200, 8],
+                             [1400, 8],
+                             [1600, 8]
+                           ]
+                  });
+
+
+
+         //owl for aboutus
+          var owl = $("#owl-aboutus");
+          owl.owlCarousel({
+              navigation: true,
+              singleItem:true
+          });
+
+
+
+        });
+
+        </script>
+
+
+
+
+
+</html>
