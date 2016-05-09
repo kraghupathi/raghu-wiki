@@ -1,0 +1,28 @@
+* Installation procedure for *iverilog=0.9.7-1* on Ubuntu 12.04 LTS 64bit OS.
+  - The universe repository is enabled by inspecting */etc/apt/sources.list* with *vim* editor.
+  - Will need to use *sudo* to ensure that you have permissions to edit the file using below path.
+#+begin_example
+sudo vim /etc/apt/sources.list
+#+end_example
+If universe is not included then modify the file so that it does.
+#+begin_example
+deb http://ftp.iitm.ac.in/ubuntu/ precise main universe
+#+end_example
+After any changes you should run this command to update your system.
+#+begin_example
+sudo apt-get update
+#+end_example
+** Install iverilog
+#+begin_example
+sudo apt-get install iverilog
+#+end_example
+succefully installed iverlog=0.9.5.1
+
+*Note:-* Unable to install iverilog=0.9.7.1 version
+
+You can now download *iverilog=0.9.7.1.deb* file [[https://launchpad.net/ubuntu/trusty/amd64/iverilog/0.9.7-1][here]]
+** Install iverilog
+#+begin_example
+sudo dpkg -i iverilog_0.9.7-1_amd64.deb
+#+end_example
+   
