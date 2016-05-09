@@ -20,7 +20,7 @@ succefully installed iverlog=0.9.5.1
 
 *Note:-* Unable to install iverilog=0.9.7.1 version
 
-You can now download *iverilog=0.9.7.1.deb* file [[https://launchpad.net/ubuntu/trusty/amd64/iverilog/0.9.7-1][here]]
+You can download *iverilog=0.9.7.1.deb* file [[https://launchpad.net/ubuntu/trusty/amd64/iverilog/0.9.7-1][here]]
 ** Install iverilog
 #+begin_example
 sudo dpkg -i iverilog_0.9.7-1_amd64.deb
