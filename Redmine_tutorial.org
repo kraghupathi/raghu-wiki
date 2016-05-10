@@ -1,0 +1,105 @@
+* Redmine:
+Redmine is a project management web application.
+
+The application is written in Ruby and supports many
+different database servers.
+
+Redmine is an issue tracking system for Hanlon Financial System Lab which allows users to
+post and update issues. The contents are related to all tasks we are doing in the lab and all
+academic researches which will be listed under different projects. All professors and
+students could use it to track the process of projects and daily operation in the lab.
+** Features of Redmine
+ - Keeps track of multiple projects
+ - Allows users to have different roles
+ - Offers an issue tracking system
+ - Tracks time spent on issues
+ - Provides RSS feeds and email notifications
+ - Provides wikis and forums for each project
+** Issues:
+Redmine uses the word issue to refer to a development
+task.
+
+There are several categories of issues:
+ - *Feature:* This could be an aspect of the software package that is being developed.
+ - *Bug:* This could be a part of the software package that is not working as designed.
+ - *Support:* This could be for helping individuals use the software package.
+
+The site administrator can create new issue categories to customize the fit for a given project.
+** Roles:
+Redmine users are issued roles to determine what they are allowed to do.
+
+Below are some common roles.
+
+Roles are ordered below according to the number of privileges assigned to each role.
+
+In general, a given role can do anything a lower-level role can plus some additional tasks.
+
+1. *Site administrator:*
+     + Manage the Redmine site and the user accounts.
+     + Adjust permissions for roles.
+2. *Project manager:*
+     + Can create space for new projects.
+     + Administrate a project space, *E.g.*, manage project members and their roles.
+     + Manage the documents for the project, *E.g.*, upload and delete documents.
+     + Administrate the wiki and forums.
+3. *Developer:*
+     + Manage and edit issues.
+     + Commit changes to the repository.
+     + Edit the wiki.
+     + Manage files for the project, e.g., upload and delete files.
+     + Make changes to the repository.
+4. *Reporter:*
+     + Create and view issues.
+     + Log time spent on issues.
+     + Browse repository.
+     + View the wiki.
+     + Participate in forum discussions.
+** Creating a new issue
+To create an new issue, select the New issue tab and fill out the required fields.
+
+The following information can be specified:
+  + *Tracker:* Indicate the issue category.
+  + *Subject:* A short (but meaningful!) description of the issue.
+  + *Description:* A place to add details.
+  + *Status:* The state of the issue. Typically, the issue starts off as =new=. As work is performed on the issue, the state will change to =in progress= and eventually =closed=.
+  + *Assignee:* The project member who has been assigned to work on the issue.
+  + *Start date and due date:* A way to set a planned date for when the issue will be resolved.
+  + *Files:* A way to upload any files relevant to the issue, *e.g.*, output from the software.
+  + *Watchers:* Project members who receive notifications about status updates to the issue.
+** Existing issues:
+Existing issues can be displayed from the Issues tab.
+
+Specific actions for issues include:
+  + *Update:* A description of the progress on the issue can be added. Project members can also indicate the percentage of the work complete on the issue and modify the status of the issue.
+  + *Log time:* A project member can indicate the amount of time spent on the issue. This can be used to help budget time on similar future issues.
+  + *Watch:* A project member can choose to become a watcher for the issue.
+The issue can also be broken down into subtasks by adding issues to the Subtasks list.
+
+Similarly, any other issues can be indicated by adding related issues to the Related issues list.
+
+By default, only managers can delete issues.
+** Tracking progress:
+Redmine offers a few ways to track progress on issues:
+  + *Calendar:* Redmine automatically adds start and due dates of issues to the calendar.
+  +  *Gantt chart:* Redmine produces a Gantt chart for the progress of a project, including the start and due dates, status, and resolution of issues.
+** Repository:
+Redmine can link to the version control systems:
+  -  Subversion
+  -  Darcs
+  -  Mercurial
+  -  CVS
+  -  GIT
+These systems can be used as code repositories and also keep track of changes made to the code.
+
+A version control server using one of the above systems must be set up on a separate computer.
+
+The project manager can then link the Redmine page to the version control system by modifying settings in the project space.
+** Other useful tools:
+Redmine provides a variety of other tools for project members to use:
+  +  *News:* Important general information about the status of the project can be added here.
+  +  *Documents:* A place to add user manuals and other technical documentation.
+  +  *Wiki:* A place to describe the project. The typical wiki tools can be used to edit these pages.
+  +  *Forums:* A place to discuss the project with other members.
+  +  *Files:* A place to upload files used for the development of the project. Note that this function does not include version control and therefore is not a substitute for a version control system.
+* Installation steps for Remine:
+  + To install redmine on *Debian Jessie 64bit OS* follow link [[https://www.redmine.org/projects/redmine/wiki/HowTo_Install_Redmine_on_Debian_8_with_Apache2-Passenger][here]]
