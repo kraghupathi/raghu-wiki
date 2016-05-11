@@ -1,0 +1,191 @@
+* KVM-(Kernel-Based Virtual Machine)
+   -  KVM stands for Kernel-based virtual machine, It is a hardware virtualization and  which acts as a Type-II hypervisor that enables, emulates and provides for the
+      creation of virtual machines on operating systems. These machines are built on top of the Linux kernel, using operating systems such as Linux, Ubuntu and Fedora.
+   -  It can supports multiple different guest operating system images including Linux Kernel, Windows, BSD and Solaris.
+   -  It also allocates separate virtualized computing resources for each virtual machine such as the processor, storage, memory, etc.
+** Advantages of KVM:
+   +  KVM is open source software
+   +  Which can supports Hardware Virtualization features.
+   +  Allows us to create Snapshots
+   +  It supports Sound support and PXE boot
+   +  Only supports fully virtualized VMs
+** Prerequisites
+Make sure that your system has the hardware virtualization extensions: For Intel-based hosts, verify the CPU virtualization extension [vmx] are available using following command.
+#+BEGIN_EXAMPLE
+[root@server ~]# grep -e 'vmx' /proc/cpuinfo
+#+END_EXAMPLE
+For AMD-based hosts, verify the CPU virtualization extension [svm] are available.
+#+BEGIN_EXAMPLE
+[root@server ~]# grep -e 'svm' /proc/cpuinfo
+#+END_EXAMPLE
+If there is no output make sure that virtualization extensions is enabled in BIOS. Verify that KVM modules are loaded in the kernel “it should be loaded by default”.
+#+BEGIN_EXAMPLE
+[root@server ~]# lsmod | grep kvm
+#+END_EXAMPLE
+The output should contains kvm_intel for intel-based hosts or kvm_amd for amd-based hosts.
+#+BEGIN_EXAMPLE
+kvm                 464964  1 kvm_intel
+kvm_intel        147785   0
+#+END_EXAMPLE
+Before starting , you will need the root account or non-root user with sudo privileges configured on your system and also make sure that your system is up-to-date.
+#+BEGIN_EXAMPLE
+[root@server ~]# yum update
+#+END_EXAMPLE
+Make sure that Selinux be in Permissive mode.
+#+BEGIN_EXAMPLE
+[root@server ~]# setenforce 0
+#+END_EXAMPLE
+**  KVM Installation and Deployment
+** QEMU:
+ - QEMU is a generic and open source machine emulator and virtualizer.
+ - When used as a machine emulator, QEMU can run OSes and programs made for one machine (e.g. an ARM board) on a different machine (e.g. your own PC).
+   By using dynamic translation, it achieves very good performance.
+ - When used as a virtualizer, QEMU achieves near native performance by executing the guest code directly on the host CPU. QEMU supports virtualization when 
+   executing under the Xen hypervisor or using the KVM kernel module in Linux. When using KVM, QEMU can virtualize x86, server and embedded PowerPC, and S390 guests. 
+
+We will install qemu-kvm and qemu-img packages at first. These packages provide the user-level KVM and disk image manager.
+#+BEGIN_EXAMPLE
+[root@server ~]# yum install qemu-kvm qemu-img
+#+END_EXAMPLE
+Now, you have the minimum requirement to deploy virtual platform on your host, but we also still have useful tools to administrate our platform such as:
+
+  +  virt-manager provides a GUI tool to administrate your virtual machines.
+  +  libvirt-client provides a CL tool to administrate your virtual environment this tool called virsh.
+  +  virt-install provides the command “virt-install” to create your virtual machines from CLI.
+  +  libvirt provides the server and host side libraries for interacting with hypervisors and host systems.
+
+Let’s install these above tools using the following command.
+#+BEGIN_EXAMPLE
+[root@server ~]# yum install virt-manager libvirt libvirt-python libvirt-client 
+#+END_EXAMPLE
+For RHEL/CentOS7 users, also still having additional package groups such as: Virtualization Client, Virtualization Platform and Virtualization Tools to install.
+#+BEGIN_EXAMPLE
+[root@server ~]#yum groupinstall virtualization-client virtualization-platform virtualization-tools	
+#+END_EXAMPLE
+The virtualization daemon which manage all of the platform is “libvirtd”. lets restart it.
+#+BEGIN_EXAMPLE
+[root@server ~]#systemctl restart libvirtd
+#+END_EXAMPLE
+As we mentioned early, we have some useful tools to manage our virtual platform and creating virtual machines. One of this tools called [virt-manager] which we use in the next section.
+
+Although virt-manager is a GUI based tool, we also could launch/start it from terminal as well as from GUI.
+#+BEGIN_EXAMPLE
+[root@server ~]#virt-manager
+#+END_EXAMPLE
+  +  Use virt-manager install Guest OS
+  1. login to GUI
+  2. open virt-manager,Add-connection,hypervisor choose QEMU/KVM,click connect。
+  3. right click localhost(QEMU) choose New.
+*** Bridge
+Bridge is a device that connects two LANs and controls data flow between them. Especially bridge is a store & forward device. 
+During the connection of different LANs, it receives the frame from one LAN and transfer the same frame without encapsulating or without modification to other LAN. 
+By using local and remote bridge, a network administrator can easily extend the network distance.
+*** Configure Bridge Network.
+   KVM by default use NAT, your VM can not connect to outside.
+   We need to create a Bridged Network Card on KVM host and then let Virtual Machine use it.
+** Network Configuration
+  -  This page provides an introduction to the common networking configurations used by libvirt based applications. This information applies to all hypervisors,
+     whether Xen, KVM or another. For additional information consult the libvirt network architecture documentation.
+  -  The two common setups are "virtual network" or "shared physical device". The former is identical across all distributions and available out-of-the-box.
+     The latter needs distribution specific manual configuration.
+  -  Network services on guests are not accessible by default from external hosts. You must enable either Network Address Translation (NAT) or a network bridge
+     to allow external hosts access to network services on guests. 
+*** Network Address Translation (NAT) with libvirt
+  -  One of the most common methods for sharing network connections is to use Network Address Translation (NAT) forwarding (also know as virtual networks).
+  -  A NAT (Network Address Translation or Network Address Translator) is the virtualization of Internet Protocol (IP) addresses.
+     NAT helps improve security and decrease the number of IP addresses an organization needs.
+*** Host configuration
+ - Every standard libvirt installation provides NAT based connectivity to virtual machines out of the box. This is the so called 'default virtual network'.
+   Verify that it is available with the *virsh net-list --all* command. 
+#+begin_example
+# virsh net-list --all
+Name                 State      Autostart 
+-----------------------------------------
+default              active     yes
+#+end_example
+ - If it is missing, the example XML configuration file can be reloaded and activated: 
+#+begin_example
+# virsh net-define /usr/share/libvirt/networks/default.xml
+#+end_example
+ - The default network is defined from */usr/share/libvirt/networks/default.xml*
+ - Mark the default network to automatically start: 
+#+begin_example
+# virsh net-autostart default
+Network default marked as autostarted
+#+end_example
+ - Start the default network: 
+#+begin_example
+# virsh net-start default
+Network default started
+#+end_example
+  -  Once the libvirt default network is running, you will see an isolated bridge device. This device does not have any physical interfaces added, 
+     since it uses NAT and IP forwarding to connect to outside world. Do not add new interfaces. 
+* KVM-Snapshot:
+   -  A KVM Snapshot is a copy of the virtual machine's disk file
+      (VMDK) at a given point in time. Snapshots provide a change log
+      for the virtual disk and are used to restore a VM to a
+      particular point in time when a failure or system error
+      occurs. Snapshots alone do not provide backup.
+   -  A snapshot preserves (maintain in the original) the state and data of a virtual machine at a specific point in time.
+   -  The state includes the virtual machine’s power state (for example, powered-on, powered-off, suspended).
+   -  The data includes all of the files that make up the virtual machine. This includes disks, memory, and other devices, such as virtual network interface cards. 
+   -  A virtual machine provides several operations for creating and managing snapshots and snapshot chains. These operations let you create snapshots, revert to any
+      snapshot in the chain, and remove snapshots. You can create extensive snapshot trees.
+* Creating KVM VM with qcow2 disk format for supporting snapshots:
+ - To create kvm VM with qcow2 disk format for supporting snapshots use:
+ 1. Create disk image for VM using something like: 
+#+begin_example
+qemu-img create -f qcow2 ubuntu.qcow2 50G
+#+end_example
+ 2. Create new VM with given disk image. Choose option to customize VM before install.
+  + In customization or setting window for Disk 1 change "Storage format" to qcow2. Without this change KVM will treat the file as 250KB raw image file.
+ 3. Install Operating System
+ 4. Shutdown the VM
+ 5. Take snapshot of fresh installation using: 
+ - syntax:= virsh snapshot-create-as <VMname> "Snapshot name" "Explain Snapshot something"
+#+begin_example
+virsh snapshot-create-as Ubuntu_desktop_12.04 "fresh-install" "Just installed ubuntu"
+#+end_example
+ 6. Start VM again. Now it would get started from fresh-install snapshot. To verify this use:
+- syntax:= visrh snapshot-info <VMname> --current  
+#+begin_example
+virsh snapshot-info Ubuntu_desktop_12.04 --current
+#+end_example
+ 7.To get list of all snaphosts use: 
+#+begin_example
+virsh snapshot-list Ubuntu_desktop_12.04
+#+end_example
+ 8. Now change something in running VM such as menu entries and shutdown the VM.
+ 9. Take snapshot of new VM with modified menu entries using: 
+#+begin_example
+virsh snapshot-create-as Ubuntu_desktop_12.04 "changed-menu" "Changed icons pinned to menu on left"
+#+end_example
+ 10. Get list of all snaphosts using: 
+#+begin_example
+virsh snapshot-list Ubuntu_desktop_12.04
+#+end_example
+ 11. Restore earlier snapshot using: 
+#+begin_example
+virsh snapshot-revert Ubuntu_desktop_12.04 fresh-install
+#+end_example
+ 12. Verify by starting VM that the menu entries as same as in case of fresh-install and all modifications done and saved as changed-menu snapshot are not available.
+ 13. Verify that running VM is using fresh-install snapshot using: 
+#+begin_example
+virsh snapshot-info Ubuntu_desktop_12.04 --current
+#+end_example
+ 14.  Note restoring "fresh-install" snapshot does not affects "changed-menu" snapshot which is still available for restoration. You can list all available
+      snapshots using: 
+#+begin_example
+virsh snapshot-list Ubuntu_desktop_12.04
+#+end_example
+ 15. To see snapshots in tree fashion to know relations between them use: 
+#+begin_example
+virsh snapshot-list Ubuntu_desktop_12.04 --tree
+#+end_example
+ 16. To delete an unwanted snapshot use: 
+#+begin_example
+virsh snapshot-delete Ubuntu_desktop_12.04 changed-menu
+#+end_example
+ 17. Again verify using snapshot-list that snapshot got deleted properly.
+ - Note that here we have created and restored all snapshots when VM was stopped. But snapshots can be created while VM is running to store 
+   complete state disk and RAM as part of snapshot. It is however recommended to create disk only snapshot for efficiency and reliability as long as possible. 
