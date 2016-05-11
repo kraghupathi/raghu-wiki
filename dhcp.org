@@ -1,0 +1,89 @@
+* DHCP(Dynamic Host Configuration Protocol):
+ Dynamic Host Configuration Protocol (DHCP) is a network protocol that
+ automatically assigns TCP/IP information to client machines.  Each
+ DHCP client connects to the centrally located DHCP server, which
+ returns the network configuration (including the IP address, gateway,
+ and DNS servers) of that client.
+** Why we use DHCP ?
+ DHCP is useful for automatic configuration of client network
+ interfaces. When configuring the client system, you can choose DHCP
+ instead of specifying an IP address, netmask, gateway, or DNS
+ servers. The client retrieves this information from the DHCP
+ server. DHCP is also useful if you want to change the IP addresses of
+ a large number of systems. Instead of reconfiguring all the systems,
+ you can just edit one configuration file on the server for the new
+ set of IP addresses.  If the DNS servers for an organization changes,
+ the changes happen on the DHCP server, not on the DHCP clients. When
+ you restart the network or reboot the clients, the changes go into
+ effect.
+
+If an organization has a functional DHCP server correctly connected to
+a network, laptops and other mobile computer users can move these
+devices from office to office.
+** Advantages of DHCP-Server:
+  -  There is no need to manually configure each client with an IP address.
+  -  You don't need to keep a record of the IP addresses that you have assigned.
+  -  You can automatically assign a new IP address if you move a client to a different subnet.
+  -  Dynamic Host Configuration Protocol (DHCP) is used to assign IP addresses and other stuff like gateway and DNS details automatically to the clients.
+  
+we need a DHCP server configured for offering ipaddress to the clients when it is required.
+* Installing DHCP server on Centos:
+  -  Update yum repositories and packages by typing the below command
+#+begin_example
+[root@localhost ~]# yum update
+#+end_example
+*Step 1* » Install dhcp server and client using the below command
+#+begin_example
+[root@localhost ~]# yum install dhcp
+#+end_example
+*Step 2* » After installing dhcp server package along with dependencies .Assign a static ip (eg: “192.168.1.11”) in the same DHCP range for
+the listening interface ( eg : “eth0” ). Open =/etc/sysconfig/network-scripts/ifcfg-eth0= file and make the changes as per your requirement .
+#+begin_example
+HWADDR="00:0C:29:F1:01:4B"
+NM_CONTROLLED="yes"
+ONBOOT="yes"
+BOOTPROTO="none"
+IPADDR=192.168.1.11
+NETMASK=255.255.255.0
+GATEWAY=192.168.1.1
+#+end_example
+*Step 3* » Now open =/etc/sysconfig/dhcpd= file and add the preferred interface name to DHCPDARGS variable as below
+#+begin_example
+# Command line options here
+DHCPDARGS=eth0
+#+end_example
+*Step 4* » open =/etc/dhcp/dhcpd.conf= file and paste the below lines and save it.
+#+begin_example
+#specify domain name
+option domain-name "krizna.com";
+#specify DNS server ip and additional DNS server ip
+option domain-name-servers 192.168.1.10, 208.67.222.222;
+#specify default lease time
+default-lease-time 600;
+#specify Max lease time
+max-lease-time 7200;
+#specify log method
+log-facility local7;
+#Configuring subnet and iprange
+subnet 192.168.1.0 netmask 255.255.255.0 {
+range 192.168.1.50 192.168.1.254;
+option broadcast-address 192.168.1.255;
+#Default gateway ip
+option routers 192.168.1.1;
+}
+#Fixed ip address based on MAC id
+host Printer01 {
+hardware ethernet 02:34:37:24:c0:a5;
+fixed-address 192.168.1.55;
+}
+#+end_example
+*Step 5* » Now start the service
+#+begin_example
+[root@localhost ~]# service dhcpd start
+#+end_example
+and type this below command to start dhcp service automatically while booting.
+#+begin_example
+[root@localhost ~]# chkconfig --levels 235 dhcpd on
+#+end_example
+
+
