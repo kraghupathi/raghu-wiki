@@ -11,7 +11,7 @@ In this article we will show you how to install and configure an
 *Ubuntu* and *Linux Mint* systems.
 ** Installation Of OpenLDAP Server In Linux
 By default the *OpenLDAP* server is in repositories under the package
-¡°*slapd*¡°. You can easily install it with the help of package manager
+Â¡Â°*slapd*Â¡Â°. You can easily install it with the help of package manager
 tool called [[http://www.tecmint.com/useful-basic-commands-of-apt-get-and-apt-cache-for-package-management/][apt-get.]] But before installing the *OpenLDAP* server, make sure your system is *up-to-date*.
 
 During installation, it will ask you to enter a password for the *admin* entry in your *LDAP* directory. Enter a strong password and confirm it by selecting *OK.*
@@ -19,7 +19,7 @@ During installation, it will ask you to enter a password for the *admin* entry i
 $ sudo apt-get update 
 $ sudo apt-get install slapd ldap-utils
 #+END_EXAMPLE
-https://github.com/kraghupathi/Notes-wiki/blob/master/openldap-620x416.png
+[[./https://github.com/kraghupathi/Notes-wiki/blob/master/openldap-620x416.png]]
 ** Configure OpenLDAP Server
 In order to configure the *OpenLDAP* server you need to edit the
 *ldap.conf* file, which is stored under the */etc* directory. To edit the
@@ -73,49 +73,49 @@ Save the file and run the following command to reconfigure the LDAP package.
 #+BEGIN_EXAMPLE
 $ sudo dpkg-reconfigure slapd
 #+END_EXAMPLE
-https://github.com/kraghupathi/Notes-wiki/blob/master/openldap1-620x415.png
+[[./https://github.com/kraghupathi/Notes-wiki/blob/master/openldap1-620x415.png]]
 
 To construct the base *DN* of the *LDAP* directory you need a *DNS*
 domain name.
 
-https://github.com/kraghupathi/Notes-wiki/blob/master/openldap2-620x417.png
+[[./https://github.com/kraghupathi/Notes-wiki/blob/master/openldap2-620x417.png]]
 
 Enter your *DNS* domain name and hit *Enter* to confirm it. Then the
 ldap will ask to enter the name of the organization to use in the base
 *DN* of your *LDAP* directory. Enter the name of your *company* or
 *organisation* and hit *Enter* again.
 
-https://github.com/kraghupathi/Notes-wiki/blob/master/openldap3-620x414.png
+[[./https://github.com/kraghupathi/Notes-wiki/blob/master/openldap3-620x414.png]]
 
 After the organisation or company name is added, the package
 configuration will ask to enter the *password* for the *admin* entry
 in your *LDAP* directory. You need to enter the *password* for the
 *admin* which you created in the previous steps.
 
-https://github.com/kraghupathi/Notes-wiki/blob/master/openldap4-620x415.png
+[[./https://github.com/kraghupathi/Notes-wiki/blob/master/openldap4-620x415.png]]
 
-After you have confirmed the administrator¡¯s password, you have to
+After you have confirmed the administratorÂ¡Â¯s password, you have to
 select the *database*. There are two databases to select from, the
 *BDB* and *HDB* database. They both support the same configuration
 options, use similar storage formats, but since the *HDB* database
 adds support for sub-tree renames it is the recommended one.
 
-https://github.com/kraghupathi/Notes-wiki/blob/master/openldap5-620x416.png
+[[./https://github.com/kraghupathi/Notes-wiki/blob/master/openldap5-620x416.png]]
 
 You can select the database you think will work better for you. After
 you have decided which database you will use, hit *Enter* to confirm the
 selection. Then you will be prompted with another question. Select *Yes*
 to remove the database when *slapd* is purged.
 
-https://github.com/kraghupathi/Notes-wiki/blob/master/openldap6-620x415.png
+[[./https://github.com/kraghupathi/Notes-wiki/blob/master/openldap6-620x415.png]]
 
 Select again *Yes* and press *Enter*.
 
-https://github.com/kraghupathi/Notes-wiki/blob/master/openldap7-620x415.png
+[[./https://github.com/kraghupathi/Notes-wiki/blob/master/openldap7-620x415.png]]
 
 Select *No* and the *LDAP* server will start running.
 
-https://github.com/kraghupathi/Notes-wiki/blob/master/openldap8-620x417.png
+[[./https://github.com/kraghupathi/Notes-wiki/blob/master/openldap8-620x417.png]]
 #+BEGIN_EXAMPLE
 [sudo] password for ravisaive: 
  * Stopping OpenLDAP slapd                                                                                       [ OK ] 
@@ -174,7 +174,7 @@ command.
 #+BEGIN_EXAMPLE
 $ sudo apt-get install apache2 php5 php5-mysql
 #+END_EXAMPLE
-Next install the ¡°*phpldapadmin*¡± package as shown below.
+Next install the Â¡Â°*phpldapadmin*Â¡Â± package as shown below.
 #+BEGIN_EXAMPLE
 $ sudo apt-get install phpldapadmin
 #+END_EXAMPLE
@@ -187,7 +187,7 @@ $ sudo nano /etc/phpldapadmin/config.php
 #+END_EXAMPLE
 All you need to do is to replace the *domain names* with your own
 values. The configuration part needed for this case is under the
-¡°*Define your LDAP servers*¡± section.
+Â¡Â°*Define your LDAP servers*Â¡Â± section.
 #+BEGIN_EXAMPLE
 $servers = new Datastore();
 $servers->newServer('ldap_pla'); 
@@ -198,7 +198,7 @@ $servers->setValue('login','bind_id','cn=admin,dc=tecmint123,dc=com');
 #+END_EXAMPLE
 After you have finished editing the *config.php* configuration file,
 open a tab in your web browser and tpye the
-¡°*http://ip_address_here/phpldapadmin*¡± *URL*. Enter your ldap login
+Â¡Â°*http://ip_address_here/phpldapadmin*Â¡Â± *URL*. Enter your ldap login
 credentials and click login.
 ** Reference Links
   +  [[http://www.openldap.org/][OpenLDAP Homepage]]
