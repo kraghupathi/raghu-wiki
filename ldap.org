@@ -73,26 +73,26 @@ Save the file and run the following command to reconfigure the LDAP package.
 #+BEGIN_EXAMPLE
 $ sudo dpkg-reconfigure slapd
 #+END_EXAMPLE
-[[./https://github.com/kraghupathi/Notes-wiki/blob/master/openldap1-620x415.png]]
+[[./openldap1-620x415.png]]
 
 To construct the base *DN* of the *LDAP* directory you need a *DNS*
 domain name.
 
-[[./https://github.com/kraghupathi/Notes-wiki/blob/master/openldap2-620x417.png]]
+[[./openldap2-620x417.png]]
 
 Enter your *DNS* domain name and hit *Enter* to confirm it. Then the
 ldap will ask to enter the name of the organization to use in the base
 *DN* of your *LDAP* directory. Enter the name of your *company* or
 *organisation* and hit *Enter* again.
 
-[[./https://github.com/kraghupathi/Notes-wiki/blob/master/openldap3-620x414.png]]
+[[./openldap3-620x414.png]]
 
 After the organisation or company name is added, the package
 configuration will ask to enter the *password* for the *admin* entry
 in your *LDAP* directory. You need to enter the *password* for the
 *admin* which you created in the previous steps.
 
-[[./https://github.com/kraghupathi/Notes-wiki/blob/master/openldap4-620x415.png]]
+[[./openldap4-620x415.png]]
 
 After you have confirmed the administrator¡¯s password, you have to
 select the *database*. There are two databases to select from, the
@@ -100,22 +100,22 @@ select the *database*. There are two databases to select from, the
 options, use similar storage formats, but since the *HDB* database
 adds support for sub-tree renames it is the recommended one.
 
-[[./https://github.com/kraghupathi/Notes-wiki/blob/master/openldap5-620x416.png]]
+[[./openldap5-620x416.png]]
 
 You can select the database you think will work better for you. After
 you have decided which database you will use, hit *Enter* to confirm the
 selection. Then you will be prompted with another question. Select *Yes*
 to remove the database when *slapd* is purged.
 
-[[./https://github.com/kraghupathi/Notes-wiki/blob/master/openldap6-620x415.png]]
+[[./openldap6-620x415.png]]
 
 Select again *Yes* and press *Enter*.
 
-[[./https://github.com/kraghupathi/Notes-wiki/blob/master/openldap7-620x415.png]]
+[[./openldap7-620x415.png]]
 
 Select *No* and the *LDAP* server will start running.
 
-[[./https://github.com/kraghupathi/Notes-wiki/blob/master/openldap8-620x417.png]]
+[[./openldap8-620x417.png]]
 #+BEGIN_EXAMPLE
 [sudo] password for ravisaive: 
  * Stopping OpenLDAP slapd                                                                                       [ OK ] 
