@@ -4,6 +4,14 @@
   -  The primary purpose of a directory service is to provide a systematic set of records, usually organized in a hierarchical structure.
   -  It's similar to a telephone directory that contains a list of subscribes with thier contact number and address.
   -  In order to commence an LDAP session , a client needs to connect to the server known as the Directory System Agent
+** Whe use LDAP
+  -  Centrally manage users, groups and other data
+  -  Don’t have to manage separate directories for each application - stops the “N + 1 directory problem”
+  -  Distribute management of data to appropriate people
+  -  Allow users to find data that they need
+  -  Not locked into a particular server
+  -  Ability to distribute servers to where they are needed
+  -  Standards available for sharing data
   
 In this article we will show you how to install and configure an
 *OpenLDAP* server and how to administer it with *phpLDAPadmin* on *Debian*,
