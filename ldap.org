@@ -1,0 +1,205 @@
+* LDAP
+*LDAP* stands for *Lightweight Directory Access Protocol* which can be
+used in numerous ways such as for authentication, shared directory
+(for mail clients), address book, etc. The *LDAP* protocol can be used
+to establish and store any kind of information. The *OpenLDAP* server
+gives you the possibility to access the information which is stored in
+a tree structure.
+
+In this article we will show you how to install and configure an
+*OpenLDAP* server and how to administer it with *phpLDAPadmin* on *Debian*,
+*Ubuntu* and *Linux Mint* systems.
+** Installation Of OpenLDAP Server In Linux
+By default the *OpenLDAP* server is in repositories under the package
+¡°*slapd*¡°. You can easily install it with the help of package manager
+tool called [[http://www.tecmint.com/useful-basic-commands-of-apt-get-and-apt-cache-for-package-management/][apt-get.]] But before installing the *OpenLDAP* server, make sure your system is *up-to-date*.
+
+During installation, it will ask you to enter a password for the *admin* entry in your *LDAP* directory. Enter a strong password and confirm it by selecting *OK.*
+#+BEGIN_EXAMPLE
+$ sudo apt-get update 
+$ sudo apt-get install slapd ldap-utils
+#+END_EXAMPLE
+https://github.com/kraghupathi/Notes-wiki/blob/master/openldap-620x416.png
+** Configure OpenLDAP Server
+In order to configure the *OpenLDAP* server you need to edit the
+*ldap.conf* file, which is stored under the */etc* directory. To edit the
+*ldap.conf* file you need a text editor like *vim, nano* etc. Run the
+following command to open the *ldap* configuration file for editing.
+#+BEGIN_EXAMPLE
+$ sudo nano /etc/ldap/ldap.conf
+#+END_EXAMPLE
+The output of the above command is shown in the below section.
+#+BEGIN_EXAMPLE
+#
+# LDAP Defaults
+#
+
+# See ldap.conf(5) for details
+# This file should be world readable but not world writable.
+
+#BASE   dc=example,dc=com
+#URI    ldap://ldap.example.com ldap://ldap-master.example.com:666
+
+#SIZELIMIT      12
+#TIMELIMIT      15
+#DEREF          never
+
+# TLS certificates (needed for GnuTLS)
+TLS_CACERT      /etc/ssl/certs/ca-certificates.crt
+#+END_EXAMPLE
+Uncomment the *BASE* and *URI* lines, so you can edit them with your
+own *domain name* and *IP address*. Since this is a testing
+installation and configuration I will use *tecmint123.com* as my
+domain name.
+#+BEGIN_EXAMPLE
+#
+# LDAP Defaults
+#
+
+# See ldap.conf(5) for details
+# This file should be world readable but not world writable.
+
+BASE   dc=tecmint123,dc=com
+URI    ldap://ldap.example.com ldap://ldap-master.example.com:666
+
+#SIZELIMIT      12
+#TIMELIMIT      15
+#DEREF          never
+
+# TLS certificates (needed for GnuTLS)
+TLS_CACERT      /etc/ssl/certs/ca-certificates.crt
+#+END_EXAMPLE
+Save the file and run the following command to reconfigure the LDAP package.
+#+BEGIN_EXAMPLE
+$ sudo dpkg-reconfigure slapd
+#+END_EXAMPLE
+https://github.com/kraghupathi/Notes-wiki/blob/master/openldap1-620x415.png
+
+To construct the base *DN* of the *LDAP* directory you need a *DNS*
+domain name.
+
+https://github.com/kraghupathi/Notes-wiki/blob/master/openldap2-620x417.png
+
+Enter your *DNS* domain name and hit *Enter* to confirm it. Then the
+ldap will ask to enter the name of the organization to use in the base
+*DN* of your *LDAP* directory. Enter the name of your *company* or
+*organisation* and hit *Enter* again.
+
+https://github.com/kraghupathi/Notes-wiki/blob/master/openldap3-620x414.png
+
+After the organisation or company name is added, the package
+configuration will ask to enter the *password* for the *admin* entry
+in your *LDAP* directory. You need to enter the *password* for the
+*admin* which you created in the previous steps.
+
+https://github.com/kraghupathi/Notes-wiki/blob/master/openldap4-620x415.png
+
+After you have confirmed the administrator¡¯s password, you have to
+select the *database*. There are two databases to select from, the
+*BDB* and *HDB* database. They both support the same configuration
+options, use similar storage formats, but since the *HDB* database
+adds support for sub-tree renames it is the recommended one.
+
+https://github.com/kraghupathi/Notes-wiki/blob/master/openldap5-620x416.png
+
+You can select the database you think will work better for you. After
+you have decided which database you will use, hit *Enter* to confirm the
+selection. Then you will be prompted with another question. Select *Yes*
+to remove the database when *slapd* is purged.
+
+https://github.com/kraghupathi/Notes-wiki/blob/master/openldap6-620x415.png
+
+Select again *Yes* and press *Enter*.
+
+https://github.com/kraghupathi/Notes-wiki/blob/master/openldap7-620x415.png
+
+Select *No* and the *LDAP* server will start running.
+
+https://github.com/kraghupathi/Notes-wiki/blob/master/openldap8-620x417.png
+#+BEGIN_EXAMPLE
+[sudo] password for ravisaive: 
+ * Stopping OpenLDAP slapd                                                                                       [ OK ] 
+  Moving old database directory to /var/backups:
+  - directory unknown... done.
+  Creating initial configuration... done.
+  Creating LDAP directory... done.
+ * Starting OpenLDAP slapd                                                                                       [ OK ] 
+Processing triggers for libc-bin ...
+#+END_EXAMPLE
+To test the *LDAP* server, the *ldapsearch -x* command is used.
+#+BEGIN_EXAMPLE
+ldapsearch -x
+#+END_EXAMPLE
+It produces the following output.
+#+BEGIN_EXAMPLE
+# extended LDIF
+#
+# LDAPv3
+# base <dc=tecmint123,dc=com> (default) with scope subtree
+# filter: (objectclass=*)
+# requesting: ALL
+#
+
+# tecmint123.com
+dn: dc=tecmint123,dc=com
+objectClass: top
+objectClass: dcObject
+objectClass: organization
+o: tecmint
+dc: tecmint123
+
+# admin, tecmint123.com
+dn: cn=admin,dc=tecmint123,dc=com
+objectClass: simpleSecurityObject
+objectClass: organizationalRole
+cn: admin
+description: LDAP administrator
+
+# search result
+search: 2
+result: 0 Success
+
+# numResponses: 3
+# numEntries: 2
+#+END_EXAMPLE
+** LDAP Administration with phpLDAPadmin
+*phpLDAPadmin* is a *GUI* administration tool for *LDAP* server
+administration. This *GUI* tool will help us to interact with your *LDAP*
+server through a web interface. It is available in the default
+repositories, it can be installed with the *apt-get* command.
+
+But before installing *phpLDAPadmin*, you must have *Apache* web server
+and *PHP* installed and running. If not, install it using following
+command.
+#+BEGIN_EXAMPLE
+$ sudo apt-get install apache2 php5 php5-mysql
+#+END_EXAMPLE
+Next install the ¡°*phpldapadmin*¡± package as shown below.
+#+BEGIN_EXAMPLE
+$ sudo apt-get install phpldapadmin
+#+END_EXAMPLE
+The same way we configured the *ldap.conf* file, we need to configure
+the *phpldapadmin* web interface configuration files before using
+it. Run the following command to open the phpldapadmin *config.php*
+file.
+#+BEGIN_EXAMPLE
+$ sudo nano /etc/phpldapadmin/config.php
+#+END_EXAMPLE
+All you need to do is to replace the *domain names* with your own
+values. The configuration part needed for this case is under the
+¡°*Define your LDAP servers*¡± section.
+#+BEGIN_EXAMPLE
+$servers = new Datastore();
+$servers->newServer('ldap_pla'); 
+$servers->setValue('server','name','Tecmint LDAP Server');
+$servers->setValue('server','host','127.0.0.1'); 
+$servers->setValue('server','base',array('dc=tecmint123,dc=com'));
+$servers->setValue('login','bind_id','cn=admin,dc=tecmint123,dc=com');
+#+END_EXAMPLE
+After you have finished editing the *config.php* configuration file,
+open a tab in your web browser and tpye the
+¡°*http://ip_address_here/phpldapadmin*¡± *URL*. Enter your ldap login
+credentials and click login.
+** Reference Links
+  +  [[http://www.openldap.org/][OpenLDAP Homepage]]
+  +  [[http://phpldapadmin.sourceforge.net/wiki/index.php/Main_Page][phpLDAPadmin Homepage]]
