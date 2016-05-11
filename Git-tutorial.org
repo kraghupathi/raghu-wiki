@@ -1,0 +1,207 @@
+* Version Control System:
+  -  A system that records changes to a file over time so you can recall specific vesions later.
+  -  A way to keep track of changes to files
+  -  Between multiple developers
+  -  A record of who did what, when 
+** Advantages of Version Control Sytem:
+  -  Backup and Restore
+  -  Sync with multiple computers
+  -  Working in a team
+  -  Safely create and test new features 
+** Types of VCS:
+  +  GIT
+  +  SVN(Subversion)
+  +  Bazaar 
+* GIT:
+GIT is a open source distributed Version Control System. It tracks content such as files and directories.
+* Github:
+GitHub, is a web-page on which you can publish your Git repositories and collaborate with other people.
+** How To install GIT On Linux ?:
+If you want to install the basic Git tools on Linux via a binary
+installer, you can generally do so through the basic
+package-management tool that comes with your distribution. 
+
+If you¡¯re on Fedora for example, you can use yum:
+#+BEGIN_EXAMPLE
+sudo yum install git-all
+#+END_EXAMPLE
+If you¡¯re on a Debian-based distribution like Ubuntu, try apt-get:
+#+BEGIN_EXAMPLE
+sudo apt-get install git-all
+#+END_EXAMPLE
+** Git Branches:
+A branch in Git is simply a lightweight movable pointer to one of
+these commits. The default branch name in Git is master. As you
+initially make commits, you're given a master branch that points to
+the last commit you made. Every time you commit, it moves forward
+automatically.
+** Git Fork:
+A fork is a copy of a repository. Forking a repository allows you to
+freely experiment with changes without affecting the original
+project. Most commonly, forks are used to either propose changes to
+someone else's project or to use someone else's project as a starting
+point for your own idea.
+
+* Configure Tooling:
+Configure user information for all local repositories 
+#+BEGIN_EXAMPLE
+$ git config --global user.name "[name]"
+#+END_EXAMPLE
+Sets the name you want attached to your commit transactions
+#+BEGIN_EXAMPLE
+$ git config --global user.email "[email address]"
+#+END_EXAMPLE
+Sets the email you want attached to your commit transactions
+#+BEGIN_EXAMPLE
+$ git config --global color.ui auto
+#+END_EXAMPLE
+Enables helpful colorization of command line output
+* Git Commands
+** Create Repositries
+Start a new repository or obtain one from an existing URL
+#+BEGIN_EXAMPLE
+$ git init [project-name]
+#+END_EXAMPLE
+Creates a new local repository with the specified name
+#+BEGIN_EXAMPLE
+$ git clone [url]
+#+END_EXAMPLE
+Downloads a project and its entire version history
+** Make Changes
+Review edits and craft a commit transaction
+#+BEGIN_EXAMPLE
+$ git status
+#+END_EXAMPLE
+Lists all new or modified files to be committed
+#+BEGIN_EXAMPLE
+$ git diff
+#+END_EXAMPLE
+Shows file differences not yet staged
+#+BEGIN_EXAMPLE
+$ git add [file]
+#+END_EXAMPLE
+Snapshots the file in preparation for versioning
+#+BEGIN_EXAMPLE
+$ git diff --staged
+#+END_EXAMPLE
+Shows file differences between staging and the last file version
+#+BEGIN_EXAMPLE
+$ git reset [file]
+#+END_EXAMPLE
+Unstages the file, but preserve its contents
+#+BEGIN_EXAMPLE
+$ git commit -m "[descriptive message]"
+#+END_EXAMPLE
+Records file snapshots permanently in version history
+** Group Changes
+Name a series of commits and combine completed efforts
+#+BEGIN_EXAMPLE
+$ git branch
+#+END_EXAMPLE
+Lists all local branches in the current repository
+#+BEGIN_EXAMPLE
+$ git branch [branch-name]
+#+END_EXAMPLE
+Creates a new branch
+#+BEGIN_EXAMPLE
+$ git checkout [branch-name]
+#+END_EXAMPLE
+Switches to the specified branch and updates the working directory
+#+BEGIN_EXAMPLE
+$ git merge [branch]
+#+END_EXAMPLE
+Combines the specified branch¡¯s history into the current branch
+#+BEGIN_EXAMPLE
+$ git branch -d [branch-name]
+#+END_EXAMPLE
+Deletes the specified branch
+** Refactor Filenames
+Relocate and remove versioned files
+#+BEGIN_EXAMPLE
+$ git rm [file]
+#+END_EXAMPLE
+Deletes the file from the working directory and stages the deletion
+#+BEGIN_EXAMPLE
+$ git rm --cached [file]
+#+END_EXAMPLE
+Removes the file from version control but preserves the file locally
+#+BEGIN_EXAMPLE
+$ git mv [file-original] [file-renamed]
+#+END_EXAMPLE
+Changes the file name and prepares it for commit
+** Suppress Tracking
+Exclude temporary files and paths
+#+BEGIN_EXAMPLE
+*.log
+build/
+temp-*
+#+END_EXAMPLE
+A text file named .gitignore suppresses accidental versioning of files and paths matching the specified patterns
+#+BEGIN_EXAMPLE
+$ git ls-files --other --ignored --exclude-standard
+#+END_EXAMPLE
+Lists all ignored files in this project
+** Save Fragments
+Shelve and restore incomplete changes
+#+BEGIN_EXAMPLE
+$ git stash
+#+END_EXAMPLE
+Temporarily stores all modified tracked files
+#+BEGIN_EXAMPLE
+$ git stash pop
+#+END_EXAMPLE
+Restores the most recently stashed files
+#+BEGIN_EXAMPLE
+$ git stash list
+#+END_EXAMPLE
+Lists all stashed changesets
+#+BEGIN_EXAMPLE
+$ git stash drop
+#+END_EXAMPLE
+Discards the most recently stashed changeset
+** Review History
+Browse and inspect the evolution of project files
+#+BEGIN_EXAMPLE
+$ git log
+#+END_EXAMPLE
+Lists version history for the current branch
+#+BEGIN_EXAMPLE
+$ git log --follow [file]
+#+END_EXAMPLE
+Lists version history for a file, including renames
+#+BEGIN_EXAMPLE
+$ git diff [first-branch]...[second-branch]
+#+END_EXAMPLE
+Shows content differences between two branches
+#+BEGIN_EXAMPLE
+$ git show [commit]
+#+END_EXAMPLE
+Outputs metadata and content changes of the specified commit
+** Redo Commits
+Erase mistakes and craft replacement history
+#+BEGIN_EXAMPLE
+$ git reset [commit]
+#+END_EXAMPLE
+Undoes all commits after [commit] , preserving changes locally
+#+BEGIN_EXAMPLE
+$ git reset --hard [commit]
+#+END_EXAMPLE
+Discards all history and changes back to the specified commit
+** Synchronize Changes
+Register a repository bookmark and exchange version history
+#+BEGIN_EXAMPLE
+$ git fetch [bookmark]
+#+END_EXAMPLE
+Downloads all history from the repository bookmark
+#+BEGIN_EXAMPLE
+$ git merge [bookmark]/[branch]
+#+END_EXAMPLE
+Combines bookmark¡¯s branch into current local branch
+#+BEGIN_EXAMPLE
+$ git push [alias] [branch]
+#+END_EXAMPLE
+Uploads all local branch commits to GitHub
+#+BEGIN_EXAMPLE
+$ git pull [remote]
+#+END_EXAMPLE
+Downloads bookmark history and incorporates changes
