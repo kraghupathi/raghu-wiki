@@ -19,7 +19,7 @@ During installation, it will ask you to enter a password for the *admin* entry i
 $ sudo apt-get update 
 $ sudo apt-get install slapd ldap-utils
 #+END_EXAMPLE
-[[./https://github.com/kraghupathi/Notes-wiki/blob/master/openldap-620x416.png]]
+[[./openldap-620x416.png]]
 ** Configure OpenLDAP Server
 In order to configure the *OpenLDAP* server you need to edit the
 *ldap.conf* file, which is stored under the */etc* directory. To edit the
