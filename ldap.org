@@ -1,10 +1,5 @@
 * LDAP
-  -  *LDAP* stands for *Lightweight Directory Access Protocol* which can be
-used in numerous ways such as for authentication, shared directory
-(for mail clients), address book, etc. The *LDAP* protocol can be used
-to establish and store any kind of information. The *OpenLDAP* server
-gives you the possibility to access the information which is stored in
-a tree structure.
+  -  *LDAP* stands for *Lightweight Directory Access Protocol* which can be used in numerous ways such as for authentication, shared directory (for mail clients), address book, etc. The *LDAP* protocol can be used to establish and store any kind of information. The *OpenLDAP* server gives you the possibility to access the information which is stored in a tree structure.
   -  It is an application protocol used over an IP network to manage and access the distributed directory information service.
   -  The primary purpose of a directory service is to provide a systematic set of records, usually organized in a hierarchical structure.
   -  It's similar to a telephone directory that contains a list of subscribes with thier contact number and address.
