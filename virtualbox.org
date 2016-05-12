@@ -1,0 +1,112 @@
+* Virtualization:
+Virtualization is a technology to run multiple same or different os,
+which is completely isolated from each other. Which means separating
+hardware from a single operating system. each ¡°guest¡± OS is managed by
+a Virtual Machine Monitor (VMM), also known as a hypervisor. ex:- run
+both linux and windows on the same machine
+** Advantages:
+  -  Reduce number of servers.
+  -  Reduce TCO (Total Cost Ownership).
+  -  Improve availability and business continuity.
+  -  Increase efficiency for development and test environments.
+  -  Improve availability of your virtual environment.
+** Virtualization Types
+1). Hardware virtualization
+
+Hardware virtualization refers to taking the components of a real
+machine and making them virtual. This virtual machine works like the
+real machine and is usually a computer with an operating system.
+
+*Ex:=* VMware ESX, MS Virtual Server, Xen and others.
+
+2). OS-level Virtualization:
+
+Operating-system-level virtualization is a server-virtualization
+method, where the kernel of an operating system allows for multiple
+isolated user-space instances, instead of just one. Such instances
+(sometimes called containers, software containers, virtualization
+Engines (VE), virtual private servers (VPS), or jails) may look and
+feel like a real server from the point of view of its owners and
+users.
+
+*Ex:=*  Openvz, Chroot, Jails
+
+*** Hypervisor:
+
+A hypervisor is a hardware virtualization technique that allows
+multiple guest operating systems (OS) to run on a single host system
+at the same time. The guest OS shares the hardware of the host
+computer, such that each OS appears to have its own processor, memory
+and other hardware resources.
+
+A hypervisor is also known as a virtual machine manager (VMM).
+
+*** How does it work?
+
+The servers would need to execute the hypervisor. The hypervisor, in
+turn, loads the client operating systems of the virtual machines. The
+hypervisor allocates the correct CPU resources, memory, bandwidth and
+disk storage space for each virtual machine.
+
+A virtual machine can create requests to the hypervisor through a
+variety of methods, including API calls.
+
+There are two types of hypervisors:
+
+1. Embedded or hosted hypervisors, and
+2. Bare metal or native hypervisors.
+
+2161.Hypervisor Design_4.jpg
+
+Hypervisors can be divided into two types:
+
+*** Bare metal, native or type I hypervisors
+
+This is when the hypervisors are run on the host's hardware to control it as well as manage the virtual machines on it.
+
+If you are currently using Microsoft Hyper-V hypervisor, VMware ESX/ESXi, Oracle VM Server for x86, KVM, or Citrix XenServer, then this is the type of hypervisor with which you are working.
+
+*** Embedded, hosted or type II hypervisors
+
+These hypervisors are run as a software using an operating system such as Windows, Linux or FreeBSD. This is what the Virtage hypervisor, VirtualBox and VMWare Workstation are classified as.
+
+So, native hypervisors run directly on the hardware while a hosted hypervisor needs an operating system to do its work. Which one is better? It depends on what you're after.
+
+Bare metal hypervisors are faster and more efficient as they do not need to go through the operating system and other layers that usually make hosted hypervisors slower. Type I hypervisors are also more secure than type II hypervisors.
+
+Hosted hypervisors, on the other hand, are much easier to set up than bare metal hypervisors because you have an OS to work with. These are also compatible with a broad range of hardware.
+
+* Virtual Box:
+
+A VirtualBox is a software virtualization package that installs on an operating system as an application.
+
+VirtualBox allows additional operating systems to be installed on it, as a Guest OS, and run in a virtual environment.
+
+To Install VirtualBox using Various Commands:
+
+Add the VirtualBox own repository to install latest VirtualBox 5.0 on following systems.
+#+BEGIN_EXAMPLE
+cd /etc/yum.repos.d/
+wget http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo
+#+END_EXAMPLE
+Install Dependency Packages for VirtualBox:
+
+VirtualBox uses vboxdrv kernel module to control and allocate physical memory for execution of guest operating systems. Without this module,
+
+you can still use the VirtualBox to create and configure virtual machines, but they will not work. So, to make VirtualBox fully functional
+
+you will need to update your system first, then install some additional modules like DKMS, kernel-headers and kernel-devel and some dependency packages.
+#+BEGIN_EXAMPLE
+yum update
+#+END_EXAMPLE
+#+BEGIN_EXAMPLE
+yum install binutils qt gcc make patch libgomp glibc-headers glibc-devel kernel-headers kernel-devel dkm
+#+END_EXAMPLE
+** Install VirtualBox 5.0:
+
+Once you¡¯ve installed all the needed dependency packages, you can install latest version of VirtualBox using following command.
+#+BEGIN_EXAMPLE
+yum install VirtualBox-5.0
+#+END_EXAMPLE
+
+ 
