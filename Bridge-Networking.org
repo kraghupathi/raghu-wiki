@@ -53,7 +53,7 @@ br1		8000.000000000000	no
 #+end_example
 ** Diagram
 - I have implemented a sample network which satisfied below diagrame
-[[./Bridge2.jpg]]
+[[./Untitled%20drawing.jpg]]
 
 ** Creating private subnet:
 - To test the settings we can create our own private subnet with three test containers.
