@@ -1,0 +1,39 @@
+* Logwatch:
+ - Logwatch is a simple log analysis tool provided with most Linux distributions. A daily scheduled cron job parses the various system logs and sends a
+   log summary to the root user or a defined destination email address.
+** Requirements
+ - Red Hat Enterprise Linux (RHEL) or Debian based distributions (CentOS, Fedora, Ubuntu, etc).
+*** Install logwatch:
+ - To install logwatch follow below command 
+#+begin_example
+yum install logwatch
+#+end_example
+*** Configure Logwatch:
+ - The email report will be delivered to the local root user by default. To specify an alternate email address, 
+   create a new file called =/etc/logwatch/conf/logwatch.conf= and add the following line.
+#+begin_example
+MailTo = user@example.com
+#+end_example
+ - The default log summary email will be in standard text format. The email format can be changed to HTML by setting the Format value in the same logwatch.conf file.
+#+begin_example
+Format = html
+#+end_example
+ - The email sender can be changed from Logwatch to another local user or email address by setting the MailFrom value.
+#+begin_example
+MailFrom = user@example.com
+#+end_example
+ - The summary includes a list of services that list can be found in the =/usr/share/logwatch/scripts/services/= directory. 
+   Those services can be excluded from the summary by prepending a hyphen to the Service name value.
+#+begin_example
+Service = All
+Service = "-ftpd-xferlog"
+#+end_example
+ - The service All value can also be replaced by a specific name if only that service log should be analyzed.
+ - Additional customizations to =logwatch.conf= can be found in the default global configuration file.
+#+begin_example
+/usr/share/logwatch/default.conf/logwatch.conf
+#+end_example
+ - The logwatch process can be run manually with a variety of parameters for testing purposes.
+#+begin_example
+/usr/sbin/logwatch --mailto user@example.com --format html --service secure
+#+end_example
