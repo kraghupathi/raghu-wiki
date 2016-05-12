@@ -1,152 +1,182 @@
+- This document about the basics of networking concepts 
+- Here I choose Cisco Packet Tracer tool developed by =Cisco Organization= to
+  understand more about networking formation, packet simulation and server configuration.
+* Network:
+- Network can be defined as a group of computers which are inter connected
+  together to exchange the data.
+- Sample network diagrame
+[[./network.png]]
 * Network Topology:
 - Network topology is the arrangement of the various elements (links, nodes, etc.) of a computer network. 
   Essentially, it is the topological structure of a network and may be depicted physically or logically.
-* Network:
-- Network can be defined as a group of computers and other services connected together to exchangble data.
-* Protocol:
-- which is a rules and govern the communication between two computers connected by the network.
-  IP address port range from 0-255
+ * EX := Bus Topology, Tree Topology, Ring Topology and Star Topology.
+* LAN(Local Area Network):
+- A LAN is a type of computer network in which networking facility is available in a small physical area (mostly in meters but very rarely in kilometers) probably in an office building, home and 
+  school etc. Each computer or device connected to the network is called as a node.
+** Uses of LAN:
+-  LAN is useful for sharing resources like files, printer service, games or other applications.
+** Examples of LAN:
+- =Vlead Network= is an example of a LAN.
+* WAN(Wired Area Network):
+- A wide area network, or WAN, occupies a very large area, such as an entire country or the entire world. A WAN can contain multiple smaller networks, such as LANs or MANs. 
+ * Ex := The Internet is the best-known example of a public WAN.
 * Internet Protocol (IP):
-- IP address is a number, which is used to indicate the location of a computer.
+- Internet Protocol is a unique address which is used to identify the
+  computer/machine on a network.
+- Which is used to identify the location of the computer in the world.
 * IPV4:
-- IPv4 stands for Internet Protocol Version 4. which is 32-bit addressing space used as TCP/IP host addressing mechanism. 
-* IPV6:
-- IPv4 stands for Internet Protocol Version 4.which is 128-bit addressing space.
-* Public IP:
+- IPv4 stands for Internet Protocol Version 4. which uses 32-bits for address
+  space and this uses TCP/IP host addressing mechanism.
+- In which total address space is divided into 4 octets. Each octet value in
+  decimal is 0-255.
+ * Ex1 := 11000100.10101010.10101111.11010101
+ * Ex2 := 175.56.43.23
+- The above ip-address is in the dotted decimal number format. An ip address is in the format of 4 sets of decimal numbers separated by dots. The decimal number in each and every set is in the range 0 to 255. 
+  Each and every set is called octet. So, there are 4 octets in an ip address.
+** IP address classes:
+- IPV4 address space is divided into several categerios for efficiant use of total address sapce. 
+- Each class allows for a range of valid IP addresses, shown in the following table.
+** Public IP:
 - A public IP address is an IP address that can be accessed over the Internet. Like postal address used to deliver a postal mail to your home.
 - A public IP address is the globally unique IP address assigned to a computing device.
-** Public Addresses
-| 1.0.0.0      | 9.255.255.255   |
-| 11.x.x.x     | 126.255.255.255 |
-| 129.0.0.0    | 169.253.255.255 |
-| 169.255.0.0  | 172.15.255.255  |
-| 172.32.0.0   | 191.0.1.255     |
-| 192.0.3.0    | 192.88.98.255   |
-| 192.88.100.0 | 192.167.255.255 |
-| 192.169.0.0  | 198.17.255.255  |
-| 198.20.0.0   | 223.255.255.255 |
-
-* Private IP:
+ * Ex := 175.101.8.162
+** Private IP:
 - A private IP address is the address space allocated by InterNIC to allow organizations to create their own private network.
-* Private IP Range:
-+ CLASS A: from 10.0.0.0    to 10.255.255.255   
-+ CLASS B: from 172.16.0.0  to 172.31.255.255   
-+ CLASS C: from 192.168.0.0 to 192.168.255.255
-* Static IP:
+ * Ex := 10.2.59.109
+** Static IP:
 - Static IP is a fixed ip,it will not change
-* Dynamic IP:
-- Dynamic IP address is temporary and it will change over time.
-* FTP(File Transfer Protocol):
-- FTP is standard internet protocol, which is used to exchange files on the internet.
-* HTTP:
-- HTTP protocol for communication between web browsers and servers.
-* SMTP(Simple Mail Transfer Protocol):
-- SMTP stands for Simple Mail Transfer Protocol, which is generally used to send messages from a mail client to a mail server. 
-* URL(Uniform Resource Locator):
-- URL stands for Uniform Resource Locator, which is used to specify addresses on the World Wide Web.
-* TCP/IP (Transmission Control Protocol):
+** Dynamic IP:
+- It is an IP address is which is assigned by the DHCP server over network and
+  it may change over time.
+* Network Classes:
+| CLASS A |   1.0.0.1-126.255.255.254 |  For Internet communication          |
+| CLASS B | 128.1.0.1-191.255.255.254 |              Same as class A         |
+| CLASS C | 192.0.1.1-223.255.254.254 |              Same as class A         |
+| CLASS D | 224.0.0.0-239.255.255.255 | Reserved for Multicasting            |
+| CLASS E | 240.0.0.0-254.255.255.254 | used for researching and experiments |
++ CLASS A 
+ - First 8 bits indicates Network
+ - Laster 24 bits indicates Host Address
++ CLASS B 
+ - First 16 bits indicates Network
+ - Laster 16 bits indicates Host Address
++ CLASS C 
+ - First 24 bits indicates Network
+ - Laster 8 bits indicates Host Addres
+* IPV6:
+- IPv6 stands for Internet Protocol Version 6. which uses 128-bits for address space and IPV6 denoted by eight groups of hexadecimal quartets separated by colons in between them.
+ * Ex := 2001:cdba:0000:0000:0000:0000:3257:9652
+* Port:
+- which specifies the process in the machine
+- Port values range from 0-65535
+* Port Numbers for given following Protocols:
+| SSH   |    22 |
+| HTTP  |    80 |
+| HTTPS |   443 |
+| FTP   | 20/21 |
+| SMTP  |    25 |
+| DNS   |    53 |
+| DHCP  |    67 |
+* Protocol:
+- A Protocol is a set of rules which governs the communication between two
+  computers which are connected by the network.
+ * Ex := IP, HTTP and FTP etc.
+** HTTP:
+- HTTP stands for Hypertext Transfer Protocol. Which is responsible for
+  loading/transfer the web data over internet.
+- All browsing communication will happens using =http= protocal only.
+- This protocal uses =80= protocal.
+ * Ex := A browser is an HTTP client because it sends requests to an HTTP
+   server (Web server), which then sends responses back to the client.  The
+   standard (and default) port for HTTP servers to listen on is 80.
+** FTP(File Transfer Protocol):
+- The File Transfer Protocol (FTP) is a standard network protocol, which is
+  used to transfer computer files between a client and server on a computer
+  network.
+- This will use port number 20/21
+
+*Ex:-* Python File Sharing Server.
+** SMTP(Simple Mail Transfer Protocol):
+- SMTP stands for Simple Mail Transfer Protocol, which is generally used to
+  send messages from a mail client to a mail server.
+- This will use 25 port number. 
+** TCP/IP (Transmission Control Protocol):
 - TCP/IP is the basic communication language or protocol of the Internet. 
 - It can also be used as a communications protocol in a private network
 * VPN(Virtual Private Network):
 - A Virtual Private Network (VPN) is a network technology that creates a secure network connection over a public network such as the Internet or a 
   private network owned by a service provider. And VPN can connect multiple sites over a large distance just like a Wide Area Network (WAN).
+* Gateway:
+- A gateway is a hardware device that acts as a "gate" between two networks. It
+  may be a router, firewall, server, or other device that enables traffic to
+  flow in and out of the network.
+- A router is an example of a gateway device. A router is a device that does
+  routing and decides where packets are sent to based on its IP address.
+* Netmask:
+- A netmask is a 32-bit number which is used to define how many bit of an IP
+  address are related to hosts and network
+- Netmask is used to define subnets and specify the network's available hosts.
+- Netmask is used to identify the network address using binary operation with
+  an ip and netmask.
+| CLASS A |     255.0.0.0 |
+| CLASS B |   255.255.0.0 |
+| CLASS C | 255.255.255.0 |
 * PING:
-- Ping is a networking utility program. Which is used for verification of IP connectivity.
+- Ping is a networking utility program. Which is used for verification of IP
+  connectivity to the remote machine. This uses ICMP packets.
+- To check connection between your machine to google.com server we use below command.
 #+begin_example
 ping www.google.com
 #+end_example
-* Network Classes:
-+ CLASS A: from 0 to 127 for internet communication
-+ CLASS B: from 128 to 191 ""
-+ CLASS C: from 192 to 223 ""
-+ CLASS D: from 224 to 239 Reserved for Multicasting
-+ CLASS E: from 240 to 254 used for researching and experiments
-* LAN(Local Area Network):
-- LAN is a Local Area Network it covers buildings and or a set of closely related buildings.
-+ Ex:= Ethernet.
-* WAN(Wired Area Network):
-- WAN is a Wired Area Network it covers cities, towns and countries.
-+ Ex: ATM
-* Gateway:
-- A gateway is a data communication device, that joins together two different networks. In the most scenario an internal network with the internet.
-- A router is an example of a gateway device. A router is a device that does routing, deciding where packets are sent to based on its IP address.
-* Netmask:
-- A netmask is a 32-bit number,that mask is used to divide an IP address into subnets and specify the network's available hosts.
-+ CLASS A:255.0.0.0
-+ CLASS B:255.255.0.0
-+ CLASS C:255.255.255.0
-* Port:
-- which specifies the process in the machine
-- Port values range from 0-65535
-* Port Numbers for given following Protocols:
-+ SSH - 22
-+ HTTP - 80
-+ HTTPS- 443
-+ FTP - 20(for data) 21(for control)
-+ SMTP - 25
-+ DNS - 53
-+ DHCP - 67
-* Server:
-- server is a computer program that provides services to other computer programs (and their users) in the same or other computers.
-* Router:
-- Router is a device which is used to connect to the different network elements.
-* Switch:
-- switch is a device which is used to connect the same network elements.
-* Web Server:
- - A web server is an information technology that processes requests via HTTP, 
-   the basic network protocol used to distribute information on the World Wide Web.
- - The server is machine or programme that process the client request and send back the response.
-* Client:
- - Cleint is a machine in which request a service from the server.
-* XAMPP:
-XAMPP is available with various distributions depends upon the OS.
-- LAMP : For Linux
-- WAMP : For Windows
-- MAMP  : For MAC OS
- - LAMP is a free and open source Linux web server tool kit package, It consisting of the Apache HTTP Server, 
-   MySQL database, and interpreters for scripts written in the PHP and Perl programming languages.
-  
- - It is used as a development tool, to allow website designers and programmers to test their work on their own computers without any access to the Internet. .
 * Apache Web server:
 - Apache Web Server is an open source Web server for creation, deployment and management web applications.
 - Which is designed to host one or more Web applications,
 - It is also widely used by Web server many companies uses this server to host their internal web applications by configuring shared/virtual hosting,
   as by default, Apache Web Server supports and distinguishes between different hosts that reside on the same machine.
 + To install Apache-server on Linux, use the following command
+ * On Ubuntu/Debian.
 #+begin_example
-For Linux:= sudo apt-get install apache2
-For CentOS:= yum install httpd
+sudo apt-get install apache2
 #+end_example
-** How to host a website?:
+ * On RHEL/CENTOS
+#+begin_example
+yum install httpd
+#+end_example
+** How to host a website on Apache Server?:
 1) To start the apache server, use the following command:
+ * On Ubuntu/Debian.
 #+begin_example
-For Linux:= service apache2 start
-For CentOS:= service httpd start
+service apache2 start
 #+end_example
-2) open browser and type =localhost= or =127.0.0.1= then, browser displays the default apache page. If the default page is not found, then restart the apache server by using the following command.
+ * On RHEL/CENTOS
 #+begin_example
-For Linux: service apache2 restart
-For CentOS: service httpd restart
+service httpd start
 #+end_example
-3) create a sample html, js and css files and place them in a folder. 
-4) move the contents of the folder to  =/var/www/html= or =/var/www/=
-5) open browser and type =localhost/<file name> or 127.0.0.1/<file name>.
+2) To restart the server
+ * On Ubuntu/Debian.
+#+begin_example
+service apache2 restart
+#+end_example
+ * On RHEL/CENTOS
+#+begin_example
+service httpd restart
+#+end_example
+3) Open web browser and type =localhost= or =127.0.0.1= then, browser displays
+   the default apache page. 
+4) Create a sample html, js and css files and place them in a folder.
+ 
+5) Move the contents of the folder to  =/var/www/html= or =/var/www/=. This is
+   the default web host server for apache server.
+6) Open browser and type =localhost/<file name> or 127.0.0.1/<file name>.
 #+begin_example
 localhost/example.html
 #+end_example
-6) To stop the apache server, use the following command:
+7) To stop the apache server, use the following command:
+ * On Ubuntu/Debian.
 #+begin_example
-For Linux:= service apache2 stop
-For CentOS:= service httpd stop
+service apache2 stop
 #+end_example
-
-* DNS-Server 
- - Domain Name System (or Service or Server), an Internet service that translates domain names into IP addresses. Because domain names are alphabetic,
-   they're easier to remember. The Internet however, is really based on IP addresses. Every time you use a domain name, therefore,
-   a DNS service must translate the name into the corresponding IP address.
-   EX : - 
-   - To find the IP address of www.example.com. We use command as below
+ * On RHEL/CENTOS
 #+begin_example
-nslookup www.example.com
+service httpd stop
 #+end_example
-The above command will give the ip address associated with =www.example.com= using DNS server.
