@@ -38,8 +38,8 @@ sudo service ssh start
 #+begin_example
 ssh-keygen
 #+end_example 
- - Press enter to accept the defaults. Your keys will be created at ~/.ssh/id_rsa.pub and ~/.ssh/id_rsa.
- - Change into the .ssh directory by typing:
+ - Press enter to accept the defaults. Your keys will be created at =~/.ssh/id_rsa.pub= and =~/.ssh/id_rsa=.
+ - Change into the =.ssh= directory by typing:
 #+begin_example
 cd ~/.ssh
 #+end_example
