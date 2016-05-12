@@ -1,0 +1,153 @@
+* Bridge:
+- Bridge is a device that connects two LANs and controls data flow between them.
+- Especially bridge is a store & forward device. During the connection of different LANs, it receives the frame from one LAN and transfer the same
+  frame without encapsulating or without modification to other LAN. By using local and remote bridge, a network administrator can easily extend the network distance.
+** The difference between switch and bridge
+-  Bridge is device which divides a network into two and Switch connects multiple networks.
+-  Bridge are software based and switch is a hardware based.
+-  Bridge can have upto 16 ports while switch can handle many ports.
+-  Bridge is rarely used. Switches are frequently used. 
+* Switch:
+- Switch is a device which is used to connect the same network elements.
+* Router:
+- Router is a device which is used to connect different network elements.
+* Setting Up Bridge to form a sample network.
+** Introduction:
+- Here I explained about how to create a bridge on CentOS and how to form a sample network
+  using bridge by connecting OpenVZ container.
+** Creating a bridge: 
+- Bridge is basically a file configured with essential settings which mentions
+  the bridge name, boot protocol, on boot settings, type and if it is to be
+  network manager controlled. 
+- Change directory to network-scripts directory
+#+begin_example
+cd /etc/sysconfig/network-scripts/
+#+end_example
+- To create the bridge, create a file with name ifcfg-br1 in the current
+  directory including the following settings:
+#+begin_example
+touch ifcfg-br1
+#+end_example
+- Add the following configurations
+#+begin_example
+DEVICE=br1
+TYPE=Bridge
+ONBOOT=yes
+NM_CONTROLLED=no
+BOOTPROTO=none
+#+end_example
+ * Restart network service to effect the changes.
+#+begin_example
+service network restrat
+#+end_example
+ * Following command can be issued to list all the bridges created and the
+   interfaces they are connected to.
+#+begin_example
+brctl show
+#+end_example
+- The output has to contain the created bridge and any other bridges previously created with connected interfaces.
+  With current configuration used, a sample output can be seen below:
+#+begin_example
+bridge name	bridge id		STP enabled	interfaces
+br1		8000.000000000000	no	         
+#+end_example
+** Diagram
+- I have implemented a sample network which satisfied below diagrame
+[[./Bridge2.jpg]]
+
+** Creating private subnet:
+- To test the settings we can create our own private subnet with three test containers.
+#+begin_example
+vzctl create 101 --ostemplate centos-6-x86_64 --hostname centos-1
+vzctl create 102 --ostemplate centos-6-x86_64 --hostname centos-2
+vzctl create 103 --ostemplate centos-6-x86_64 --hostname centos-3
+#+end_example
+- Note that ip address is not set for creating the containers.
+- set the netfilter to full for the containers.
+#+begin_example
+vzctl set 101 --netfilter full --save
+vzctl set 102 --netfilter full --save
+vzctl set 103 --netfilter full --save
+#+end_example
+- The containers needs to be connected to the bridge br0.This is achieved by connecting with the respective interfaces. This is done by the following commands:
+#+begin_example
+vzctl set 101 --netif_add eth0,,,,br1 --save
+vzctl set 102 --netif_add eth1,,,,br1 --save
+vzctl set 103 --netif_add eth2,,,,br1 --save
+#+end_example
+- Start the containers and set its status to running.
+#+begin_example
+vzctl start 101
+vzctl start 102
+vzctl start 103
+#+end_example
+* Configuring Containers:
+- Enter into the container 101
+#+begin_example
+vzctl enter 101
+#+end_example
+Change directory
+#+begin_example
+cd /etc/sysconfig/network-scripts
+#+end_example
+ifcfg-eth0 file should contain the following settings:
+#+begin_example
+DEVICE=eth0
+HWADDR=00:18:51:9A:D8:E5
+BOOTPROTO=static
+ONBOOT=yes
+NM_CONTROLLED=no
+IPADDR=10.2.59.101
+NETMASK=255.255.255.0
+#+end_example
+- Enter into the container 102
+#+begin_example
+vzctl enter 102
+#+end_example
+ifcfg-eth1 file should contain the following settings:
+#+begin_example
+DEVICE=eth1
+HWADDR=00:18:51:97:0D:0C
+BOOTPROTO=static
+ONBOOT=yes
+NM_CONTROLLED=no
+IPADDR=10.2.59.102
+NETMASK=255.255.255.0
+#+end_example
+- Enter into the container 103
+#+begin_example
+vzctl enter 103
+#+end_example
+- ifcfg-eth2 file should contain the following settings:
+#+begin_example
+DEVICE=eth2
+HWADDR=00:18:51:86:A8:F3
+BOOTPROTO=static
+ONBOOT=yes
+NM_CONTROLLED=no
+IPADDR=10.2.59.103
+NETMASK=255.255.255.0
+#+end_example
+- Restart the network services in all above containers 101,102 and 103 using
+  below command  and check if the eth0, eth1 and eth2 are assigned to
+  ip-address or not (ifconfig command).
+
+#+begin_example
+service networking restart
+#+end_example
+*Note :-* The hardware address can be known by the command =ifconfig -a=.
+* Testing ping command among each container
+- Now try to ping each container with one another if we are able ping each
+  other then our network is formed successfully.
+- ping 102 container from 103 container
+#+begin_example
+ping 10.2.59.102
+#+end_example
+- ping 101 container from 103
+#+begin_example
+ping 10.2.59.101
+#+end_example
+*Conclusion* I am able to ping above ip's 
+
+
+
