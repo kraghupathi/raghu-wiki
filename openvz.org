@@ -1,12 +1,12 @@
 * Openvz:
 OpenVZ is a container-based virtualization solution for Linux. We can
-create ¡¥n¡¦ number of Virtual machines depending upon the configuration
+create Â¡Â¥nÂ¡Â¦ number of Virtual machines depending upon the configuration
 of our physical system. Each virtual machine will act like a separate
-standalone physical system, and doesn¡¦t conflict with one another. The
+standalone physical system, and doesnÂ¡Â¦t conflict with one another. The
 virtual machines created using OpenVZ can be rebooted independently.
 ** System Requirements:
-1.A Processor Intel or AMD PC
-2.Atleast 128MB of RAM
+1. A Processor Intel or AMD PC
+2. Atleast 128MB of RAM
 3. Hard drives with atleast 4GB free disk space
 4. Atleast 1NICs
 5. Internet connection.
@@ -18,7 +18,7 @@ wget -P /etc/yum.repos.d/ http://ftp.openvz.org/openvz.repo
 #+END_EXAMPLE
 Import OpenVZ GPG key:
 #+BEGIN_EXAMPLE
-rpm ¡Vimport http://ftp.openvz.org/RPM-GPG-Key-OpenVZ.
+rpm Vimport http://ftp.openvz.org/RPM-GPG-Key-OpenVZ.
 #+END_EXAMPLE
 To Install OpenVZ kernel.
 #+BEGIN_EXAMPLE
@@ -53,7 +53,7 @@ The following tools to be installed to gather the OpenVZ usage statistics. Here 
 #+BEGIN_EXAMPLE
 yum install vzctl vzquota ploop.
 #+END_EXAMPLE
-That¡¦s it. We have successfully installed OpenVZ.
+That's it. We have successfully installed OpenVZ.
 * Container:
 The Virtual machines are known as Containers in OpenVZ.the main
 advantage of Containers is that they will share the resources of the
@@ -71,7 +71,7 @@ vzctl create 101 --ostemplate centos-7-x86_64-minimal
 #+END_EXAMPLE
 which is used to create the first virtual machine
 
-*101* ¡V Container ID (It typically starts from 100)
+*101* V Container ID (It typically starts from 100)
 
 Next, we have to setup the IP address to the Container, for example: =192.168.1.103.=
 #+BEGIN_EXAMPLE
