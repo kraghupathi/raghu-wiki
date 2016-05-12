@@ -5,7 +5,7 @@
 - Network can be defined as a group of computers which are inter connected
   together to exchange the data.
 - Sample network diagrame
-[[./ network.png]]
+[[./network.png]]
 * Network Topology:
 - Network topology is the arrangement of the various elements (links, nodes, etc.) of a computer network. 
   Essentially, it is the topological structure of a network and may be depicted physically or logically.
