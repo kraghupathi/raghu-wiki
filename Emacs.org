@@ -15,7 +15,7 @@
 #+begin_example
 apt-get install emacs
 #+end_example
-  + On CentOS/RHEL
+  * On CentOS/RHEL
 #+begin_example
 yum install emacs
 #+begin_example
@@ -23,7 +23,7 @@ yum install emacs
 *** How to Run Emacs:
 - To start emacs type emacs or emacs -nw for commandline version
 #+begin_example
-Ex:= emacs or emacs -nw
+emacs or emacs -nw
 #+end_example
 *** Emacs Commands List :
 - For more Commands Information to Click this Link for Emacs Reference Card-page which is available at [[https://www.gnu.org/software/emacs/refcards/pdf/refcard.pdf][here]]
