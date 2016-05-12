@@ -1,7 +1,7 @@
 * Virtualization:
 Virtualization is a technology to run multiple same or different os,
 which is completely isolated from each other. Which means separating
-hardware from a single operating system. each ¡°guest¡± OS is managed by
+hardware from a single operating system. each Â¡Â°guestÂ¡Â± OS is managed by
 a Virtual Machine Monitor (VMM), also known as a hypervisor. ex:- run
 both linux and windows on the same machine
 ** Advantages:
@@ -56,7 +56,7 @@ There are two types of hypervisors:
 1. Embedded or hosted hypervisors, and
 2. Bare metal or native hypervisors.
 
-2161.Hypervisor Design_4.jpg
+[[./2161-hypervisor-design_42.jpg]]
 
 Hypervisors can be divided into two types:
 
@@ -104,7 +104,7 @@ yum install binutils qt gcc make patch libgomp glibc-headers glibc-devel kernel-
 #+END_EXAMPLE
 ** Install VirtualBox 5.0:
 
-Once you¡¯ve installed all the needed dependency packages, you can install latest version of VirtualBox using following command.
+Once youÂ¡Â¯ve installed all the needed dependency packages, you can install latest version of VirtualBox using following command.
 #+BEGIN_EXAMPLE
 yum install VirtualBox-5.0
 #+END_EXAMPLE
