@@ -20,7 +20,7 @@ apt-get install emacs
 yum install emacs
 #+begin_example
 
-*** How to Run Emacs:
+***  How to Run Emacs:
 - To start emacs type emacs or emacs -nw for commandline version
 #+begin_example
 emacs or emacs -nw
