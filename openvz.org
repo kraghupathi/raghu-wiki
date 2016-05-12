@@ -1,0 +1,174 @@
+* Openvz:
+OpenVZ is a container-based virtualization solution for Linux. We can
+create ¡¥n¡¦ number of Virtual machines depending upon the configuration
+of our physical system. Each virtual machine will act like a separate
+standalone physical system, and doesn¡¦t conflict with one another. The
+virtual machines created using OpenVZ can be rebooted independently.
+** System Requirements:
+1.A Processor Intel or AMD PC
+2.Atleast 128MB of RAM
+3. Hard drives with atleast 4GB free disk space
+4. Atleast 1NICs
+5. Internet connection.
+** Install Openvz:
+Add OpenVZ Repository Download OpenVZ Repository and put it in =/etc/yum.repos.d/= directory.
+#+BEGIN_EXAMPLE
+yum install wget
+wget -P /etc/yum.repos.d/ http://ftp.openvz.org/openvz.repo
+#+END_EXAMPLE
+Import OpenVZ GPG key:
+#+BEGIN_EXAMPLE
+rpm ¡Vimport http://ftp.openvz.org/RPM-GPG-Key-OpenVZ.
+#+END_EXAMPLE
+To Install OpenVZ kernel.
+#+BEGIN_EXAMPLE
+yum install vzkernel
+#+END_EXAMPLE
+Setting up Kernel parameters. Make sure you have added the following kernel parameters before logging into vz kernel.
+#+BEGIN_EXAMPLE
+vi sysctl.conf
+#+END_EXAMPLE
+Add the following lines:
+#+BEGIN_EXAMPLE
+# On Hardware Node we generally need
+ # packet forwarding enabled and proxy arp disabled
+ net.ipv4.ip_forward = 1
+ net.ipv6.conf.default.forwarding = 1
+ net.ipv6.conf.all.forwarding = 1
+ net.ipv4.conf.default.proxy_arp = 0
+ # Enables source route verification
+ net.ipv4.conf.all.rp_filter = 1
+ # Enables the magic-sysrq key
+ kernel.sysrq = 1
+ # We do not want all our interfaces to send redirects
+ net.ipv4.conf.default.send_redirects = 1
+ net.ipv4.conf.all.send_redirects = 0
+
+Disable SELinux
+Edit /etc/sysconfig/selinux file:
+emacs /etc/sysconfig/selinuxSet as disabled:
+SELINUX=disabled5. Install OpenVz usage statistics tools
+#+END_EXAMPLE
+The following tools to be installed to gather the OpenVZ usage statistics. Here is the reason why you should install these tools
+#+BEGIN_EXAMPLE
+yum install vzctl vzquota ploop.
+#+END_EXAMPLE
+That¡¦s it. We have successfully installed OpenVZ.
+* Container:
+The Virtual machines are known as Containers in OpenVZ.the main
+advantage of Containers is that they will share the resources of the
+physical machine dynamically.That means, a particular amount of RAM or
+Disk space will not be allocated to any particular container.
+** Creating Containers in Openvz:
+The list of available pre-created templates availale [[http://openvz.org/Download/template/precreated][here]] for dowbload centos minimal template
+vzctl (It is a command, which is used to manage containers)
+#+BEGIN_EXAMPLE
+cd /vz/template/cache/ 
+#+END_EXAMPLE
+which is the default directory to store the downloaded templates.
+#+BEGIN_EXAMPLE
+vzctl create 101 --ostemplate centos-7-x86_64-minimal
+#+END_EXAMPLE
+which is used to create the first virtual machine
+
+*101* ¡V Container ID (It typically starts from 100)
+
+Next, we have to setup the IP address to the Container, for example: =192.168.1.103.=
+#+BEGIN_EXAMPLE
+vzctl set 101 --ipadd 192.168.1.103 --save
+#+END_EXAMPLE
+which is used to set ip address
+#+BEGIN_EXAMPLE
+vzctl set 101 --nameserver 8.8.8.8 --save
+#+END_EXAMPLE
+which is used to assign DNS server
+#+BEGIN_EXAMPLE
+vzctl start 101
+#+END_EXAMPLE
+To start container
+#+BEGIN_EXAMPLE
+vzctl enter 101 
+#+END_EXAMPLE
+Entering the container)
+** OpenVZ Commands:
+vzlist (It is a command, which is used to list the running vpss(virtual private service))
+#+BEGIN_EXAMPLE
+vzlist -a 
+#+END_EXAMPLE
+vzctl start CTID (which is used to start container)
+#+BEGIN_EXAMPLE
+vzctl start 101 
+#+END_EXAMPLE
+vzctl stop CTID (which is used to stop container)
+#+BEGIN_EXAMPLE
+vzctl stop 101 
+#+END_EXAMPLE
+vzctl status CTID (which is used to view the status of vpps)
+#+BEGIN_EXAMPLE
+vzctl status 101 
+#+END_EXAMPLE
+vzctl enter CTID (which is used to entering container)
+#+BEGIN_EXAMPLE
+vzctl enter 101 
+#+END_EXAMPLE
+vzctl set CTID --hostname New_hostname --save (Set hostname for a Server)
+#+BEGIN_EXAMPLE
+vzctl set 101 --hostname raghu --save 
+#+END_EXAMPLE
+vzctl set CTID --ipadd xx.xx.xx.xx --save (Set IP address)
+#+BEGIN_EXAMPLE
+vzctl set 101 --ipadd 10.2.56.110 --save 
+#+END_EXAMPLE
+vzctl set CTID --ipdel xx.xx.xx.xx --save (Delete IP address)
+#+BEGIN_EXAMPLE
+vzctl set 101 --ipdel 10.2.56.110 --save 
+#+END_EXAMPLE
+vzctl set CTID --nameserver xx.xx.xx.xx --save (Add name server)
+#+BEGIN_EXAMPLE
+vzctl set 101 --nameserver 10.4.2.222 --save 
+#+END_EXAMPLE
+vzctl set CTID --userpasswd root:new_password --save (Reset userpassword and rootpassword)
+#+BEGIN_EXAMPLE
+vzctl set 101 --raghu root:xxxx --save 
+#+END_EXAMPLE
+vzctl destroy CTID (Delete container)
+#+BEGIN_EXAMPLE
+vzctl destroy 101 
+#+END_EXAMPLE
+vzctl suspend CTID (suspended container)
+#+BEGIN_EXAMPLE
+vzctl suspend 101 
+#+END_EXAMPLE
+vzctl restart 101 (To Restart container)
+#+BEGIN_EXAMPLE
+vzctl restart 101 
+#+END_EXAMPLE
+vzyum 101 -y update (Updating system)
+#+BEGIN_EXAMPLE
+vzctl 101 -y update 
+#+END_EXAMPLE
+vzyum 101 -y install <package> (To intall package)
+#+BEGIN_EXAMPLE
+vzyum 101 -y install firefox 
+#+END_EXAMPLE
+vzctl set {ctid} --ram {ram} --swap {swap} --save (Set the ram size)
+#+BEGIN_EXAMPLE
+vzctl set 101 --ram 1.2G --swap 10M --save 
+#+END_EXAMPLE
+vzctl set 101 --diskspace <disksize> --save (set diskspace)
+#+BEGIN_EXAMPLE
+vzctl set 101 --diskspace 100G --save 
+#+END_EXAMPLE
+vzctl set CTID --diskspace $SoftLimit$:$HardLimit$ --save
+#+BEGIN_EXAMPLE
+vzctl set 101 --diskspace 10G:20G --save 
+#+END_EXAMPLE
+vzctl exec 101 command (replace command with the command you need to execute)
+#+BEGIN_EXAMPLE
+vzctl exec 101 df -h 
+#+END_EXAMPLE
+(replace command with the command you need to execute)
+
+ 
+
+ 
