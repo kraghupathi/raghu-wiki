@@ -1,0 +1,59 @@
+* Regular Language:
+ Regula language is a formal language, that will support regular expression.
+* Regular Expression:
+A regular expression can be defined as a strings that represent
+several sequence of characters. One of the most important things about
+regular expressions is that they allow you to filter the output of a
+command or file, edit a section of a text or configuration file and so
+on.
+** Features of Regular Expression
+Regular expressions are made of:
+  -  *Ordinary characters* such as space, underscore =(_), A-Z, a-z, 0-9.=
+  -  *Meta characters* that are expanded to ordinary characters, they include:
+  -  *(.)* it matches any single character except a newline.
+  -  *(*)* it matches zero or more existences of the immediate character preceding it.
+  -  *[ character(s) ]* it matches any one of the characters specified in character(s), one can also use a hyphen *(-)* to mean a range of characters such as *[a-f], [1-5]*, and so on.
+  -  *^* it matches the beginning of a line in a file.
+  -  *$* matches the end of line in a file.
+  -  *\* it is an escape character.
+* Grep Command:
+grep is a command which is used to search one file or multiple files
+for lines that contain a pattern. Exit status is 0 if matches were
+found, 1 if no matches were found, and 2 if errors occurred.
+
+*Syntax:-* grep <OPTIONS> <PATTERN> <FILES>
+#+BEGIN_EXAMPLE
+$ grep ^a filename 
+#+END_EXAMPLE
+#+BEGIN_EXAMPLE
+$ grep a$ filename
+#+END_EXAMPLE
+which is used to alphabets ending of a line
+#+BEGIN_EXAMPLE
+$ grep '[[:alpha:]]\>' * filename
+#+END_EXAMPLE
+which is used to alphabets begining of a line
+#+BEGIN_EXAMPLE
+grep '\<[[:alpha:]]' * filename
+#+END_EXAMPLE
+which is used to numbers ending of a line
+#+BEGIN_EXAMPLE
+grep '[[:digit:]]\>' * filename 
+#+END_EXAMPLE
+which is used to numbers begining of a line
+#+BEGIN_EXAMPLE
+grep '\<[[:digit:]]' * filename
+#+END_EXAMPLE
+* Sed Command:
+sed is a command which is used to inline edit the file
+
+*Syntax:-* sed <OPTIONS> <SCRIPT> <INPUTFILE>
+
+'S' indicates source, 'g' option after the last slash tells sed to perform a global replace.
+#+BEGIN_EXAMPLE
+sed -e 's/aple/apple/g' filename 
+#+END_EXAMPLE
+'*' it indicates the all the charecters edit at once
+#+BEGIN_EXAMPLE
+sed -e 's/ornge*/orange/g' filename 
+#+END_EXAMPLE
