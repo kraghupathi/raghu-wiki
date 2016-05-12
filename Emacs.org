@@ -11,10 +11,15 @@
 + All the tools Emacs provides for opening, saving, searching, and processing text (and more) are available to you no matter what you're doing.
 ** Install Emacs:
 - To install emacs on linux using given following command.
+  + On Ubuntu/Debian
 #+begin_example
-Ex:= apt-get install emacs [For Linux]
-Ex:= yum install emacs [For CentOS]
+apt-get install emacs
 #+end_example
+  + On CentOS/RHEL
+#+begin_example
+yum install emacs
+#+begin_example
+
 *** How to Run Emacs:
 - To start emacs type emacs or emacs -nw for commandline version
 #+begin_example
