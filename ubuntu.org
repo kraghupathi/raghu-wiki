@@ -1,0 +1,18 @@
+#+AUTHOR : Raghupathi K
+#+TITLE : Installed Ubuntu 14.04 LTS 64 bit OS
+#+DATE : 28-April-2016
+* Procedure for installed Ubuntu 14.04 LTS 64 bit OS
+** Pre installation steps
+*** Created bootable USB pendrive using Unetbootin tool.
+*** Proceed with installed OS using above bootable pendrive.
+*** Process of created =Paritions= on hard disk
+   + Total 500 GB HDD is available
+   + Created 100 GB partition =/dev/sda1 ext4= for root =/= file system. 
+   + Created 5 GB partition =/dev/sda6 ext4= for =/tmp= directory
+   + Create 100  GB partittion =/dev/sda5 ext4= for =/home= directory.  
+   + Create 16 GB partition for =SWAP= memory.  /dev/sda7 ext4
+   + After successfully created partitions and remaining free space 279 GB.
+** Post installation steps
+*** Setting up proxy in =.bashrc= as a global settings
+*** Setting up proxy in =/etc/apt/apt.conf= for apt to work
+*** Installing packages using =apt= tool.
