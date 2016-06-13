@@ -1,0 +1,114 @@
+#+TITLE: Cloud-computing
+#+AUTHOR: Raghupathi.K
+* What is Cloud-computing?
+  - Services and solutions that are deliverd and consumed in real time over
+    internet are cloud services
+    + When you store your photos, online, use webmail or a social networking
+      site, you are using "cloud computing" service
+  - Cloud computing is a delivery model of computing services over the internet
+    + It enables real time development, deployment and delivery of broad range
+      of products, services and solutions.
+  - This cloud model is composed of five essential characteristics, three
+    service models, and four deployment models.
+** Characteristics
+  * On demand self service
+  * *Ubiquitous network access:* Anywhere, Anytime and Anydevice
+  * Location independent Resource Pooling
+  * Rapid Elasticity
+  * Pay as you go
+** Service Models:
+  * SaaS(Software as a Service)
+  * Paas(Platform as a Service)
+  * IaaS(Infrastructure as a Service)
+** Deployment Models:
+  * Private Cloud
+  * Comunity Cloud
+  * Public Cloud
+  * Hybrid Cloud
+* Supporting Factors for Cloud Computing
+  - Combined affect of following factors have made cloud computing a compelling
+    paradigm
+    + Advancement in processors
+    + Virtualization Technology
+    + Distributed Storage
+    + Automated Management
+    + Broadband internet Access
+    + Fast and Inexpensive servers
+* Evolution of Computing
+Computing has progressed through 5 key phases, over last 6 decades
+  + Mainframe
+  + PC
+  + Client Server
+  + Web Services
+  + Cloud
+* Advantages of Cloud Computing
+ * *Scalability/Elasticity*
+  + Capability to handle most sudden, temporary peaks in application demand on
+    cloud infrastructures
+ * *Cost saving/less capital expenditure*
+  + Reducing up-front IT cost or capital expenditure to buy server machines, no
+    need for hiring/training manpower.
+ * *Higher resource Utilization*
+  + Reduces the time required to provision resources to minutes, allowing
+    applications to quickly scale under-utilization both up and down, as the
+    workload changes.
+ * *Business agility*
+  + Allows business to respond to peaks/lows in demands better. E.g. Online
+    shops, which have to handle their peak loads at festival times. University
+    websites, which have to handle their peak loads during exam result time.
+ * *Disaster recovery and Back up*
+  + Cloud Services have very high availability of ~99.9999%, by proactively by
+    taking backups, having stand-by virtual resources in place and moving
+    failed instances of Virtual resources across seamlessly
+* Why use Cloud Computing?
+Clouds can provide users with a number of different benefits.
+
+Many businesses large and small use cloud computing today either directly
+(e.g. Google or Amazon) or indirectly (e.g. Twitter) instead of traditional
+on-site alternatives. There are a number of reasons why cloud computing is so
+widely used among businesses today.
+ * *Reduces TCO*
+  + Savings on Capital Investment
+  + Savings on Data Center Space, Power and Cooling
+  + Minimizes Operational costs
+ * *Up to date software* 
+  + A cloud provider will also be able to upgrade software keeping in mind
+    feedback from previous software releases.
+ * *Universal access*
+  + Cloud computing can allow remotely located employees to access applications
+    and work via the internet.
+ * *Choice of applications*
+  + This allows flexibility for cloud users to experiment and choose the best
+    option for their needs. Cloud computing also allows a business to use,
+    access and pay only for what they use, with a fast implementation time
+ * *Flexibility*
+  + Cloud computing allows users to switch applications easily and rapidly,
+    using the one that suits their needs best. However, migrating data between
+    applications can be an issue.
+ * *Potential to be greener and more economical*
+  + The average amount of energy needed for a computational action carried out
+    in the cloud is far less than the average amount for an on-site
+    deployment. This is because different organisations can share the same
+    physical resources securely, leading to more efficient use of the shared
+    resources.
+ * *Better Budget Utilization*
+  + Re-invest saved Capex on new initiatives
+  + Focus on business, not on infrastructure
+  + Save on operations manpower
+* Deployment Models:
+** Private Cloud
+  + Operated solely for an organization
+  + May be managed by the organization or a third party
+  + Limits access to enterprise and partner network
+  + Retains high degree of control, privacy and security
+** Comunity Cloud
+  + shared infrastructure by several organizations which have shared concerns
+  + May be managed by the organizations or a third party
+  + Costs are spread over fewer users than a public cloud
+** Public Cloud
+  + Owned and managed by service provider
+  + Made available to the general public or a large industry group
+** Hybrid Cloud
+  + Composition of two or more clouds (private, community, or public) bound
+    together by standardized or proprietary technology that enables data and
+    application portability
