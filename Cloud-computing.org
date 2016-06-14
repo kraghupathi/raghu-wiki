@@ -95,20 +95,167 @@ widely used among businesses today.
   + Re-invest saved Capex on new initiatives
   + Focus on business, not on infrastructure
   + Save on operations manpower
+* Cloud Computing Infrastructure
+Cloud infrastructure consists of servers, storage devices, network, cloud
+management software, deployment software, and platform virtualization.
+ * *Hypervisor*
+Hypervisor is a firmware or low-level program that acts as a Virtual Machine
+Manager. It allows to share the single physical instance of cloud resources
+between several tenants.
+
+ * *Management Software*
+It helps to maintain and configure the infrastructure.
+
+ * *Deployment Software*
+It helps to deploy and integrate the application on the cloud.
+
+ * *Network*
+It is the key component of cloud infrastructure. It allows to connect cloud
+services over the Internet. It is also possible to deliver network as a utility
+over the Internet, which means, the customer can customize the network route
+and protocol.
+
+ * *Server*
+The server helps to compute the resource sharing and offers other services such
+as resource allocation and de-allocation, monitoring the resources, providing
+security etc.
+
+ * *Storage*
+Cloud keeps multiple replicas of storage. If one of the storage resources
+fails, then it can be extracted from another one, which makes cloud computing
+more reliable.
+
+ * *Infrastructural Constraints*
+Fundamental constraints that cloud infrastructure should implement are shown in
+the following diagram:
+ * *Transparency*
+Virtualization is the key to share resources in cloud environment. But it is
+not possible to satisfy the demand with single resource or server. Therefore,
+there must be transparency in resources, load balancing and application, so
+that we can scale them on demand.
+
+ * *Scalability
+Scaling up an application delivery solution is not that easy as scaling up an application because it involves configuration overhead or even re-architecting the network. So, application delivery solution is need to be scalable which will require the virtual infrastructure such that resource can be provisioned and de-provisioned easily.
+
+ * *Intelligent Monitoring*
+To achieve transparency and scalability, application solution delivery will need to be capable of intelligent monitoring.
+
+ * *Security*
+The mega data center in the cloud should be securely architected. Also the control node, an entry point in mega data center, also needs to be secure.
 * Deployment Models:
-** Private Cloud
-  + Operated solely for an organization
-  + May be managed by the organization or a third party
-  + Limits access to enterprise and partner network
-  + Retains high degree of control, privacy and security
-** Comunity Cloud
-  + shared infrastructure by several organizations which have shared concerns
-  + May be managed by the organizations or a third party
-  + Costs are spread over fewer users than a public cloud
 ** Public Cloud
-  + Owned and managed by service provider
-  + Made available to the general public or a large industry group
+Public Cloud allows systems and services to be easily accessible to general
+public. The IT giants such as Google, Amazon and Microsoft offer cloud services
+via Internet. The Public Cloud Model is shown in the diagram below.
+*** Benefits
+There are many benefits of deploying cloud as public cloud model. The following
+diagram shows some of those benefits:
+ * *Cost Effective*
+Since public cloud shares same resources with large number of customers it turns out inexpensive.
+
+ * *Reliability*
+The public cloud employs large number of resources from different locations. If any of the resources fails, public cloud can employ another one.
+
+ * *Flexibility*
+The public cloud can smoothly integrate with private cloud, which gives customers a flexible approach.
+
+ * *Location Independence*
+Public cloud services are delivered through Internet, ensuring location independence.
+
+ * *Utility Style Costing*
+Public cloud is also based on pay-per-use model and resources are accessible whenever customer needs them.
+
+ * *High Scalability*
+Cloud resources are made available on demand from a pool of resources, i.e., they can be scaled up or down according the requirement.
+
+*** Disadvantages
+Here are some disadvantages of public cloud model:
+
+ * *Low Security*
+In public cloud model, data is hosted off-site and resources are shared publicly, therefore does not ensure higher level of security.
+
+ * *Less Customizable*
+It is comparatively less customizable than private cloud.
+** Private Cloud
+Private Cloud allows systems and services to be accessible within an
+organization. The Private Cloud is operated only within a single
+organization. However, it may be managed internally by the organization itself
+or by third-party. The private cloud model is shown in the diagram below.
+*** Benefits
+There are many benefits of deploying cloud as private cloud model. The
+following diagram shows some of those benefits:
+
+ * *High Security and Privacy*
+Private cloud operations are not available to general public and resources are shared from distinct pool of resources. Therefore, it ensures high security and privacy.
+
+ * *More Control*
+The private cloud has more control on its resources and hardware than public cloud because it is accessed only within an organization.
+
+ * *Cost and Energy Efficiency*
+The private cloud resources are not as cost effective as resources in public clouds but they offer more efficiency than public cloud resources.
+
+*** Disadvantages
+Here are the disadvantages of using private cloud model:
+
+ * *Restricted Area of Operation*
+The private cloud is only accessible locally and is very difficult to deploy globally.
+
+ * *High Priced*
+Purchasing new hardware in order to fulfill the demand is a costly transaction.
+
+ * *Limited Scalability*
+The private cloud can be scaled only within capacity of internal hosted resources.
+
+ * *Additional Skills*
+In order to maintain cloud deployment, organization requires skilled expertise.
+** Comunity Cloud
+Community Cloud allows system and services to be accessible by group of
+organizations. It shares the infrastructure between several organizations from
+a specific community. It may be managed internally by organizations or by the
+third-party. The Community Cloud Model is shown in the diagram below.
+*** Benefits
+There are many benefits of deploying cloud as community cloud model.
+ * *Cost Effective*
+Community cloud offers same advantages as that of private cloud at low cost.
+
+ * *Sharing Among Organizations*
+Community cloud provides an infrastructure to share cloud resources and capabilities among several organizations.
+
+ * *Security*
+The community cloud is comparatively more secure than the public cloud but less secured than the private cloud.
+
+ * *Issues*
+  + Since all data is located at one place, one must be careful in storing data
+    in community cloud because it might be accessible to others.
+
+  + It is also challenging to allocate responsibilities of governance, security
+    and cost among organizations.
 ** Hybrid Cloud
-  + Composition of two or more clouds (private, community, or public) bound
-    together by standardized or proprietary technology that enables data and
-    application portability
+Hybrid Cloud is a mixture of public and private cloud. Non-critical activities
+are performed using public cloud while the critical activities are performed
+using private cloud. The Hybrid Cloud Model is shown in the diagram below.
+*** Benefits
+There are many benefits of deploying cloud as hybrid cloud model. The following
+diagram shows some of those benefits:
+ * *Scalability*
+It offers features of both, the public cloud scalability and the private cloud
+scalability.
+
+ * *Flexibility*
+It offers secure resources and scalable public resources.
+
+ * *Cost Efficiency*
+Public clouds are more cost effective than private ones. Therefore, hybrid clouds can be cost saving.
+
+ * *Security*
+The private cloud in hybrid cloud ensures higher degree of security.
+
+*** Disadvantages
+ * *Networking Issues*
+Networking becomes complex due to presence of private and public cloud.
+
+ * *Security Compliance*
+It is necessary to ensure that cloud services are compliant with security policies of the organization.
+
+ *Infrastructure Dependency*
+The hybrid cloud model is dependent on internal IT infrastructure, therefore it is necessary to ensure redundancy across data centers.
