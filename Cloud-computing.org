@@ -10,6 +10,7 @@
       of products, services and solutions.
   - This cloud model is composed of five essential characteristics, three
     service models, and four deployment models.
+[[./Cloud-computing.jpg]]
 ** Characteristics
   * On demand self service
   * *Ubiquitous network access:* Anywhere, Anytime and Anydevice
@@ -25,6 +26,7 @@
   * Comunity Cloud
   * Public Cloud
   * Hybrid Cloud
+[[./Deployment-models2.png]]
 * Supporting Factors for Cloud Computing
   - Combined affect of following factors have made cloud computing a compelling
     paradigm
@@ -98,6 +100,7 @@ widely used among businesses today.
 * Cloud Computing Infrastructure
 Cloud infrastructure consists of servers, storage devices, network, cloud
 management software, deployment software, and platform virtualization.
+[[./cloud_computing-cloud_infrastructural_components.jpg]]
  * *Hypervisor*
 Hypervisor is a firmware or low-level program that acts as a Virtual Machine
 Manager. It allows to share the single physical instance of cloud resources
@@ -128,13 +131,14 @@ more reliable.
  * *Infrastructural Constraints*
 Fundamental constraints that cloud infrastructure should implement are shown in
 the following diagram:
+[[./cloud_computing-cloud_infrastructural_constraints.jpg]]
  * *Transparency*
 Virtualization is the key to share resources in cloud environment. But it is
 not possible to satisfy the demand with single resource or server. Therefore,
 there must be transparency in resources, load balancing and application, so
 that we can scale them on demand.
 
- * *Scalability
+ * *Scalability*
 Scaling up an application delivery solution is not that easy as scaling up an application because it involves configuration overhead or even re-architecting the network. So, application delivery solution is need to be scalable which will require the virtual infrastructure such that resource can be provisioned and de-provisioned easily.
 
  * *Intelligent Monitoring*
@@ -147,9 +151,11 @@ The mega data center in the cloud should be securely architected. Also the contr
 Public Cloud allows systems and services to be easily accessible to general
 public. The IT giants such as Google, Amazon and Microsoft offer cloud services
 via Internet. The Public Cloud Model is shown in the diagram below.
+[[./cloud_computing-public_cloud_model.jpg]]
 *** Benefits
 There are many benefits of deploying cloud as public cloud model. The following
 diagram shows some of those benefits:
+[[./cloud_computing-public_cloud_model_benefits.jpg]]
  * *Cost Effective*
 Since public cloud shares same resources with large number of customers it turns out inexpensive.
 
@@ -181,9 +187,11 @@ Private Cloud allows systems and services to be accessible within an
 organization. The Private Cloud is operated only within a single
 organization. However, it may be managed internally by the organization itself
 or by third-party. The private cloud model is shown in the diagram below.
+[[./cloud_computing-private_cloud_model.jpg]]
 *** Benefits
 There are many benefits of deploying cloud as private cloud model. The
 following diagram shows some of those benefits:
+[[./cloud_computing-private_cloud_model_benefits.jpg]]
 
  * *High Security and Privacy*
 Private cloud operations are not available to general public and resources are shared from distinct pool of resources. Therefore, it ensures high security and privacy.
@@ -213,8 +221,10 @@ Community Cloud allows system and services to be accessible by group of
 organizations. It shares the infrastructure between several organizations from
 a specific community. It may be managed internally by organizations or by the
 third-party. The Community Cloud Model is shown in the diagram below.
+[[./cloud_computing-community_cloud_model.jpg]]
 *** Benefits
 There are many benefits of deploying cloud as community cloud model.
+[[./community_cloud_model_benefits.jpg]]
  * *Cost Effective*
 Community cloud offers same advantages as that of private cloud at low cost.
 
@@ -234,9 +244,11 @@ The community cloud is comparatively more secure than the public cloud but less 
 Hybrid Cloud is a mixture of public and private cloud. Non-critical activities
 are performed using public cloud while the critical activities are performed
 using private cloud. The Hybrid Cloud Model is shown in the diagram below.
+[[./cloud_computing-hybrid_cloud_model.jpg]]
 *** Benefits
 There are many benefits of deploying cloud as hybrid cloud model. The following
 diagram shows some of those benefits:
+[[./cloud_computing-hybrid_cloud_model_benefits.jpg]]
  * *Scalability*
 It offers features of both, the public cloud scalability and the private cloud
 scalability.
