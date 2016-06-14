@@ -21,6 +21,7 @@
   * SaaS(Software as a Service)
   * Paas(Platform as a Service)
   * IaaS(Infrastructure as a Service)
+[[./Service models.png]]
 ** Deployment Models:
   * Private Cloud
   * Comunity Cloud
@@ -203,6 +204,7 @@ needs.
   + PaaS providers can assist developers from the conception of their original
     ideas to the creation of applications, and through to testing and
     deployment.
+[[./PaaS.png]]
 *** Key PaaS Offerings:
   + Operating system
   + Server-side scripting environment
@@ -236,12 +238,14 @@ needs.
      application build.
   * *Security*
    + Security is provided, including data security and backup and recovery.
+[[./Paas_benfits.png]]
 *** PaaS examples
 AWS Elastic Beanstalk, Cloud Foundry, CloudControl, Cloudera, EngineYard,
 Google App Engine
 ** IaaS(Infrastructure as a Service) 
 IaaS also known as HaaS (Hardware as a Service) provides access to computing
 resource in a virtualised environment:
+[[./IaaS.png]]
 
   + Virtual server space, network connections, bandwidth, IP addresses and load
     balancers.
@@ -253,6 +257,7 @@ resource in a virtualised environment:
     machines enables what seems like multiple computers to run in a single
     physical computer, enabling the virtual computers to share the physical
     computer's hardware resources.
+[[./Hypervisor.png]]
   * *Virtualization*- Virtualization is the creation of flexible substitutes
     for actual resources. The substitutes, called virtual resources, have the
     same functions and external interfaces as their actual counterparts but
@@ -276,6 +281,7 @@ resource in a virtualised environment:
     + *Type 2:* Also called ‘Hosted’ Hypervisor - that require a Host OS to run.
 
     E.g. VMware Workstation, VirtualBox, bhyve and KVM.
+[[./Type1 &2 hypervisor.png]]
 *** Virtual Machine and Virtual Appliances
   * *Virtual Machine:* A virtual machine behaves like a real machine, so that
     an OS, or other program written to run alone on a real machine, when
@@ -291,6 +297,7 @@ resource in a virtualised environment:
     of virtual appliances is the Open Virtualization Format (OVF), published by
     the Distributed Management Task Force (DMTF). Member companies such as IBM,
     VMware, Citrix, Microsoft, and Oracle all support OVF in their products.
+[[./virtual-application.png]]
 *** Cloud Mechanism: Auto Scaling
   * *Auto Scaling*
    + User creates a Virtual Server.
@@ -298,12 +305,13 @@ resource in a virtualised environment:
    + Virtual Server usage increases above 80% of CPU capacity > 60 Sec
    + Automated Scaling Listner running at Hypervisor detects need to scale-up
      and commands VIM accordingly
+[[./autoscaling.png]]
 *** IaaS Examples
 Amazon Elastic Cloud Compute (Amazon EC2), Amazon Simple Storage Service
 (Amazon S3), Rackspace Cloud Servers, GoGrid, Joyent, and AppNexus
 ** Example Cloud Services
   * *Cloud Services*
-
+[[./cloud-services.png]]
 * Deployment Models:
 ** Public Cloud
 Public Cloud allows systems and services to be easily accessible to general
