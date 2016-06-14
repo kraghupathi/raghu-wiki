@@ -10,7 +10,7 @@
       of products, services and solutions.
   - This cloud model is composed of five essential characteristics, three
     service models, and four deployment models.
-    [[./Cloud-computing.jpg]]
+[[./Cloud-computing.jpg]]
 ** Characteristics
   * On demand self service
   * *Ubiquitous network access:* Anywhere, Anytime and Anydevice
