@@ -146,6 +146,164 @@ To achieve transparency and scalability, application solution delivery will need
 
  * *Security*
 The mega data center in the cloud should be securely architected. Also the control node, an entry point in mega data center, also needs to be secure.
+* Service Models
+** SaaS(Software as a Service)
+  + Software as a Service (SaaS) is a software distribution model in which
+    applications are hosted by a vendor or service provider and made available
+    to customers over the network.
+  + Software vendors host and maintain the servers, databases and code that
+    constitute an application
+  + Allows buyers to pay an annual or monthly subscription fee, which typically
+    includes the software license, support and most other fees. A major benefit
+    of SaaS is being able to spread out costs over time
+*** Characteristics:
+  * *A multitenant architecture:* in which all users and applications share a
+    single, common infrastructure and code base that is centrally maintained.
+  * *Easy Customization:* The ability for each user to easily customize
+    applications to fit their business processes without affecting the common
+    infrastructure
+  * *Better Access:* Improved access to data from any networked device
+  * *Harnesses Web:* Anyone familiar with Amazon.com or My Yahoo! will be
+    familiar with the Web interface of typical SaaS applications
+  * *Updates are automated:* whenever there is an update it is available online
+    to existing customers, often free of charge. No new software will be
+    required as it often is with other types of applications and the updates
+    will usually be deployed automatically by the cloud provider.
+  * *Cross device compatibility:* SaaS applications can be accessed via any
+    internet enabled device, which makes it ideal for those who use a number of
+    different devices, such as internet enabled phones and tablets, and those
+    who don¡¦t always use the same computer.
+  * SaaS offers share data model. Therefore, multiple users can share single
+    instance of infrastructure. It is not required to hard code the
+    functionality for individual users.
+*** Benefits
+Using SaaS has proved to be beneficial in terms of scalability, efficiency, performance and much more. Some of the
+benefits are listed below:
+  + Modest Software Tools
+  + Efficient use of Software Licenses
+  + Centralized Management & Data
+  + Platform responsibilities managed by provider
+  + Multitenant solutions
+*** SaaS Examples
+Google ¡V Mail, Drive Calendar etc., Twitter, Facebook and Flickr etc. are all
+examples of SaaS, with users able to access the services via any internet
+enabled device. Enterprise users are able to use applications for a range of
+needs.
+** Paas(Platform as a Service)
+  + PaaS is a category of cloud computing that provides a platform and
+    environment to allow developers to build applications
+  + Allows users to create software applications using tools supplied by the
+    provider. PaaS services can consist of preconfigured features that
+    customers can subscribe to; they can choose to include the features that
+    meet their requirements
+  + The infrastructure and applications are managed for customers and support
+    is available.
+  + Services are constantly updated, with existing features upgraded and
+    additional features added.
+  + PaaS providers can assist developers from the conception of their original
+    ideas to the creation of applications, and through to testing and
+    deployment.
+*** Key PaaS Offerings:
+  + Operating system
+  + Server-side scripting environment
+  + Database management system
+  + Server Software
+  + Support
+  + Storage
+  + Network access
+  + Tools for design and development
+  + Hosting
+*** PaaS Advantages
+  * *No investiment in Infrastructure:*
+   + Being able to ‘rent’ virtual infrastructure has both cost benefits and
+     practical benefits.
+   + No need to purchase hardware or employ the expertise to manage it. Focus
+     on the development of applications.
+  * *Makes Development/Quality Content Creation possible for ‘non-experts’*
+   + With some PaaS offerings anyone can develop an application. They can
+     simply do this through their web browser utilising one-click functionality.
+   + Salient examples of this are one-click blog software installs such as
+     WordPress.
+  * *Flexibility*
+   + Customers can have control over the tools that are installed within their
+     platforms or create a platform that suits their specific requirements.
+   + Allows to ‘pick and choose’ the features that are necessary.
+  * *Adaptability*
+   + Features can be changed if circumstances dictate that they should.
+   + Teams in various locations can work together; as an internet connection
+     and web browser are all that is required
+   + Developers spread across several locations can work together on the same
+     application build.
+  * *Security*
+   + Security is provided, including data security and backup and recovery.
+*** PaaS examples
+AWS Elastic Beanstalk, Cloud Foundry, CloudControl, Cloudera, EngineYard,
+Google App Engine
+** IaaS(Infrastructure as a Service) 
+IaaS also known as HaaS (Hardware as a Service) provides access to computing
+resource in a virtualised environment:
+
+  + Virtual server space, network connections, bandwidth, IP addresses and load
+    balancers.
+  + Physically, the pool of hardware resource is pulled from a multitude of
+    servers and networks usually distributed across numerous users/clients.
+  * *Hypervisor* - also known as a virtualization manager, virtual machine
+    monitor (VMM), or platform virtualizer - is a specialized operating system
+    that only runs virtual machines. A hypervisor running multiple virtual
+    machines enables what seems like multiple computers to run in a single
+    physical computer, enabling the virtual computers to share the physical
+    computer's hardware resources.
+  * *Virtualization*- Virtualization is the creation of flexible substitutes
+    for actual resources. The substitutes, called virtual resources, have the
+    same functions and external interfaces as their actual counterparts but
+    that differ in attributes such as size, performance, and cost.
+  * Virtualization is commonly applied to physical hardware resources by
+    combining multiple physical resources into shared pools from which users
+    receive virtual resources. With virtualization, you can make one physical
+    resource look like multiple virtual resources. The virtual resources can
+    have functions or features that are not available in their underlying
+    physical resources.
+  * System virtualization is most commonly implemented with hypervisor
+    technology.
+  * Hypervisors are software or firmware components that can virtualize system
+    resources
+  * There are broadly two types of hypervisors:
+    + *Type 1:* Also called ‘Native’ or ‘bare metal’ Hyper visors - that run
+      directly on HW. 
+
+    E.g. Oracle VM Server for SPARC, Oracle VM Server for x86, the Citrix
+    XenServer, VMware ESX/ESXi and Microsoft Hyper-V 2008/2012.
+    + *Type 2:* Also called ‘Hosted’ Hypervisor - that require a Host OS to run.
+
+    E.g. VMware Workstation, VirtualBox, bhyve and KVM.
+*** Virtual Machine and Virtual Appliances
+  * *Virtual Machine:* A virtual machine behaves like a real machine, so that
+    an OS, or other program written to run alone on a real machine, when
+    running on the Virtual Machine, acts as if it is running on a real bare
+    machine by itself.
+  * *Virtual Appliance:* A virtual appliance or virtual application represents
+    a pre-configured VM, or a collection of pre-configured, interdependent VMs,
+    each bundled with a fully-functional OS (operating system), known as a
+    guest OS, and one or more applications.
+  * Virtual appliances are portable, self-contained configurations of a
+    software stack. They are also called virtual images and are usually built
+    to host a single business application. The industry standard for the format
+    of virtual appliances is the Open Virtualization Format (OVF), published by
+    the Distributed Management Task Force (DMTF). Member companies such as IBM,
+    VMware, Citrix, Microsoft, and Oracle all support OVF in their products.
+*** Cloud Mechanism: Auto Scaling
+  * *Auto Scaling*
+   + User creates a Virtual Server.
+   + Virtual Infrastructure Manager (VIM) allocates Physical Server
+   + Virtual Server usage increases above 80% of CPU capacity > 60 Sec
+   + Automated Scaling Listner running at Hypervisor detects need to scale-up
+     and commands VIM accordingly
+*** IaaS Examples
+Amazon Elastic Cloud Compute (Amazon EC2), Amazon Simple Storage Service
+(Amazon S3), Rackspace Cloud Servers, GoGrid, Joyent, and AppNexus
+** Example Cloud Services
+  * *Cloud Services*
+
 * Deployment Models:
 ** Public Cloud
 Public Cloud allows systems and services to be easily accessible to general
