@@ -157,6 +157,7 @@ The mega data center in the cloud should be securely architected. Also the contr
   + Allows buyers to pay an annual or monthly subscription fee, which typically
     includes the software license, support and most other fees. A major benefit
     of SaaS is being able to spread out costs over time
+[[./SaaS.jpg]]
 *** Characteristics:
   * *A multitenant architecture:* in which all users and applications share a
     single, common infrastructure and code base that is centrally maintained.
@@ -173,7 +174,7 @@ The mega data center in the cloud should be securely architected. Also the contr
   * *Cross device compatibility:* SaaS applications can be accessed via any
     internet enabled device, which makes it ideal for those who use a number of
     different devices, such as internet enabled phones and tablets, and those
-    who don¡¦t always use the same computer.
+    who don't always use the same computer.
   * SaaS offers share data model. Therefore, multiple users can share single
     instance of infrastructure. It is not required to hard code the
     functionality for individual users.
@@ -186,7 +187,7 @@ benefits are listed below:
   + Platform responsibilities managed by provider
   + Multitenant solutions
 *** SaaS Examples
-Google ¡V Mail, Drive Calendar etc., Twitter, Facebook and Flickr etc. are all
+Google-Mail, Drive Calendar etc., Twitter, Facebook and Flickr etc. are all
 examples of SaaS, with users able to access the services via any internet
 enabled device. Enterprise users are able to use applications for a range of
 needs.
