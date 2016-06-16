@@ -320,7 +320,3 @@ docker attach 61186887519b
 Here, *61186887519b* is the ID of the running container.
 
 To stop the container, type *exit* from that Container’s bash shell.
-
-
-
-h
