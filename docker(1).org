@@ -1,0 +1,326 @@
+* Docker
+Docker is lightweight and fast platform that provides a viable, cost-effective
+alternative to hypervisor-based virtual machines. This is perfectly suitable
+for development environments.
+
+The developers can write any code of their choice inside the containers, and
+then share them to the other developers later via Docker for testing. Once the
+testing is done, the codes or applications can be pushed to the production
+environment and you can start deploying and using the applications in real
+time.
+
+You can run the Docker containers on any physical system, or Virtual machines,
+or in any Cloud platforms. Docker will run on almost all modern operating
+systems like GNU/Linux, Mac OS, and Windows etc. Moreover, Docker will run
+Cloud platforms like Amazon EC2, Rackspace Cloud, Google Cloud, and IBM
+softlayer etc.
+* Terminology
+The following list contains important terminology and introduces you to certain fundamental concepts of Docker.  
+
+*cgroups:* Control Groups is a Linux kernel feature that allows
+aggregating or partitioning tasks (processes) and all their children
+into hierarchically organized groups to isolate resources.
+
+ *Image:* A virtual machine on the host server that can run any Linux
+  system, for example SUSE Linux Enterprise Server, SUSE Linux
+  Enterprise Desktop, or openSUSE. A Docker image is made by a series
+  of layers built one over the other. Each layer corresponds to a
+  permanent change committed from a container to the image. For more
+  details, see the official Docker documentation at [[https://docs.docker.com/engine/reference/glossary/#image/][here]]
+
+*Image Name:* A name that refers to an image. The name is used by the Docker commands.
+
+*Container:* The standard unit in which the application service resides. At run, the image is turned into a container.
+
+*Container ID:* An ID that refers to a particular container. The ID is used by the Docker commands.
+
+*Tag:* A string associated with an image. It is commonly used to
+ identify a specific version of an image (similar to tags in version
+ control systems). It is also possible to refer to the same image with
+ different tags.
+
+*Kernel Namespaces:* Namespaces are a kernel feature to isolate some
+ resources like network, users, and others for a group of processes.
+
+*Docker Host Server:* The system that runs the Docker daemon, and provides images and management control capabilities through cgrous.
+
+*Registry:* A service where Docker images are stored, managed and distributed
+
+*Repository:* Place where all the versions of a Docker image are kept.
+
+* Benfits Of Docker
+  + Isolation of applications and operating systems through containers.
+  + Near native performance, as Docker manages allocation of resources in real time.
+  + Controls network interfaces and resources available inside containers through cgroups.
+  + Versioning of images.
+  + Allows building new images based on existing ones.
+  + Docker Hub allows sharing and storing of images on [[https://docs.docker.com/docker-hub/][public]] or [[https://docs.docker.com/engine/userguide/containers/dockerrepos/][private]] repositories.
+* Limitations of Docker
+  + Containers run inside the host system's kernel and cannot use a different kernel.
+  + Only allows Linux guest operating systems
+  + Docker is not a full virtualization stack like Xen, KVM, or libvirt
+  + Security depends on the host system. Refer to the [[https://docs.docker.com/engine/security/security/][official security documentation]] for more details.
+* Better than VMs
+A common method for distributing applications and sandboxing their
+execution is to use virtual machines, or VMs. Typical VM formats are
+VMware's vmdk, Oracle VirtualBox's vdi, and Amazon EC2's ami. In theory
+these formats should allow every developer to automatically package
+their application into a "machine" for easy distribution and deployment.
+In practice, that almost never happens, for a few reasons:
+
+  * *Size*: VMs are very large which makes them impractical to store
+     and transfer.
+  * *Performance*: running VMs consumes significant CPU and memory,
+    which makes them impractical in many scenarios, for example local
+    development of multi-tier applications, and large-scale deployment
+    of cpu and memory-intensive applications on large numbers of
+    machines.
+  * *Portability*: competing VM environments don't play well with each
+     other. Although conversion tools do exist, they are limited and
+     add even more overhead.
+  * *Hardware-centric*: VMs were designed with machine operators in
+    mind, not software developers. As a result, they offer very
+    limited tooling for what developers need most: building, testing
+    and running their software. For example, VMs offer no facilities
+    for application versioning, monitoring, configuration, logging or
+    service discovery.
+
+By contrast, Docker relies on a different sandboxing method known as
+*containerization*. Unlike traditional virtualization, containerization takes
+place at the kernel level. Most modern operating system kernels now support the
+primitives necessary for containerization, including Linux with [[https://openvz.org][OpenVZ]], [[http://linux-vserver.org][vserver]]
+and more recently [[https://linuxcontainers.org/][LXC]], Solaris with [[https://docs.oracle.com/cd/E26502_01/html/E29024/preface-1.html#scrolltoc][zones]], and FreeBSD with [[https://www.freebsd.org/doc/handbook/jails.html][jails]].
+
+Docker builds on top of these low-level primitives to offer developers a
+portable format and runtime environment that solves all four problems.
+Docker containers are small (and their transfer can be optimized with
+layers), they have basically zero memory and cpu overhead, they are
+completely portable, and are designed from the ground up with an
+application-centric design.
+
+Perhaps best of all, because Docker operates at the OS level, it can still be
+run inside a VM!
+
+This tutorial describes you how to install and use Docker on Debian(Jessie). 
+* Prerequisites
+To check your current kernel version, open a terminal and use =uname -r= to
+display your kernel version:
+#+BEGIN_EXAMPLE
+ $ uname -r
+#+END_EXAMPLE
+Additionally, for users of Debian, backports must be available. To
+enable backports in Jessie:
+
+1.Log into your machine and open a terminal with =sudo= or =root= privileges.
+
+2.Open the =/etc/apt/sources.list.d/backports.list= file in your favorite
+   editor.
+
+   If the file doesn¡¯t exist, create it.
+
+3.Remove any existing entries.
+
+4.Add an entry for backports on Debian.
+
+An example entry:
+#+BEGIN_EXAMPLE
+deb http://http.debian.net/debian wheezy-backports main
+#+END_EXAMPLE
+5.Update package information, ensure that APT works with the https method, and
+   that CA certificates are installed.
+#+BEGIN_EXAMPLE
+$ apt-get update
+$ apt-get install apt-transport-https ca-certificates
+#+END_EXAMPLE
+6.Add the new GPG key.
+#+BEGIN_EXAMPLE
+$ apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+#+END_EXAMPLE
+7.Open the =/etc/apt/sources.list.d/docker.list= file in your favorite editor.
+
+If the file doesn¡¯t exist, create it.
+
+8.Remove any existing entries.
+
+9.Add an entry for your Debian operating system.
+
+The possible entries are:
+  + On Debian Wheezy
+#+BEGIN_EXAMPLE
+deb https://apt.dockerproject.org/repo debian-wheezy main
+#+END_EXAMPLE
+  + On Debian Jessie
+#+BEGIN_EXAMPLE
+deb https://apt.dockerproject.org/repo debian-jessie main
+#+END_EXAMPLE
+10.Save and close the file.
+
+11.Update the APT package index.
+#+BEGIN_EXAMPLE
+$ apt-get update
+#+END_EXAMPLE
+* Install Docker on Debain
+Before installing Docker, make sure you have set your =APT= repository
+correctly as described in the prerequisites.
+
+1.Install Docker.
+#+BEGIN_EXAMPLE
+$ sudo apt-get install docker-engine
+#+END_EXAMPLE
+2.Start the docker daemon.
+#+BEGIN_EXAMPLE
+$ sudo service docker start
+#+END_EXAMPLE
+3.Verify docker is installed correctly.
+#+BEGIN_EXAMPLE
+$ sudo docker run hello-world
+#+END_EXAMPLE
+This command downloads a test image and runs it in a container. When the
+container runs, it prints an informational message. Then, it exits.
+* Usage
+** Creating New Containers
+Docker usage is as simple as LXC. First, let us download the Ubuntu image and
+create a Ubuntu container.
+
+To do that, switch to root user and run the following command from the
+Terminal:
+#+BEGIN_EXAMPLE
+docker pull ubuntu
+#+END_EXAMPLE
+Sample Output:
+#+BEGIN_EXAMPLE
+Pulling repository ubuntu
+75204fdb260b: Pulling image (utopic) from ubuntu, endpoint: https://cdn-registry-1.docker.io/v1/
+195eb90b5349: Pulling image (saucy) from ubuntu, endpoint: https://cdn-registry-1.docker.io/v1/
+3db9c44f4520: Pulling image (lucid) from ubuntu, endpoint: https://cdn-registry-1.docker.io/v1/
+463ff6be4238: Pulling image (13.04) from ubuntu, endpoint: https://cdn-registry-75204fdb260b: Pulling dependent layers
+195eb90b5349: Pulling dependent layers
+3db9c44f4520: Downloading 39.62 MB/63.51 MB 11m53s
+463ff6be4238: Downloading 16.95 MB/18.11 MB 35s
+463ff6be4238: Downloading 17.32 MB/18.11 MB 24s
+463ff6be4238: Downloading 17.51 MB/18.11 MB 18s
+822a01ae9a15: Pulling dependent layers
+3db9c44f4520: Downloading 40.68 MB/63.51 MB 11m10s
+463ff6be4238: Download complete
+c5881f11ded9: Pulling fs layer
+3db9c44f4520: Downloading 42.26 MB/63.51 MB 10m6s
+c5881f11ded9: Download complete
+cc58e55aa5a5: Download complete
+f127542f0b61: Download complete
+6cfa4d1f33fb: Download complete
+bac448df371d: Download complete
+3af9d794ad07: Download complete
+af82eb377801: Download complete
+93c381d2c255: Download complete
+b7c6da90134e: Download complete
+47dd6d11a49f: Download complete
+a5208e800234: Download complete
+f33dbb8bc20e: Download complete
+9fccf650672f: Download complete
+1186c90e2e28: Download complete
+92ac38e49c3e: Download complete
+dfaad36d8984: Download complete
+fae16849ebe2: Download complete
+aa822e26d727: Download complete
+f6a1afb93adb: Download complete
+5796a7edb16b: Download complete
+0f4aac48388f: Download complete
+31db3b10873e: Download complete
+209ea56fda6d: Download complete
+#+END_EXAMPLE
+The above command will first look for the ubuntu images from the localhost
+itself. If images are not available locally, then it pull the latest images
+from the [[https://hub.docker.com/][Docker hub]].
+
+If you want to build a CentOS container, then pull the centos image instead:
+#+BEGIN_EXAMPLE
+docker pull centos
+#+END_EXAMPLE
+To list all downloaded Docker images, run the following command:
+#+BEGIN_EXAMPLE
+docker images
+#+END_EXAMPLE
+Sample Output:
+#+BEGIN_EXAMPLE
+ REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+ubuntu              14.04               c4ff7513909d        2 days ago          225.4 MB
+ubuntu              trusty              c4ff7513909d        2 days ago          225.4 MB
+ubuntu              latest              c4ff7513909d        2 days ago          225.4 MB
+ubuntu              14.04.1             c4ff7513909d        2 days ago          225.4 MB
+ubuntu              utopic              75204fdb260b        2 days ago          230.1 MB
+ubuntu              14.10               75204fdb260b        2 days ago          230.1 MB
+ubuntu              precise             822a01ae9a15        2 days ago          108.1 MB
+ubuntu              12.04.5             822a01ae9a15        2 days ago          108.1 MB
+ubuntu              12.04               822a01ae9a15        2 days ago          108.1 MB
+ubuntu              12.10               c5881f11ded9        8 weeks ago         172.2 MB
+ubuntu              quantal             c5881f11ded9        8 weeks ago         172.2 MB
+ubuntu              13.04               463ff6be4238        8 weeks ago         169.4 MB
+ubuntu              raring              463ff6be4238        8 weeks ago         169.4 MB
+ubuntu              13.10               195eb90b5349        8 weeks ago         184.7 MB
+ubuntu              saucy               195eb90b5349        8 weeks ago         184.7 MB
+ubuntu              10.04               3db9c44f4520        3 months ago        183 MB
+ubuntu              lucid               3db9c44f4520        3 months ago        183 MB
+#+END_EXAMPLE
+The above images have been built by someone else on the Docker community. The
+downloaded images will be saved locally in the =/var/lib/docker/= directory.
+
+After downloading the Docker images, let us run the new Container by entering the following command:
+#+BEGIN_EXAMPLE
+docker run -t -i ubuntu:14.04.1 /bin/bash
+#+END_EXAMPLE
+Where,
+
+ *-t :* Assigns a pseudo-tty or terminal inside our new container.
+
+*-i :* Allows us to make an interactive connection by grabbing the standard in (STDIN) of the container.
+
+*/bin/bash :* This will launch a Bash shell inside our container.
+
+*ubuntu:14.04.1 :* Launches the container running latest Ubuntu 14.04.1 image.
+
+Or, you can run a Container by using the Image id also.
+#+BEGIN_EXAMPLE
+docker run -t -i c4ff7513909d /bin/bash
+#+END_EXAMPLE
+Here, *c4ff7513909d* is the Ubuntu 14.04.1 Image id.
+
+To run Ubuntu 14.10 container:
+#+BEGIN_EXAMPLE
+docker run -t -i ubuntu:14.10 /bin/bash
+#+END_EXAMPLE
+Likewise, you can run Ubuntu 13.10 container:
+#+BEGIN_EXAMPLE
+docker run -t -i ubuntu:13.10 /bin/bash
+#+END_EXAMPLE
+The above commands will let you to login to the container.
+#+BEGIN_EXAMPLE
+root@61186887519b:/#
+#+END_EXAMPLE
+Now, you can use the container to build your applications.
+
+To return back to your original host’s Terminal without quiting the Container, press *ctrl+p*, following by *ctrl+q key*.
+
+To view the running Docker containers, run the following command:
+#+BEGIN_EXAMPLE
+docker ps
+#+END_EXAMPLE
+Sample Output:
+#+BEGIN_EXAMPLE
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+61186887519b        ubuntu:14.04        /bin/bash           20 minutes ago      Up 20 minutes                           jovial_archimedes
+#+END_EXAMPLE
+To view all containers, use the flag "*-a*".
+#+BEGIN_EXAMPLE
+docker ps -a
+#+END_EXAMPLE
+If you want to attach back to the running container, run the following command:
+#+BEGIN_EXAMPLE
+docker attach 61186887519b
+#+END_EXAMPLE
+Here, *61186887519b* is the ID of the running container.
+
+To stop the container, type *exit* from that Container’s bash shell.
+
+
+
+h
