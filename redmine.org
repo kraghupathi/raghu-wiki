@@ -2,12 +2,12 @@
 ** Manual installation
 For basic redmine installation of redmine 2.6.2 with default set of
 plugins use following steps:
-1. Use 'yum -y install ruby rubygems mysql-server mysql-devel
-   ImageMagick gcc ruby-devel ruby-RMagick ImageMagick-devel' to
+1. Use =yum -y install ruby rubygems mysql-server mysql-devel
+   ImageMagick gcc ruby-devel ruby-RMagick ImageMagick-devel= to
    install various packages.
 2. If access to Internet is forced through a proxy server, then
-   configure proxy using something similar to "export
-   http_proxy='http://<proxy-fqdn>:<proxy-port>/'".
+   configure proxy using something similar to =export
+   http_proxy='http://<proxy-fqdn>:<proxy-port>/'=.
 3. Use following commands for install bundler, downloading redmine
    sources and using bundle for redmine installation
 #+BEGIN_EXAMPLE
@@ -18,9 +18,9 @@ cd redmine-2.6.2
 bundle install --without postgresql sqlite development test 
 bundle show
 #+END_EXAMPLE
-4. Start mysql-server and secure mysql installation using 'service mysqld start' and '/usr/bin/mysql_secure_installation'
-5. Enable mysql to run on start-up using 'chkconfig mysqld on'
-6. Create database, username and password for redmine using 'mysql -u root -p' followed by: 
+4. Start mysql-server and secure mysql installation using =service mysqld start= and =/usr/bin/mysql_secure_installation=
+5. Enable mysql to run on start-up using =chkconfig mysqld on=
+6. Create database, username and password for redmine using =mysql -u root -p= followed by: 
 #+BEGIN_EXAMPLE
 create database redmine character set utf8;
 create user 'redmine'@'localhost' identified by 'my_password';
@@ -28,7 +28,7 @@ grant all privileges on redmine.* to 'redmine'@'localhost';
 flush privileges
 \q
 #+END_EXAMPLE
-7. Configure database, username and password in redmine configuration file using 'cp config/database.yml.example config/database.yml' and then by editing 'config/database.yml' to correct database name, username and password for production
+7. Configure database, username and password in redmine configuration file using =cp config/database.yml.example config/database.yml= and then by editing =config/database.yml= to correct database name, username and password for production
 ** Install_ruby_1.9.3
 *Step 1:* Upgrade Packages 
 #+BEGIN_EXAMPLE
@@ -100,7 +100,7 @@ su - redmine
 cd redmine-2.6.2
 ruby script/rails server webrick -e production -d
 #+END_EXAMPLE
-10. To run redmine on start-up add following line to /etc/rc.d/rc.local file: 
+10. To run redmine on start-up add following line to =/etc/rc.d/rc.local= file: 
 #+BEGIN_EXAMPLE
 runuser -l redmine -c 'cd /home/redmine/redmine-2.6.2; ruby script/rails server webrick -e production -d >run.log 2>&1 &'
 #+END_EXAMPLE
