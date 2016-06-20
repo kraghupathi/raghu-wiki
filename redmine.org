@@ -1,0 +1,107 @@
+* Redmine installation steps for CentOS.
+** Manual installation
+For basic redmine installation of redmine 2.6.2 with default set of
+plugins use following steps:
+1. Use 'yum -y install ruby rubygems mysql-server mysql-devel
+   ImageMagick gcc ruby-devel ruby-RMagick ImageMagick-devel' to
+   install various packages.
+2. If access to Internet is forced through a proxy server, then
+   configure proxy using something similar to "export
+   http_proxy='http://<proxy-fqdn>:<proxy-port>/'".
+3. Use following commands for install bundler, downloading redmine
+   sources and using bundle for redmine installation
+#+BEGIN_EXAMPLE
+gem install bundler
+wget http://www.redmine.org/releases/redmine-2.6.2.tar.gz
+tar xzf redmine-2.6.2.tar.gz
+cd redmine-2.6.2
+bundle install --without postgresql sqlite development test 
+bundle show
+#+END_EXAMPLE
+4. Start mysql-server and secure mysql installation using 'service mysqld start' and '/usr/bin/mysql_secure_installation'
+5. Enable mysql to run on start-up using 'chkconfig mysqld on'
+6. Create database, username and password for redmine using 'mysql -u root -p' followed by: 
+#+BEGIN_EXAMPLE
+create database redmine character set utf8;
+create user 'redmine'@'localhost' identified by 'my_password';
+grant all privileges on redmine.* to 'redmine'@'localhost';
+flush privileges
+\q
+#+END_EXAMPLE
+7. Configure database, username and password in redmine configuration file using 'cp config/database.yml.example config/database.yml' and then by editing 'config/database.yml' to correct database name, username and password for production
+** Install_ruby_1.9.3
+*Step 1:* Upgrade Packages 
+#+BEGIN_EXAMPLE
+yum update
+yum groupinstall "Development Tools"
+#+END_EXAMPLE
+*Step 2:* Installing Recommended Packages
+#+BEGIN_EXAMPLE
+yum install gcc-c++ patch readline readline-devel zlib zlib-devel 
+yum install libyaml-devel libffi-devel openssl-devel make 
+yum install bzip2 autoconf automake libtool bison iconv-devel
+#+END_EXAMPLE
+*Step 3:* Install RVM ( Ruby Version Manager ) 
+#+BEGIN_EXAMPLE
+curl -L get.rvm.io | bash -s stable
+#+END_EXAMPLE
+*Step 4:* Setup RVM Environment 
+#+BEGIN_EXAMPLE
+source /etc/profile.d/rvm.sh
+#+END_EXAMPLE
+*Step 5:* Install Required Ruby Version
+#+BEGIN_EXAMPLE
+rvm install 1.9.3
+#+END_EXAMPLE
+*Step 6:* Install Another Version ( if Required ) 
+#+BEGIN_EXAMPLE
+rvm install 1.8.6
+#+END_EXAMPLE
+*Step 7:* Setup Default Ruby Version
+#+BEGIN_EXAMPLE
+rvm use 1.9.3 --default 
+#+END_EXAMPLE
+*Step 8:* Check Current Ruby Version 
+#+BEGIN_EXAMPLE
+ ruby --version
+#+END_EXAMPLE
+** Update rubygems
+#+BEGIN_EXAMPLE
+gem update --system
+gem install bundler
+#+END_EXAMPLE
+ + Test ruby and rubygems are working
+ + Close shell and reopen for changes to take effect
+#+BEGIN_EXAMPLE
+ruby -v
+gem --version
+#+END_EXAMPLE
+** Rails
+#+BEGIN_EXAMPLE
+yum install sqlite-devel
+gem install rails
+gem install sqlite3
+#+END_EXAMPLE
+8. Initialize redmine for running first time using following commands: 
+#+BEGIN_EXAMPLE
+rake generate_secret_token
+RAILS_ENV=production rake db:migrate
+RAILS_ENV=production REDMINE_LANG=en rake redmine:load_default_data
+mkdir -p public/plugin_assets log files tmp/pdf 
+useradd redmine
+sudo chmod -R 755 files log tmp public/plugin_assets
+cd ..
+mv redmine-2.6.2 /home/redmine
+chown -R redmine:redmine /home/redmine
+#+END_EXAMPLE
+9. Now login as redmine user to start the redmine server 
+#+BEGIN_EXAMPLE
+su - redmine
+cd redmine-2.6.2
+ruby script/rails server webrick -e production -d
+#+END_EXAMPLE
+10. To run redmine on start-up add following line to /etc/rc.d/rc.local file: 
+#+BEGIN_EXAMPLE
+runuser -l redmine -c 'cd /home/redmine/redmine-2.6.2; ruby script/rails server webrick -e production -d >run.log 2>&1 &'
+#+END_EXAMPLE
+11. Now redmine should be acessible at http://<machine>:3000/ Sign in using admin as username and same admin as password.
