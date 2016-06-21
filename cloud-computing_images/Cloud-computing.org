@@ -149,14 +149,9 @@ To achieve transparency and scalability, application solution delivery will need
 The mega data center in the cloud should be securely architected. Also the control node, an entry point in mega data center, also needs to be secure.
 * Service Models
 ** SaaS(Software as a Service)
-  + Software as a Service (SaaS) is a software distribution model in which
-    applications are hosted by a vendor or service provider and made available
-    to customers over the network.
-  + Software vendors host and maintain the servers, databases and code that
-    constitute an application
-  + Allows buyers to pay an annual or monthly subscription fee, which typically
-    includes the software license, support and most other fees. A major benefit
-    of SaaS is being able to spread out costs over time
+Software as a service (or SaaS) is a way of delivering applications over the Internet—as a service. Instead of installing and maintaining software, you simply access it via the Internet, freeing yourself from complex software and hardware management.
+
+SaaS applications are sometimes called Web-based software, on-demand software, or hosted software. Whatever the name, SaaS applications run on a SaaS provider’s servers. The provider manages access to the application, including security, availability, and performance.
 [[./SaaS.jpg]]
 *** Characteristics:
   * *A multitenant architecture:* in which all users and applications share a
