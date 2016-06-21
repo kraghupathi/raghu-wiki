@@ -155,25 +155,21 @@ SaaS applications are sometimes called Web-based software, on-demand software, o
 
 [[./SaaS.jpg]]
 *** Characteristics:
-  * *A multitenant architecture:* in which all users and applications share a
-    single, common infrastructure and code base that is centrally maintained.
-  * *Easy Customization:* The ability for each user to easily customize
-    applications to fit their business processes without affecting the common
-    infrastructure
-  * *Better Access:* Improved access to data from any networked device
-  * *Harnesses Web:* Anyone familiar with Amazon.com or My Yahoo! will be
-    familiar with the Web interface of typical SaaS applications
+  * *The Payoff:* SaaS customers have no hardware or software to buy, install, maintain, or update. Access to applications is easy: You just need an Internet connection.
+  
+  - A good way to understand the SaaS model is by thinking of a bank, which protects the privacy of each customer while providing service that is reliable and secure—on a massive scale. A bank’s customers all use the same financial systems and technology without worrying about anyone accessing their personal information without authorisation.
+
+A “bank” meets the key characteristics of the SaaS model:
+
+  * *A multitenant architecture:* A multitenant architecture, in which all users and applications share a single, common infrastructure and code base that is centrally maintained. Because SaaS vendor clients are all on the same infrastructure and code base, vendors can innovate more quickly and save the valuable development time previously spent on maintaining numerous versions of outdated code.
+  * *Easy Customization:* The ability for each user to easily customise applications to fit their business processes without affecting the common infrastructure. Because of the way SaaS is architected, these customisations are unique to each company or user and are always preserved through upgrades. That means SaaS providers can make upgrades more often, with less customer risk and much lower adoption cost.
+  * *Better Access:* Improved access to data from any networked device while making it easier to manage privileges, monitor data use, and ensure everyone sees the same information at the same time.
+  * *Harnesses The Consumer Web:* Anyone familiar with Amazon.com or My Yahoo! will be familiar with the Web interface of typical SaaS applications. With the SaaS model, you can customise with point-and-click ease, making the weeks or months it takes to update traditional business software seem hopelessly old fashioned.
   * *Updates are automated:* whenever there is an update it is available online
     to existing customers, often free of charge. No new software will be
     required as it often is with other types of applications and the updates
     will usually be deployed automatically by the cloud provider.
-  * *Cross device compatibility:* SaaS applications can be accessed via any
-    internet enabled device, which makes it ideal for those who use a number of
-    different devices, such as internet enabled phones and tablets, and those
-    who don't always use the same computer.
-  * SaaS offers share data model. Therefore, multiple users can share single
-    instance of infrastructure. It is not required to hard code the
-    functionality for individual users.
+  * *SaaS Trends:* Organisations are now developing SaaS integration platforms (or SIPs) for building additional SaaS applications. The consulting firm Saugatuck Technology calls this the “third wave” in software adoption: when SaaS moves beyond standalone software functionality to become a platform for mission-critical applications.
 *** Benefits
 Using SaaS has proved to be beneficial in terms of scalability, efficiency, performance and much more. Some of the
 benefits are listed below:
