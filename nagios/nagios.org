@@ -21,10 +21,10 @@ back when the issues has been rectified.
       + Plan and budget for IT upgrades.
       + Reduce downtime and business losses.
 * Why Nagios?
-  - Nagios is open source and O°ØReilly ranks it as the #2 open source
+  - Nagios is open source and O‚ÄôReilly ranks it as the #2 open source
     packages for System Administrators
   - Nagios has a web interface. Regardless of your location, you can
-    always check your network°Øs health as long as you have access to a
+    always check your network‚Äôs health as long as you have access to a
     web browser.
   - Not only can you monitor network services (HTTP, FTP, etc), you
     can also monitor host resources (disk and memory usage, processes,
@@ -35,7 +35,7 @@ back when the issues has been rectified.
   - *Plugins.* You can easily develop your own host and service checks
     if Nagios does not have exactly what you need
   - *Schedule downtime.* We all have to upgrade our servers or restart
-    them at some point. Nagios allows you to easily define °∞downtime°±
+    them at some point. Nagios allows you to easily define ‚Äúdowntime‚Äù
     so you are not notified during scheduled maintenance.
   - You can use the web interface to acknowledge any problems (so you
     can stop getting notified over and over again until the problem is
@@ -55,7 +55,7 @@ below. This depicts a Nagios server running on a host, and plug-ins
 running on the server and all other remote hosts to be monitored. This
 plug-ins sends information to the server, which in turn displays them
 on GUI.
-
+[[./nagios_architecture.png]]
 In addition, Nagios can be said to be composed of three parts namely; A
 scheduler, a GUI, and the plug-ins. These are described as below:
  * *A scheduler:* is a server part of Nagios that checks plug-ins at
@@ -143,10 +143,13 @@ chkconfig httpd on
 #+END_EXAMPLE
 ** Access Nagios admin console
 pen nagios administrator console with URL http://nagios-server-ip/nagios and enter the username as nagiosadmin and its password which we created in the earlier steps.
-
-Click on the *°∞Hosts°±* section in the left pane of the console. You will see the no of hosts to be monitored by Nagios server. Initially, the nagios server (localhost) itself will only be monitored.
-
+[[./New-Tab-Mozilla-Firefox_001-790x478.jpg]]
+This is how Nagios administrative console looks:
+[[./Nagios-Core-Mozilla-Firefox_002-790x478.jpg]]
+Click on the *‚ÄúHosts‚Äù* section in the left pane of the console. You will see the no of hosts to be monitored by Nagios server. Initially, the nagios server (localhost) itself will only be monitored.
+[[./Nagios-Core-Mozilla-Firefox_003-790x478.jpg]]
 Click on the monitoring host to display more details:
+[[./Nagios-Core-Mozilla-Firefox_004-790x478.jpg]]
 ** Add Monitoring targets to Nagios server
 Now let us add some clients to monitor by Nagios server. To do that we have to install *nrpe* and *nagios-plugins* in our monitoring targets.
 
@@ -154,7 +157,7 @@ On CentOS/RHEL/Scientifc Linux clients:
 
 Like i said before, you have to add EPEL repository in your CentOS/RHEL/Scientific Linux 6.x clients to install *nrpe* package.
 
-Install *°∞nrpe°±* and *°∞nagios-plugins°±* packages in client systems to be monitored.
+Install *‚Äúnrpe‚Äù* and *‚Äúnagios-plugins‚Äù* packages in client systems to be monitored.
 #+BEGIN_EXAMPLE
 yum install nrpe nagios-plugins-all openssl
 #+END_EXAMPLE
@@ -173,7 +176,7 @@ Start nrpe service:
 service nrpe start
 chkconfig nrpe on
 #+END_EXAMPLE
-Now go back to your Nagios server to add the clients to be monitored through nagios server. Edit *°∞/etc/nagios/nagios.cfg°±* file,
+Now go back to your Nagios server to add the clients to be monitored through nagios server. Edit *‚Äú/etc/nagios/nagios.cfg‚Äù* file,
 #+BEGIN_EXAMPLE
 vi /etc/nagios/nagios.cfg
 #+END_EXAMPLE
@@ -182,7 +185,7 @@ and uncomment the following lines.
 ## Line 52 - Uncomment ##
 cfg_dir=/etc/nagios/servers
 #+END_EXAMPLE
-Create a directory called *°∞servers°±* under *°∞/etc/nagios/°±*.
+Create a directory called *‚Äúservers‚Äù* under *‚Äú/etc/nagios/‚Äù*.
 #+BEGIN_EXAMPLE
 mkdir /etc/nagios/servers
 #+END_EXAMPLE
@@ -207,11 +210,12 @@ Finally restart nagios service.
 service nagios restart
 #+END_EXAMPLE
 Now open the nagios admin console in the browser and navigate to
-°∞Hosts°± section in the left pane. You will see the newly added client
+‚ÄúHosts‚Äù section in the left pane. You will see the newly added client
 will be visible there. Click on the host to see if there is anything
 wrong or alerts.
-
-Click on the monitoring target, you°Øll get the detailed output:
+[[./Nagios-Core-Mozilla-Firefox_005-790x478.jpg]]
+Click on the monitoring target, you‚Äôll get the detailed output:
+[[./Nagios-Core-Mozilla-Firefox_006-790x478.jpg]]
 
 Like this way, you can define more clients by creating a separate config files =/etc/nagios/servers= directory for each client.
 ** Define services
@@ -235,8 +239,8 @@ Save and close the file. Restart Nagios.
 #+BEGIN_EXAMPLE
 service nagios restart
 #+END_EXAMPLE
-Now log in to Nagios web console and check for the added services. Navigate to Services section, you°Øll see the ssh service there.
-
+Now log in to Nagios web console and check for the added services. Navigate to Services section, you‚Äôll see the ssh service there.
+[[./Nagios-Core-Mozilla-Firefox_008-790x478.jpg]]
 To know more about object definitions such as Host definitions,
 service definitions, contact definitions and more please do [[https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/3/en/objectdefinitions.html][visit
 here]]. This page will describe you the description and format of all
