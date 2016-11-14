@@ -47,16 +47,7 @@ A method of describing and analyzing data communications networks by breaking th
 * The layers of the OSI Model
 [[./osi-model.png]]
 ** OSI Groups
-- Application Group
- + Application Layer
- + Presentation Layer
- + Session Layer
-- Transportaion Layer
- + Transportation Layer
-- Network Layer
- + Network Layer
- + Data link Layer
- + Physical Layer
+[[./osi-groups.jpg]]
 ** OSI Model Layer Mnemonics
 - Top to bottom
  + *A*ll *P*eople *S*eem *T*o *N*eed *D*ata *P*rocessing
@@ -74,6 +65,7 @@ A method of describing and analyzing data communications networks by breaking th
 - *Bits* : Physical layer
 ** The layers of the OSI model
 *** Physical layer
+[[./physical-layer.jpg]]
 - One of the major function of the physical layer is to move data in the form of electromagnetic signals across a transmission medium.
 - Its responsible for movements of individual bits from one hop (Node) to next.
 - Both data and the signals can be either analog or digital.
@@ -88,6 +80,7 @@ A method of describing and analyzing data communications networks by breaking th
 - *Transmission mode* – simplex, half-duplex, full duplex
 - *Physical Topology* – how devices are connected – ring, star, mesh, bus topology
 *** Data Link layer (Host to Host)
+[[./data-link-layer.png]]
 - Responsible for delivery of data between two systems on the same network
 - It receives the data from network layer and creates FRAMES , add physical address to these frames & pas them to physical layer 
 - Encapsulation = frame
@@ -104,6 +97,7 @@ A method of describing and analyzing data communications networks by breaking th
 - *Flow control* – Impose a flow control – control rate at which data is transmitted so as not to flood the receiver (Feedback-based flow control)
 - *Error Control* – Adds mechanisms to detect and retransmit damaged or lost frames. This is achieved by adding a trailer to the end of a frame
 *** Network Layer (Source to Destination)
+[[./network-layer-header.jpg]]
 - The network layer is responsible for the delivery of individual packets from the source host to the destination host.
 - Requires logical addresses such as IP addresses
 - If two systems are attached to different networks with devices like routers, then N/W layer is used.
@@ -114,6 +108,7 @@ A method of describing and analyzing data communications networks by breaking th
 - *Routing* – Provide mechanisms to transmit data over independent networks that are linked together.
 - Network layer is responsible only for delivery of individual packets and it does not recognize any relationship between those packets
 *** Transport Layer (Process to Process)
+[[./transport-layer.jpg]]
 - The transport layer is responsible for the delivery of a message from one process to another.
 - TL looks after the delivery of entire message considering all its packets & make sure that all packets are in order. On the other hand n/w layer treated each packet independently.
 - At the receiver side, TL provides services to application layer & takes services form n/w layer.
@@ -131,6 +126,7 @@ A method of describing and analyzing data communications networks by breaking th
 - *Segmentation and reassembly* – divide message into smaller segments, number them and transmit. Reassemble these messages at the receiving end.
 - *Error control* – make sure that the entire message arrives without errors – else retransmit.
 *** Session Layer (Dialog initiation)
+[[./session-layer.jpg]]
 - It has the responsibility of beginning, maintaining and ending the communication between two devices, called session.
 - It also provides for orderly communication between devices by regulating the flow of data.
 - Concerned with how data is presented to the network
@@ -147,12 +143,14 @@ A method of describing and analyzing data communications networks by breaking th
 - *Dialog control* – allows two systems to enter into a dialog, keep a track of whose turn it is to transmit
 - *Synchronization* – adds check points (synchronization points) into stream of data.
 *** Presentation Layer (dependency)
+[[./presentatin-layer.jpg]]
 - It is concerned with the syntax & semantics of the information exchanged between the two devices.
 - The presentation layer is responsible for translation, compression and encryption
 - *Translation*- Changes data so another type of computer can understand it
 - *Compression*- Makes data smaller to send more data in same amount of time
 - *Encryption*- Encodes data to protect from interception or eavesdropping.
 *** Application Layer (user level service)
+[[./application-layer.jpg]]
 - It is the topmost i.e. seventh layer of OSI Model.
 - It enables the user to access the network.
 - It provides user interface & supports for services such as e-mail, file transfer, access to the world wide web.
