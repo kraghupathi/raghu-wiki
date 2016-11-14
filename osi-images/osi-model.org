@@ -45,7 +45,7 @@ A method of describing and analyzing data communications networks by breaking th
   + Each layer performs a specific task. It provides services to an adjacent layer
   + This is similar to the concept of a function in programming languages ¡V function does a specific task
 * The layers of the OSI Model
-[[./osi-model.org]]
+[[./osi-model.png]]
 ** OSI Groups
 - Application Group
  + Application Layer
