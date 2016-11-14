@@ -50,7 +50,7 @@ A method of describing and analyzing data communications networks by breaking th
 [[./osi-groups.jpg]]
 ** OSI Model Layer Mnemonics
 - Top to bottom
- + *A* ll  *P* eople  *S* eem *T* o  *N* eed  *D* ata  *P* rocessing
+ + *A* ll *P* eople *S* eem *T* o *N* eed *D* ata *P* rocessing
 - Bottom to top
  + *P* lease *D* o *N* ot *T* ell *S* ecret *P* asswords *A* nytime
 ** Encapsulation/De-encapsulation
