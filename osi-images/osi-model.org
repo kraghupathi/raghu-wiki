@@ -1,0 +1,139 @@
+* Introduction to OSI Model
+- OSI model is based on the proposal developed by the International
+  Standards Organization (ISO).
+- This model is called ISO OSI (Open Systems Interconnection)
+  Reference model because it deals with connecting open systems
+  (systems that are open for communication with other systems)
+- We call it as OSI Model.
+** Open Systems Interconnect (OSI) Model
+- The OSI model describes how data flows from one computer, through a
+  network to another computer
+- The OSI model divides the tasks involved with moving information
+  between networked computers into 7 smaller, more manageable sub-task.
+- A task is then assigned to each of the seven OSI layers.
+- Each layer is reasonably self-contained so that the tasks assigned
+  to each layer can be implemented independently.
+** Whye 7-layers OSI model
+*** Why 7 layers?
+  + To reduce complexity, networks are organized as a stack of layers, one below the other
+  + Each layer performs a specific task. It provides services to an adjacent layer
+  + This is similar to the concept of a function in programming languages ¡V function does a specific task
+* The layers of the OSI Model
+[[./osi-model.png]]
+** OSI Groups
+[[./osi-groups.jpg]]
+** OSI Model Layer Mnemonics
+- Top to bottom
+ + *A* ll *P* eople *S* eem *T* o *N* eed *D* ata *P* rocessing
+- Bottom to top
+ + *P* lease *D* o *N* ot *T* ell *S* ecret *P* asswords *A* nytime
+** Encapsulation/De-encapsulation
+- The process of moving data between layers of the OSI Model
+- *Encapsulation:* Data > segment > packet > frame > bits
+- *De-encapsulation:* Bits > frame > packet > segment > data
+** How Data Is Referred to in the OSI Model
+- *Data* : Application, presentation and session layers
+- *Segment* : Transport layer
+- *Packet* : Networking layer
+- *Frame* : Data link layer
+- *Bits* : Physical layer
+** The layers of the OSI model
+*** Physical layer
+[[./physical-layer.jpg]]
+- One of the major function of the physical layer is to move data in the form of electromagnetic signals across a transmission medium.
+- Its responsible for movements of individual bits from one hop (Node) to next.
+- Both data and the signals can be either analog or digital.
+- Transmission media work by conducting energy along a physical path which can be wired or wireless
+
+*Examples:* Cables, connections and hubs reside over the network layer.
+**** Functions of Physical Layer:
+- *Bit representation* – encode bits into electrical or optical signals
+- *Transmission rate* – The number of bits sent each second 
+- *Physical characteristics* of transmission media 
+- *Synchronizing* the sender and receiver clocks
+- *Transmission mode* – simplex, half-duplex, full duplex
+- *Physical Topology* – how devices are connected – ring, star, mesh, bus topology
+*** Data Link layer (Host to Host)
+[[./data-link-layer.png]]
+- Responsible for delivery of data between two systems on the same network
+- It receives the data from network layer and creates FRAMES , add physical address to these frames & pas them to physical layer 
+- Encapsulation = frame
+- Requires MAC address. or physical address
+- Protocols defined include Ethernet Protocol and Point-to-Point Protocol (PPP)
+- It consist of 2 layers:
+ + *Logical Link Layer (LLC) :* Defines the methods and provides addressing information for communication between network devices.
+ + *Medium Access Control (MAC):* establishes and maintains links between communicating devices.
+
+*Device example*: Switch
+**** Functions of this layer are:
+- *Framing* – divides the stream of bits received from network layer into manageable data units called frames.
+- *Physical Addressing* – Add a header to the frame to define the physical address of the source and the destination machines.
+- *Flow control* – Impose a flow control – control rate at which data is transmitted so as not to flood the receiver (Feedback-based flow control)
+- *Error Control* – Adds mechanisms to detect and retransmit damaged or lost frames. This is achieved by adding a trailer to the end of a frame
+*** Network Layer (Source to Destination)
+[[./network-layer-header.jpg]]
+- The network layer is responsible for the delivery of individual packets from the source host to the destination host.
+- Requires logical addresses such as IP addresses
+- If two systems are attached to different networks with devices like routers, then N/W layer is used.
+
+*Device example*: Router
+**** Functions of this layer are:
+- Responsible for delivery of packets across multiple networks
+- *Routing* – Provide mechanisms to transmit data over independent networks that are linked together.
+- Network layer is responsible only for delivery of individual packets and it does not recognize any relationship between those packets
+*** Transport Layer (Process to Process)
+[[./transport-layer.jpg]]
+- The transport layer is responsible for the delivery of a message from one process to another.
+- TL looks after the delivery of entire message considering all its packets & make sure that all packets are in order. On the other hand n/w layer treated each packet independently.
+- At the receiver side, TL provides services to application layer & takes services form n/w layer.
+- At the source side, TL receives message from upper layer into packets and reassembles these packets again into message at the destination.
+- Transport Layer provides two types of services:
+  + *Connection Oriented Transmission:* In this type of transmission
+    the receiving devices sends an acknowledge back to the source
+    after a packet or group of packet is received. It is slower
+    transmission method.
+  + *Connectionless Transmission:* In this type of transmission the
+    receiving devices does not sends an acknowledge back to the
+    source. It is faster transmission method.
+**** Functions of this layer
+- Responsible for source-to- destination delivery of the entire message
+- *Segmentation and reassembly* – divide message into smaller segments, number them and transmit. Reassemble these messages at the receiving end.
+- *Error control* – make sure that the entire message arrives without errors – else retransmit.
+*** Session Layer (Dialog initiation)
+[[./session-layer.jpg]]
+- It has the responsibility of beginning, maintaining and ending the communication between two devices, called session.
+- It also provides for orderly communication between devices by regulating the flow of data.
+- Concerned with how data is presented to the network
+- Handles three primary tasks:
+  + Translation
+  + Compression
+  + Encryption
+**** Functions of this layer
+- *Establishing, Maintaining and ending a session*- When sending
+  device first contact with receiving device, it sends syn
+  (synchronization) packet to establish aconnection & determines the
+  order in which information will be sent. Receiver sends ack
+  (acknowledgement). So the session can be set & end.
+- *Dialog control* – allows two systems to enter into a dialog, keep a track of whose turn it is to transmit
+- *Synchronization* – adds check points (synchronization points) into stream of data.
+*** Presentation Layer (dependency)
+[[./presentatin-layer.jpg]]
+- It is concerned with the syntax & semantics of the information exchanged between the two devices.
+- The presentation layer is responsible for translation, compression and encryption
+- *Translation*- Changes data so another type of computer can understand it
+- *Compression*- Makes data smaller to send more data in same amount of time
+- *Encryption*- Encodes data to protect from interception or eavesdropping.
+*** Application Layer (user level service)
+[[./application-layer.jpg]]
+- It is the topmost i.e. seventh layer of OSI Model.
+- It enables the user to access the network.
+- It provides user interface & supports for services such as e-mail, file transfer, access to the world wide web.
+- So it provides services to different user applications.
+- *Examples*-
+  + Firefox web browser uses HTTP (Hyper-Text Transport Protocol)
+  + E-mail program may use POP3 (Post Office Protocol version 3) to read e-mails and SMTP (Simple Mail Transport Protocol) to send e- mails
+**** Functions of this layer
+- *Mail Services:* This application provides various e-mail services.
+- *File transfer & Access:* It allows users to access files in a remote host, to retrieve files from remote computer for use etc.
+- *Remote log-in:* A user can log into a remote computer and access the resources of that computer.
+- *Accessing the World Wide Web:* Most common application today is the access of the World Wide Web.

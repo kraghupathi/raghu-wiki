@@ -1,0 +1,37 @@
+* Jorani
+Jorani is a Leave Management System developed in PHP/MySQL under an AGPL v3 licence. Jorani is designed to provide simple leave and overtime request workflows for small organizations.
+** Informations / getting help
+  - Official website : http://jorani.org/
+** Status
+This project is stable and ready for production. An online demo is available here : https://demo.jorani.org/ Use bbalet / bbalet for login / password.
+** Features
+  * Comprehensive online documentation (French and English).
+  * Notifications by e-mail (requested, accepted, rejected and new user).
+  * Leave request approval workflow (1 validator).
+  * Overtime request approval workflow (1 validator).
+  * Leave balance report (filtered by department).
+  * Monthly presence report.
+  * Export to XLSX (Excel, LibreOffice) in a click (almost all pages of the application).
+  * HR users can edit any leave or overtime request.
+  * Set your own contracts and leave types.
+  * Calendars of leaves (individual, team, collaborators, etc.).
+  * Describe your organization in a tree structure and attach employees to entities, define a supervisor per entity.
+  * Non working days (weekends and day offs) can be defined on a contract so as to automatically calculate the duration of a leave and to display them in the calendar.
+  * REST API (OAuth2) fully documented and examples with PHP clients.
+  * LDAP Authentication (OpenLDAP, AD, etc.).
+  * OAuth2 Authentication (only Google+ at the moment).
+  * Available in English, French, Spanish, Italian, German, Dutch, Russian, Ukrainian, Persian, Khmer, Vietnamese, and Turkish.
+** Installation steps on Ubuntu
+  * [[http://jorani.org/how-to-install-jorani.html][See the installation instructions]] for for advanced configuration.
+  * If you use Apache, **mod_rewrite must be activated and the config must allow overwriting settings with .htaccess file**.
+  * Download or clone Jorani.
+  * Upload the content of this folder on your server (in <code>/var/www/...</code>).
+  * Create a database with <code>/sql/lms.sql</code> script.
+  * Create a user with SELECT, INSERT, UPDATE, DELETE, EXECUTE permissions on the database.
+  * Update <code>/application/config/database.php</code> according to your database settings.
+  * Update the end of <code>/application/config/email.php</code> with your e-mails settings.
+  * Update the end of <code>/application/config/config.php</code> if you want to change the default behaviour.
+  * It is recommended to change the private and public RSA keys (in <code>assets/keys</code>).
+  * Check your installation with the <code>requirements.php</code> page at the root of your installation (e.g. http://localhost/lms/requirements.php).
+  * The default user is *bbalet* and password is *bbalet*.
+
