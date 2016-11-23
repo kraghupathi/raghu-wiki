@@ -6,7 +6,7 @@ Docker is an open platform for developing, shipping, and running
 applications. Docker enables you to separate your applications from
 your infrastructure so you can deliver software quickly. With Docker,
 you can manage your infrastructure in the same ways you manage your
-applications. By taking advantage of Docker¡¯s methodologies for
+applications. By taking advantage of DockerÂ¡Â¯s methodologies for
 shipping, testing, and deploying code quickly, you can significantly
 reduce the delay between writing code and running it in production.
 * What is the Docker platform?
@@ -27,9 +27,9 @@ Docker Engine is a client-server application with these major components:
 - A server which is a type of long-running program called a daemon process.
 - A REST API which specifies interfaces that programs can use to talk to the daemon and instruct it what to do.
 - A command line interface (CLI) client.
------------------------------
-docker-engine.png (image)
------------------------------
+
+[[./docker-engine.png]]
+
 The CLI uses the Docker REST API to control or interact with the
 Docker daemon through scripting or direct CLI commands. Many other
 Docker applications use the underlying API and CLI.
@@ -54,12 +54,12 @@ containers, networks, and data volumes.
    is as simple as pushing the updated image to the production
    environment.
 - Responsive deployment and scaling
- + Docker¡¯s container-based platform allows for highly portable
-   workloads. Docker containers can run on a developer¡¯s local host,
+ + DockerÂ¡Â¯s container-based platform allows for highly portable
+   workloads. Docker containers can run on a developerÂ¡Â¯s local host,
    on physical or virtual machines in a data center, in the Cloud, or
    in a mixture of environments.
 
- + Docker¡¯s portability and lightweight nature also make it easy to
+ + DockerÂ¡Â¯s portability and lightweight nature also make it easy to
    dynamically manage workloads, scaling up or tearing down
    applications and services as business needs dictate, in near real
    time.
@@ -70,16 +70,16 @@ containers, networks, and data volumes.
    business goals. This is useful in high density environments and for
    small and medium deployments where you need to do more with fewer
    resources.
-* What is Docker¡¯s architecture?
+* What is DockerÂ¡Â¯s architecture?
 Docker uses a client-server architecture. The Docker client talks to
 the Docker daemon, which does the heavy lifting of building, running,
 and distributing your Docker containers. The Docker client and daemon
 can run on the same system, or you can connect a Docker client to a
 remote Docker daemon. The Docker client and daemon communicate using a
 REST API, over UNIX sockets or a network interface.
---------------------
-docket-architecture.png(image)
-------------------------------
+
+[[./docker-architecture.svg]]
+
 ** The Docker daemon
 The Docker daemon runs on a host machine. The user uses the Docker client to interact with the daemon.
 ** The Docker client
@@ -88,7 +88,7 @@ user interface to Docker. It accepts commands and configuration flags
 from the user and communicates with a Docker daemon. One client can
 even communicate with multiple unrelated daemons.
 ** Inside Docker
-To understand Docker¡¯s internals, you need to know about images, registries, and containers.
+To understand DockerÂ¡Â¯s internals, you need to know about images, registries, and containers.
 ** Docker images
 A Docker image is a read-only template with instructions for creating
 a Docker container. For example, an image might contain an Ubuntu
@@ -182,11 +182,11 @@ testing, staging, and production environments, and upgrade the
 application by pulling the new version of the image and redeploying
 the containers. Docker Store is currently in private beta.
 ** How does a container work?
-A container uses the host machine¡¯s Linux kernel, and consists of any
+A container uses the host machineÂ¡Â¯s Linux kernel, and consists of any
 extra files you add when the image is created, along with metadata
 associated with the container at creation or when the container is
 started. Each container is built from an image. The image defines the
-container¡¯s contents, which process to run when the container is
+containerÂ¡Â¯s contents, which process to run when the container is
 launched, and a variety of other configuration details. The Docker
 image is read-only. When Docker runs a container from an image, it
 adds a read-write layer on top of the image (using a UnionFS as we saw
