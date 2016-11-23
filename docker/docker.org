@@ -28,7 +28,7 @@ Docker Engine is a client-server application with these major components:
 - A REST API which specifies interfaces that programs can use to talk to the daemon and instruct it what to do.
 - A command line interface (CLI) client.
 
-[[./docker-engine.png]]
+[[./images/docker-engine.png]]
 
 The CLI uses the Docker REST API to control or interact with the
 Docker daemon through scripting or direct CLI commands. Many other
