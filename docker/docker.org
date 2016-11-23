@@ -78,7 +78,7 @@ can run on the same system, or you can connect a Docker client to a
 remote Docker daemon. The Docker client and daemon communicate using a
 REST API, over UNIX sockets or a network interface.
 
-[[./docker-architecture.svg]]
+[[./images/docker-architecture.svg]]
 
 ** The Docker daemon
 The Docker daemon runs on a host machine. The user uses the Docker client to interact with the daemon.
