@@ -1,0 +1,302 @@
+* What is the web?
+ - A collection of cross-linked “websites”
+ - A set of “web” technologies
+ - The consistent use of URIs to represent resources
+ - HTTP, HTML, and everything built around them
+ - Every person's cheap’n’easy client-server computing
+* What is a server?
+A server is a computer or device on a network that manages network
+resources. Most servers are dedicated.  This means that they perform
+only one task rather than multiple tasks.  On multiprocessing
+operating systems, however, a single computer can execute several
+programs at once. A server in this case could refer to the program
+that is managing resources rather than the entire computer.
+* What is web server?
+A computer program that is responsible for accepting HTTP requests
+from clients, which are known as web browsers, and serving them HTTP
+responses along with optional data contents, which usually are web
+pages such as HTML documents and linked objects (images, etc.).
+* Apache
+ - An open source web server. Mostly for Unix, Linux and Solaris platforms
+ - Apache is the most popular web server on the net. 
+ - It is very secure, fast, and reliable.
+ - The name "Apache" derives from the word "patchy" that the Apache developers used to describe early versions of their software.
+* Features
+ Implements many frequently requested features, including:
+ - DBM databases for authentication
+ - Customized responses to errors and problems
+ - Virtual Hosts
+ - Multiple DirectoryIndex directives
+ - It has been tested thoroughly by both developers and users. 
+* Apache web-server
+It provides a full range of Web server features, including CGI, SSL, and virtual domains.It also supports plug-in modules for extensibility. 
+------------------------------
+<apache-webserver.jpg>
+-------------------------------
+The Apache Web  Server has
+ + HTTP
+ + IIS
+ + SSL
+
+The Apache Web server has been ported to Windows and other network operating systems (NOS). 
+
+The Apache HTTP Server is web server software     notable for playing a key role in the initial growth of the World Wide Web. 
+** HTTP
+ - HTTP is an Hypertext Transfer Protocol.
+ - It provides a standard for Web browsers and servers to communicate. 
+ - The definition of HTTP is a technical specification of a network protocol that software must implement.
+ - HTTP is an application layer network protocol built on top of TCP.
+ - HTTP clients (such as Web browsers) and servers communicate via HTTP request and response messages. 
+ - The three main HTTP message types are * GET,* * POST,* and *HEAD.*
+ - HTTP utilizes TCP port 80 by default
+ - Though other ports such as 8080 can alternatively be used. 
+
+The HTTP also includes
+ - *ARP-* Address Resolution Protocol
+ - *DHCP-* Dynamic Host Configuration Protocol
+ - *FTP-* File Transfer Protocol
+** ARP
+ - ARP converts an Internet Protocol (IP) address to its corresponding physical network address.
+ - ARP is a low-level network protocol, operating at Layer 2 of the OSI model.
+ - ARP is implemented usually in the device drivers of network operating systems.
+ - It is most commonly seen on Ethernet networks, ATM, Token Ring, and other physical networks. 
+** DHCP
+ - DHCP allows a computer to join an IP-based network without having a pre-configured IP address. 
+ - DHCP is a protocol that assigns unique IP addresses to devices, then releases and renews these addresses as devices leave and re-join the network.
+** FTP
+ - FTP allows you to transfer files between two computers on the Internet.
+ - FTP is a simple network protocol based on Internet Protocol.
+
+-------------
+ftp.jpg
+-------------------
+
+** SSL
+ - Secure Sockets Layer
+ - SSL security technology helps to improve the safety of Internet communications. 
+ - SSL is a standard for encrypted client/server communication between network devices.
+ - A network protocol, SSL runs on top of TCP/IP.
+ - SSL utilizes several standard network security techniques including
+   public keys, symmetric keys, and certificates. Web sites commonly
+   use SSL to guard private information such as credit card numbers.
+
+---------------------
+ssl.jpg
+-----------------------
+
+* Apache server architecture
+ - Apache supports a variety of features, many implemented as compiled modules which extend the core functionality. 
+ - These can range from server-side programming language support to authentication schemes.
+ - Popular compression methods on Apache include the external extension module, mod_gzip, implemented to help with reduction of the size (weight) of web pages served over HTTP.
+ - The core of a Apache Server implements the basic functionality of the server. In addition it implements a number of utility functions
+** Core component
+ - Following are the components of the Apache core:
+  + http_protocol.c
+  + http_main.c
+  + http_request.c
+  + http_core.c
+
+-------------------
+core-component.jpg
+-----------------------
+
+** How requests are handled
+ - URI to filename translation.
+ - Check access based on host address, and other available information
+ - Get an user id from the HTTP request and validate it 
+ - Authorize the user
+ - Determine the MIME type of the requested object (the content type, the encoding and the language).
+ - Fix-ups (for example replace aliases by the actual path).
+ - Send the actual data back to the client.
+ - Log the request.
+** Architecture of an apache web-server
+-----------------
+architecture.jpg
+-----------------
+
+** The concept of handler
+ - A handler is for Apache the action that must be performed in some phase of servicing the request
+ - They are defined by modules. A module might specify handlers for one, many or none of the phases of the request
+** Persistent server processes
+ - ‘Persistent Server Processes’ is a concept that explains the implementation of Concurrency in Apache.
+ - To handle large incoming requests to website TCP/IP servers fork a new child to handle new incoming request from clients.
+ - However in the situation of a busy web site the overhead of forking a huge number of children will simply suffocate the machine.
+ - To solve this problem Apache uses Persistent Server Process.
+ - It forks a fixed number of children, right from the beginning. The children service incoming requests independently (different address spaces).
+ - It is interesting that Apache server can dynamically control the number of children it forks (i.e. increasing or decreasing it), based on current load.
+
+------------------
+persistant.jpg
+------------------
+
+* Configuration
+The main Apache HTTP Server configuration file is installed as
+=/usr/local/etc/apache/httpd.conf= on FreeBSD. This file is a typical
+UNIX® text configuration file with comment lines beginning with the #
+character. A comprehensive description of all possible configuration
+options is outside the scope of this book, so only the most frequently
+modified directives will be described here.
+** Server root "/usr/local"
+ - This specifies the default directory hierarchy for the Apache installation. Binaries are stored in the bin and sbin subdirectories of the server root, and configuration files are stored in etc/apache.
+ - Alows you to bind apache to specifid ip sddress and/or ports instead of the default 
+ - The chamge of listen from specific ip address is
+  + Listen 12.34.56.78:80
+  + Listen 80
+** Server admin
+The address to which problems with the server should be emailed. This address appears on some server-generated pages, such as error documents.
+** Serveradmin you@your.address
+ - The address to which problems with the server should be emailed. This address appears on some server-generated pages, such as error documents.
+ - Server name gives the name and port that the aerver uses to identify itself  this dan often etermined automatidally 
+** Documentroot  "/usr/local/www/data"
+ - The directory out of which you will serve your documents. By default, all requests are taken from this directory, but symbolic links and aliases may be used to point to other locations.
+ - It is always a good idea to make backup copies of your Apache configuration file before making changes. Once you are satisfied with your initial configuration you are ready to start running Apache.
+** Install Apache
++ To install Apache-server on Linux, use the following command
+ * On Ubuntu/Debian.
+#+begin_example
+sudo apt-get install apache2
+#+end_example
+ * On RHEL/CENTOS
+#+begin_example
+yum install httpd
+#+end_example
+** How to host a website on Apache Server?:
+1) To start the apache server, use the following command:
+ * On Ubuntu/Debian.
+#+begin_example
+service apache2 start
+#+end_example
+ * On RHEL/CENTOS
+#+begin_example
+service httpd start
+#+end_example
+2) To restart the server
+ * On Ubuntu/Debian.
+#+begin_example
+service apache2 restart
+#+end_example
+ * On RHEL/CENTOS
+#+begin_example
+service httpd restart
+#+end_example
+3) Open web browser and type =localhost= or =127.0.0.1= then, browser displays
+   the default apache page. 
+4) Create a sample html, js and css files and place them in a folder.
+ 
+5) Move the contents of the folder to  =/var/www/html= or =/var/www/=. This is
+   the default web host server for apache server.
+6) Open browser and type =localhost/<file name> or 127.0.0.1/<file name>.
+#+begin_example
+localhost/example.html
+#+end_example
+7) To stop the apache server, use the following command:
+ * On Ubuntu/Debian.
+#+begin_example
+service apache2 stop
+#+end_example
+ * On RHEL/CENTOS
+#+begin_example
+service httpd stop
+#+end_example
+
+* What is Virtual Host?
+An Apache web server can host multiple websites on the SAME
+server. You do not need separate server machine and apache software
+for each website. This can achieved using the concept of Virtual Host
+or VHost.
+
+Any domain that you want to host on your web server will have a
+separate entry in apache configuration file.
+
+--------------
+virtual-hosts.jpg
+-------------------
+
+** Types of Apache Virtualhost
+ - Name-based Virtual host
+ - Address-based or IP based virtual host and.
+** Name-based Virtual Host
+ Name based virtual hosting is used to host multiple virtual sites on a single IP address.  
+
+---------------
+name-based.jpg
+-----------------
+
+ In order to configure name based virtual hosting, you have to set the
+ IP address on which you are going to receive the Apache requests for
+ all the desired websites.  You can do this by NameVirutalHost
+ directive within the apache configuration
+ i.e. *httpd.conf/apache2.conf* file.
+
+ Apache virtual host Example: 
+#+BEGIN_EXAMPLE
+NameVirtualHost *:80
+
+<VirtualHost 192.168.0.108:80>
+
+ServerAdmin webmaster@example1.com
+
+DocumentRoot /var/www/html/example1.com      
+
+ServerName www.example1.com
+
+</VirtualHost>
+
+<VirtualHost 192.168.0.108:80>
+
+ServerAdmin admin@example2.com
+
+DocumentRoot /var/www/html/example2.com
+
+ServerName www.example2.com
+
+</VirtualHost>
+#+END_EXAMPLE
+ You can add as many virtual hosts, as per your requirement. You can check your web configuration files with: 
+#+BEGIN_EXAMPLE
+[root@raghu ~]#httpd –t
+Syntax OK
+#+END_EXAMPLE
+ If the configuration file has some wrong syntax, it will throw an error 
+#+BEGIN_EXAMPLE
+[root@115 conf.d]# httpd -t
+
+Syntax error on line 978 of /etc/httpd/conf/httpd.conf:
+
+Invalid command '*', perhaps misspelled or defined by a module not included in the server configuration
+#+END_EXAMPLE
+**  IP-based Virtual host
+ In order to setup IP based virtual hosting, you need more than one IP
+ address configured on your server.  So, the number of vhost apache
+ will depend onnumber of IP address configured on your server.  If
+ your server has 10 IP addresses, you can create 10 IP based virtual
+ hosts.
+
+--------------
+ip-based.jpg
+----------------
+
+ In the above diagram two websites example1.com and example2.com were assigned different IPs and are using IP-based virtual hosting. 
+#+BEGIN_EXAMPLE
+Listen 192.168.0.100:80
+
+<VirtualHost 192.168.10.108:80>
+
+ServerAdmin webmaster@example1.com
+
+DocumentRoot /var/www/html/example1.com      
+
+ServerName www.example1.com
+
+</VirtualHost>
+
+<VirtualHost 192.168.10.109:80>
+
+ServerAdmin admin@example2.com
+
+DocumentRoot /var/www/html/example2.com
+
+ServerName www.example2.com
+
+</VirtualHost>
+#+END_EXAMPLE
