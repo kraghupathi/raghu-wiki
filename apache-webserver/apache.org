@@ -30,9 +30,9 @@ pages such as HTML documents and linked objects (images, etc.).
  - It has been tested thoroughly by both developers and users. 
 * Apache web-server
 It provides a full range of Web server features, including CGI, SSL, and virtual domains.It also supports plug-in modules for extensibility. 
-------------------------------
-<apache-webserver.jpg>
--------------------------------
+
+[[./images/apache-webserver.jpg]]
+
 The Apache Web  Server has
  + HTTP
  + IIS
@@ -67,9 +67,7 @@ The HTTP also includes
  - FTP allows you to transfer files between two computers on the Internet.
  - FTP is a simple network protocol based on Internet Protocol.
 
--------------
-ftp.jpg
--------------------
+[[./images/ftp.jpg]]
 
 ** SSL
  - Secure Sockets Layer
@@ -80,9 +78,7 @@ ftp.jpg
    public keys, symmetric keys, and certificates. Web sites commonly
    use SSL to guard private information such as credit card numbers.
 
----------------------
-ssl.jpg
------------------------
+[[./images/ssl.jpg]]
 
 * Apache server architecture
  - Apache supports a variety of features, many implemented as compiled modules which extend the core functionality. 
@@ -96,9 +92,7 @@ ssl.jpg
   + http_request.c
   + http_core.c
 
--------------------
-core-component.jpg
------------------------
+[[./images/core-component.jpg]]
 
 ** How requests are handled
  - URI to filename translation.
@@ -110,9 +104,8 @@ core-component.jpg
  - Send the actual data back to the client.
  - Log the request.
 ** Architecture of an apache web-server
------------------
-architecture.jpg
------------------
+
+[[./images/architecture_apache.jpg]]
 
 ** The concept of handler
  - A handler is for Apache the action that must be performed in some phase of servicing the request
@@ -125,9 +118,7 @@ architecture.jpg
  - It forks a fixed number of children, right from the beginning. The children service incoming requests independently (different address spaces).
  - It is interesting that Apache server can dynamically control the number of children it forks (i.e. increasing or decreasing it), based on current load.
 
-------------------
-persistant.jpg
-------------------
+[[./images/persistant.jpg]]
 
 * Configuration
 The main Apache HTTP Server configuration file is installed as
@@ -208,9 +199,7 @@ or VHost.
 Any domain that you want to host on your web server will have a
 separate entry in apache configuration file.
 
---------------
-virtual-hosts.jpg
--------------------
+[[./images/apache-virtual-hosts.jpg]]
 
 ** Types of Apache Virtualhost
  - Name-based Virtual host
@@ -218,9 +207,7 @@ virtual-hosts.jpg
 ** Name-based Virtual Host
  Name based virtual hosting is used to host multiple virtual sites on a single IP address.  
 
----------------
-name-based.jpg
------------------
+[[./images/name-based.jpg]]
 
  In order to configure name based virtual hosting, you have to set the
  IP address on which you are going to receive the Apache requests for
@@ -272,9 +259,7 @@ Invalid command '*', perhaps misspelled or defined by a module not included in t
  your server has 10 IP addresses, you can create 10 IP based virtual
  hosts.
 
---------------
-ip-based.jpg
-----------------
+[[./images/name-based.jpg]]
 
  In the above diagram two websites example1.com and example2.com were assigned different IPs and are using IP-based virtual hosting. 
 #+BEGIN_EXAMPLE
