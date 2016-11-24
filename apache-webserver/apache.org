@@ -30,9 +30,7 @@ pages such as HTML documents and linked objects (images, etc.).
  - It has been tested thoroughly by both developers and users. 
 * Apache web-server
 It provides a full range of Web server features, including CGI, SSL, and virtual domains.It also supports plug-in modules for extensibility. 
-
 [[./images/apache-webserver.jpg]]
-
 The Apache Web  Server has
  + HTTP
  + IIS
@@ -66,9 +64,7 @@ The HTTP also includes
 ** FTP
  - FTP allows you to transfer files between two computers on the Internet.
  - FTP is a simple network protocol based on Internet Protocol.
-
 [[./images/ftp.jpg]]
-
 ** SSL
  - Secure Sockets Layer
  - SSL security technology helps to improve the safety of Internet communications. 
@@ -77,9 +73,7 @@ The HTTP also includes
  - SSL utilizes several standard network security techniques including
    public keys, symmetric keys, and certificates. Web sites commonly
    use SSL to guard private information such as credit card numbers.
-
 [[./images/ssl.jpg]]
-
 * Apache server architecture
  - Apache supports a variety of features, many implemented as compiled modules which extend the core functionality. 
  - These can range from server-side programming language support to authentication schemes.
@@ -91,9 +85,7 @@ The HTTP also includes
   + http_main.c
   + http_request.c
   + http_core.c
-
 [[./images/core-component.jpg]]
-
 ** How requests are handled
  - URI to filename translation.
  - Check access based on host address, and other available information
@@ -104,9 +96,7 @@ The HTTP also includes
  - Send the actual data back to the client.
  - Log the request.
 ** Architecture of an apache web-server
-
 [[./images/architecture_apache.jpg]]
-
 ** The concept of handler
  - A handler is for Apache the action that must be performed in some phase of servicing the request
  - They are defined by modules. A module might specify handlers for one, many or none of the phases of the request
@@ -117,9 +107,7 @@ The HTTP also includes
  - To solve this problem Apache uses Persistent Server Process.
  - It forks a fixed number of children, right from the beginning. The children service incoming requests independently (different address spaces).
  - It is interesting that Apache server can dynamically control the number of children it forks (i.e. increasing or decreasing it), based on current load.
-
 [[./images/persistant.jpg]]
-
 * Configuration
 The main Apache HTTP Server configuration file is installed as
 =/usr/local/etc/apache/httpd.conf= on FreeBSD. This file is a typical
@@ -198,17 +186,13 @@ or VHost.
 
 Any domain that you want to host on your web server will have a
 separate entry in apache configuration file.
-
 [[./images/apache-virtual-hosts.jpg]]
-
 ** Types of Apache Virtualhost
  - Name-based Virtual host
  - Address-based or IP based virtual host and.
 ** Name-based Virtual Host
  Name based virtual hosting is used to host multiple virtual sites on a single IP address.  
-
 [[./images/name-based.jpg]]
-
  In order to configure name based virtual hosting, you have to set the
  IP address on which you are going to receive the Apache requests for
  all the desired websites.  You can do this by NameVirutalHost
@@ -258,9 +242,7 @@ Invalid command '*', perhaps misspelled or defined by a module not included in t
  will depend onnumber of IP address configured on your server.  If
  your server has 10 IP addresses, you can create 10 IP based virtual
  hosts.
-
 [[./images/name-based.jpg]]
-
  In the above diagram two websites example1.com and example2.com were assigned different IPs and are using IP-based virtual hosting. 
 #+BEGIN_EXAMPLE
 Listen 192.168.0.100:80
