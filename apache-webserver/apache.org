@@ -30,7 +30,7 @@ pages such as HTML documents and linked objects (images, etc.).
  - It has been tested thoroughly by both developers and users. 
 * Apache web-server
 It provides a full range of Web server features, including CGI, SSL, and virtual domains.It also supports plug-in modules for extensibility. 
-[[./images/apache-webserver.jpg]]
+[[./apache-webserver.jpg]]
 The Apache Web  Server has
  + HTTP
  + IIS
