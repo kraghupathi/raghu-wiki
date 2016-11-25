@@ -4,13 +4,20 @@ The Web, or World Wide Web, is basically a system of Internet servers that suppo
 This means you can jump from one document to another simply by clicking on hot spots. Not all Internet servers are part of the World Wide Web.
 
 There are several applications called Web browsers that make it easy to access the World Wide Web; Two of the most popular being *Firefox* and *Microsoft's Internet Explorer*.
+
+[[./web.jpg]]
+
 * What is a server?
-A server is a computer or device on a network that manages network
-resources. Most servers are dedicated.  This means that they perform
-only one task rather than multiple tasks.  On multiprocessing
-operating systems, however, a single computer can execute several
-programs at once. A server in this case could refer to the program
-that is managing resources rather than the entire computer.
+A server is a computer designed to process requests and deliver data to other (client) computers over a local network or the Internet.
+
+Network servers typically are configured with additional processing, memory, and storage capacity to handle the load of servicing clients. Common types of network servers include
+  + Web servers
+  + Proxy servers
+  + FTP servers
+  + Online game servers
+
+[[./clientserver.jpg]]
+
 * What is web server?
 A computer program that is responsible for accepting HTTP requests
 from clients, which are known as web browsers, and serving them HTTP
