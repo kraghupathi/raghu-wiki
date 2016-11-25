@@ -226,25 +226,15 @@ separate entry in apache configuration file.
  Apache virtual host Example: 
 #+BEGIN_EXAMPLE
 NameVirtualHost *:80
-
 <VirtualHost 192.168.0.108:80>
-
 ServerAdmin webmaster@example1.com
-
 DocumentRoot /var/www/html/example1.com      
-
 ServerName www.example1.com
-
 </VirtualHost>
-
 <VirtualHost 192.168.0.108:80>
-
 ServerAdmin admin@example2.com
-
 DocumentRoot /var/www/html/example2.com
-
 ServerName www.example2.com
-
 </VirtualHost>
 #+END_EXAMPLE
  You can add as many virtual hosts, as per your requirement. You can check your web configuration files with: 
@@ -255,9 +245,7 @@ Syntax OK
  If the configuration file has some wrong syntax, it will throw an error 
 #+BEGIN_EXAMPLE
 [root@115 conf.d]# httpd -t
-
 Syntax error on line 978 of /etc/httpd/conf/httpd.conf:
-
 Invalid command '*', perhaps misspelled or defined by a module not included in the server configuration
 #+END_EXAMPLE
 **  IP-based Virtual host
@@ -272,24 +260,15 @@ Invalid command '*', perhaps misspelled or defined by a module not included in t
  In the above diagram two websites example1.com and example2.com were assigned different IPs and are using IP-based virtual hosting. 
 #+BEGIN_EXAMPLE
 Listen 192.168.0.100:80
-
 <VirtualHost 192.168.10.108:80>
-
 ServerAdmin webmaster@example1.com
-
 DocumentRoot /var/www/html/example1.com      
-
 ServerName www.example1.com
-
 </VirtualHost>
 
 <VirtualHost 192.168.10.109:80>
-
 ServerAdmin admin@example2.com
-
 DocumentRoot /var/www/html/example2.com
-
 ServerName www.example2.com
-
 </VirtualHost>
 #+END_EXAMPLE
