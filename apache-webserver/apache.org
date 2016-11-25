@@ -1,9 +1,9 @@
 * What is the web?
- - A collection of cross-linked “websites”
- - A set of “web” technologies
- - The consistent use of URIs to represent resources
- - HTTP, HTML, and everything built around them
- - Every person's cheap’n’easy client-server computing
+The Web, or World Wide Web, is basically a system of Internet servers that support specially formatted documents. The documents are formatted in a markup language called *HTML* (HyperText Markup Language) that supports links to other documents, as well as graphics, audio, and video files.
+
+This means you can jump from one document to another simply by clicking on hot spots. Not all Internet servers are part of the World Wide Web.
+
+There are several applications called Web browsers that make it easy to access the World Wide Web; Two of the most popular being *Firefox* and *Microsoft's Internet Explorer*.
 * What is a server?
 A server is a computer or device on a network that manages network
 resources. Most servers are dedicated.  This means that they perform
