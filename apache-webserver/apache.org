@@ -75,8 +75,8 @@ The HTTP also includes
  - ARP is implemented usually in the device drivers of network operating systems.
  - It is most commonly seen on Ethernet networks, ATM, Token Ring, and other physical networks. 
 ** DHCP
- - DHCP allows a computer to join an IP-based network without having a pre-configured IP address. 
- - DHCP is a protocol that assigns unique IP addresses to devices, then releases and renews these addresses as devices leave and re-join the network.
+ - Dynamic Host Configuration Protocol (DHCP) is a network protocol that automatically assigns TCP/IP information to client machines.
+ - Each DHCP client connects to the centrally located DHCP server, which returns the network configuration (including the IP address, gateway, and DNS servers) of that client. 
 ** FTP
  - FTP allows you to transfer files between two computers on the Internet.
  - FTP is a simple network protocol based on Internet Protocol.
