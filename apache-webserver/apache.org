@@ -139,11 +139,6 @@ modified directives will be described here.
  - The chamge of listen from specific ip address is
   + Listen 12.34.56.78:80
   + Listen 80
-** Server admin
-The address to which problems with the server should be emailed. This address appears on some server-generated pages, such as error documents.
-** Serveradmin you@your.address
- - The address to which problems with the server should be emailed. This address appears on some server-generated pages, such as error documents.
- - Server name gives the name and port that the aerver uses to identify itself  this dan often etermined automatidally 
 ** Documentroot  "/usr/local/www/data"
  - The directory out of which you will serve your documents. By default, all requests are taken from this directory, but symbolic links and aliases may be used to point to other locations.
  - It is always a good idea to make backup copies of your Apache configuration file before making changes. Once you are satisfied with your initial configuration you are ready to start running Apache.
