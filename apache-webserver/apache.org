@@ -34,7 +34,7 @@ When we browse the Website, Every Website sits on a computer known as a Web Serv
  - Multiple DirectoryIndex directives
  - It has been tested thoroughly by both developers and users. 
 * Apache web-server
-Apache HTTPD is one of the most used web servers on the Internet. A web server is a daemon that speaks the http protocol, a text-based for sending and receiving objects over a network connection. The http protocol is sent over the wire in clear text, using port 80/TCP by default. There is also TLS/SSL encrypted version of the protocol called https that uses port 443/TCP by defaults.
+Apache HTTPD is one of the most used web servers on the Internet. A web server is a daemon that speaks the http protocol, a text-based for sending and receiving objects over a network connection. The http protocol is sent over the wire in clear text, using port *80/TCP* by default. There is also TLS/SSL encrypted version of the protocol called https that uses port *443/TCP* by defaults.
 
 It provides a full range of Web server features, including CGI, SSL, and virtual domains.It also supports plug-in modules for extensibility. 
 
@@ -54,7 +54,7 @@ The Apache HTTP Server is web server software     notable for playing a key role
  - The definition of HTTP is a technical specification of a network protocol that software must implement.
  - HTTP is an application layer network protocol built on top of TCP.
  - HTTP clients (such as Web browsers) and servers communicate via HTTP request and response messages. 
- - The three main HTTP message types are * GET,* * POST,* and *HEAD.*
+ - The three main HTTP message types are *GET*, *POST* and *HEAD*.
  - HTTP utilizes TCP port 80 by default
  - Though other ports such as 8080 can alternatively be used. 
 
