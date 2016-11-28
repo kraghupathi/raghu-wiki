@@ -70,7 +70,7 @@ containers, networks, and data volumes.
    business goals. This is useful in high density environments and for
    small and medium deployments where you need to do more with fewer
    resources.
-* What is Docker¡¯s architecture?
+* What is Docker's architecture?
 Docker uses a client-server architecture. The Docker client talks to
 the Docker daemon, which does the heavy lifting of building, running,
 and distributing your Docker containers. The Docker client and daemon
@@ -252,138 +252,297 @@ into a wrapper called a container format. The default container format
 is =libcontainer=. In the future, Docker may support other container
 formats by integrating with technologies such as BSD Jails or Solaris
 Zones.
-** Install Operating system
-   - Install Ubuntu 14.04 
-** Install Docker 
-   - Prerequisites 
-     + Kernel must be at minimum 3.10
-     + Check your kernel
-       #+BEGIN_EXAMPLE
-       uname -r 
-       3.11.0-15-generic
-       #+END_EXAMPLE
-   - Update your APT sources
-     + Log into your machine as a user sith sudo or root privileges.
-     + Open a terminal
-     + Update package information 
-       #+BEGIN_EXAMPLE
-       $ sudo apt-get update
-       $ sudo apt-get install apt-transport-https ca-certificates
-       #+END_EXAMPLE
-     + Add the new GPG key
-       #+BEGIN_EXAMPLE
-       $ sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-       #+END_EXAMPLE
-   - Apt repositories
-     #+BEGIN_EXAMPLE
-     Precise 12.04 (LTS) 	deb https://apt.dockerproject.org/repo ubuntu-precise main
-     Trusty 14.04 (LTS) 	deb https://apt.dockerproject.org/repo ubuntu-trusty main
-     Wily 15.10 	deb https://apt.dockerproject.org/repo ubuntu-wily main
-     Xenial 16.04 (LTS) 	deb https://apt.dockerproject.org/repo ubuntu-xenial main
-     #+END_EXAMPLE
-   - Choose the appropriate apt repositories and run the following
-     command.
-     #+BEGIN_EXAMPLE
-     $ echo "<REPO>" | sudo tee /etc/apt/sources.list.d/docker.list
-     #+END_EXAMPLE
-   - Update 
-     #+BEGIN_EXAMPLE
-     sudo apt-get update
-     #+END_EXAMPLE
-   - Install recommended packages 
-     #+BEGIN_EXAMPLE
-     $ sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual
-     #+END_EXAMPLE
-   - Install Docker 
-     #+BEGIN_EXAMPLE
-     $ sudo apt-get install docker-engine
-     #+END_EXAMPLE
-  
-   - Start the docker daemon.
-    #+BEGIN_EXAMPLE
-    $ sudo service docker start
-    #+END_EXAMPLE
-   - Verify docker is installed correctly.
-     #+BEGIN_EXAMPLE
-     $ sudo docker run hello-world
-     #+END_EXAMPLE
-This command downloads a test image and runs it in a container. When the container runs, it prints an informational message. Then, it exits.
-** Launch your first container 
-   Launch or execute a command in container using =docker run= command. This
-   command will launch a container from an image, execute your command 
-   display output on terminal, stop container and  exit out.
+*  How to Install Docker on Ubuntu 16.04 & 14.04 LTS and CentOS/RHEL 7/6
+Docker is container-based application framework, which wrap of a
+specific application with all its dependencies in a container. Docker
+containers can easily to ship to remote location on start there
+without making entire application setup. This tutorial will help you
+to install and manage Docker on Ubuntu 16.04 LTS, 15.10 & 14.04 LTS
+and CentOS/RHEL 7/6 operating systems.
+** Verify Requirements 
+For standard installation Docker required 64 bit operating system having Kernel >= 3.10 version. Older versions of Kernel have some missing requirements to run all features of Docker.
+#+BEGIN_EXAMPLE
+$ uname -r
+4.4.0-21-generic
+#+END_EXAMPLE
+For Ubuntu 15.10 & 14.04 Docker recommended to install the *linux-image-extra* kernel package.
+#+BEGIN_EXAMPLE
+$ sudo apt-get install linux-image-extra-$(uname -r)
+#+END_EXAMPLE
+** Add Docker Apt Repository on Ubuntu
+First import docker GPG key to verify packages signature before installing them with apt-get.
+#+BEGIN_EXAMPLE
+$ sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+#+END_EXAMPLE
+Now create a new apt configuration file =/etc/apt/sources.list.d/docker.list= and one of below docker
+ + *For Ubuntu Xenial 16.04 (LTS)*
+#+BEGIN_EXAMPLE
+deb https://apt.dockerproject.org/repo ubuntu-xenial main
+#+END_EXAMPLE
+ + *For Ubuntu Wily 15.10*
+#+BEGIN_EXAMPLE
+deb https://apt.dockerproject.org/repo ubuntu-wily main
+#+END_EXAMPLE
+ + *For Ubuntu Trusty 14.04 (LTS)*
+#+BEGIN_EXAMPLE
+deb https://apt.dockerproject.org/repo ubuntu-trusty main
+#+END_EXAMPLE
+** Add Docker Yum Repository on Centos/RHEL
+Let’s add the Docker yum repository on your system. Create a new yum configuration file =/etc/yum.repos.d/docker.repo=
+#+BEGIN_EXAMPLE
+# vim /etc/yum.repos.d/docker.repo
+#+END_EXAMPLE
+ and following contents.
+#+BEGIN_EXAMPLE
+[Docker]
+name=Docker Repository
+baseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/
+enabled=1
+gpgcheck=1
+gpgkey=https://yum.dockerproject.org/gpg
+#+END_EXAMPLE
+** Install Docker on Ubuntu
+First make sure there are no old repositories added in your system. Purge them before installing them.
+#+BEGIN_EXAMPLE
+$ sudo apt-get purge lxc-docker
+#+END_EXAMPLE
+Now use the following commands to upgrade apt index and install docker engine on your system.
+#+BEGIN_EXAMPLE
+$ sudo apt-get update
+$ sudo apt-get install docker-engine
+#+END_EXAMPLE
+After successful installation of Docker engine, Let’s start the docker service.
+#+BEGIN_EXAMPLE
+$ sudo service docker start
+#+END_EXAMPLE
+** Install Docker on CentOS/RHEL
+First update all packages on your system using following command.
+#+BEGIN_EXAMPLE
+# yum update
+#+END_EXAMPLE
+Now install docker-engine package to install docker on your system. This is install many of required decencies on your system.
+#+BEGIN_EXAMPLE
+# yum install docker-engine
+#+END_EXAMPLE
+After successful installation of Docker engine, Let’s start the docker service.
+#+BEGIN_EXAMPLE
+# service docker start
+#+END_EXAMPLE
 
-   #+BEGIN_SRC command
-   docker run-->create container->run-container-->execute command-->show
-   output-->exit from container-->stop container
-   #+END_SRC
+*  How to Create, List & Delete Docker Containers on Linux 
+**  Launch Docker Container 
+To launch a new Docker container using below command. This will start a new container and provide you access of that container with /bin/bash shell.
+#+BEGIN_EXAMPLE
+# docker run [OPTIONS] <IMAGE NAME> [COMMAND] [ARG...]
+#+END_EXAMPLE
+For example below command will create new docker container using image named “ubuntu”. To list all available images use *docker images* command.
+#+BEGIN_EXAMPLE
+# docker run -i -t ubuntu /bin/bash
+#+END_EXAMPLE
+To exit from docker container type *CTRL + P + Q*. This will leave
+container running in background an provide you host system console. If
+you used exit command, it will stop the current container. [[https://docs.docker.com/engine/reference/run/][Click here]]
+to read for more options about docker run command.
+**  List Docker Containers 
+After existing from Docker container, execute below command to list all running containers.
+#+BEGIN_EXAMPLE
+# docker ps
 
-   #+BEGIN_SRC command
-   $ sudo docker run [options] [image] [command] [args]
-   #+END_SRC
-   For Example:
-   #+BEGIN_SRC command
-   $ sudo docker run ubuntu:14.04 echo "Hello Docker"
-   $ Hello Docker
-   #+END_SRC
-   If the ubuntu:14.04 image is not present locally it will download it, will
-   create a container and then will execute the command =echo=. After this it
-   will exit the container and the container is stopped.
+CONTAINER ID     IMAGE     COMMAND        CREATED        STATUS        PORTS    NAMES
+f2582758af13     ubuntu    "/bin/bash"    2 hours ago    Up 2 hours             first_ubuntu
+#+END_EXAMPLE
+By default Above command will list only running containers. To list all containers (including stopped container) use following command.
+#+BEGIN_EXAMPLE
+# docker ps -a
 
-** Create/Start/Stop/Restart/Destroy your container  
-   A container is a runtime instance of a docker image.
- + Create a new container ::
-   #+BEGIN_SRC command
-   $ docker create [OPTIONS] IMAGE [COMMAND] [ARG...]
-   #+END_SRC
-   For example:
-   #+BEGIN_SRC command 
-   $ docker create -it ubuntu:14.04 echo "Hello World"
-   #+END_SRC 
-   + =docker create= command can be used to set up a container configuration ahead of time so
-     that it is ready to start when you need it.
-   + Creates a writeable container layer over the specified image.   
-   + A container created does not start on it's own and is to be started.
- + Start a container ::
-   #+BEGIN_SRC command
-   $ docker start [OPTIONS] CONTAINER [CONTAINER...]
-   #+END_SRC
-   For Example:
-   #+BEGIN_SRC command
-   $ docker start e76ccff0a41a
-   e76ccff0a41a
-   #+END_SRC
- + To stop one or more containers ::
-   #+BEGIN_SRC command
-   $ docker stop [OPTIONS] CONTAINER [CONTAINER...]
-   #+END_SRC
-   For Example:
-   #+BEGIN_SRC command
-   $ docker stop e76ccff0a41a
-   e76ccff0a41a
-   #+END_SRC
-+  To restart one or more container ::
-   #+BEGIN_SRC command
-   $ docker restart [OPTIONS] CONTAINER [CONTAINER...]
-   #+END_SRC
-   For Example:
-   #+BEGIN_SRC command
-   $ docker restart e76ccff0a41a
-   e76ccff0a41a
-   #+END_SRC
- + Destroy a container ::
-   #+BEGIN_SRC command
-   $ docker rm [OPTIONS] CONTAINER [CONTAINER...]
-   #+END_SRC
-   + You can destroy one or more containers at a time
-   + You cannot delete a container which is currently running. So first stop the
-     container and then delete it.
-   #+BEGIN_SRC command
-   $ docker stop e76ccff0a41a
-   e76ccff0a41a
-   $ docker rm e76ccff0a41a
-   e76ccff0a41a
-   #+END_SRC
+CONTAINER ID   IMAGE   COMMAND        CREATED        STATUS        PORTS    NAMES
+f2582758af13   ubuntu  "/bin/bash"    2 hours ago    Up 2 hours             first_ubuntu
+6b5b5a969241   centos  "/bin/bash"    2 days ago     Exited (0) 24 hours ago   ubuntu-web
+
+#+END_EXAMPLE
+**  Start/Stop/Attach Container
+You can start, stop or attach to any containers with following commands. To start container use following command.
+#+BEGIN_EXAMPLE
+# docker start <CONTAINER ID|NAME>
+#+END_EXAMPLE
+To stop container use following command.
+#+BEGIN_EXAMPLE
+# docker stop <CONTAINER ID|NAME>
+#+END_EXAMPLE
+To attach to currently running container use following command.
+#+BEGIN_EXAMPLE
+# docker attach <CONTAINER ID|NAME>
+#+END_EXAMPLE
+**  Drop Docker Container
+Before deleting any container make sure that container is stopped. You
+can use ‘docker ps -a’ command to list status of containers. If
+container is still running first stop that container using given
+commands in above step.
+
+Now use following command to delete single or multiple containers use following command.
+#+BEGIN_EXAMPLE
+# docker rm <CONTAINER ID|NAME> <CONTAINER ID|NAME>
+#+END_EXAMPLE
+You can also delete all stopped containers at once using following command.
+#+BEGIN_EXAMPLE
+# docker rm $(docker ps -a -q)
+#+END_EXAMPLE
+*  How to Search, Pull, List & Delete Docker Images on Linux 
+**  Search Docker Images 
+First of all search Docker container images from Docker hub. For example, below command will search all images with Ubuntu and list as output
+#+BEGIN_EXAMPLE
+# docker search ubuntu
+#+END_EXAMPLE
+The result will look like below
+#+BEGIN_EXAMPLE
+NAME                              DESCRIPTION          STARS     OFFICIAL   AUTOMATED
+
+ubuntu                            Ubuntu is a Deb...   3318      [OK]
+ubuntu-upstart                    Upstart is an e...   60        [OK]
+torusware/speedus-ubuntu          Always updated ...   25                   [OK]
+ubuntu-debootstrap                debootstrap --v...   24        [OK]
+rastasheep/ubuntu-sshd            Dockerized SSH ...   22                   [OK]
+neurodebian                       NeuroDebian pro...   17        [OK]
+nuagebec/ubuntu                   Simple always u...   4                    [OK]
+nickistre/ubuntu-lamp-wordpress   LAMP on Ubuntu ...   4                    [OK]
+nimmis/ubuntu                     This is a docke...   3                    [OK]
+#+END_EXAMPLE
+** Pull Docker Images 
+Now pull required docker image from docker hub on your local system using following commands. Below command will download image named “ubuntu”.
+#+BEGIN_EXAMPLE
+# docker pull ubuntu
+
+latest: Pulling from library/ubuntu
+
+fa5be2806d4c: Pull complete
+b4af4261cb15: Downloading [==>               ] 3.779 MB/70.55 MB
+5d358abc5d9c: Download complete
+2933d50b9f77: Download complete
+#+END_EXAMPLE
+We are also downloading centos images from docker hub.
+#+BEGIN_EXAMPLE
+# docker pull centos
+#+END_EXAMPLE
+**  List Docker Images 
+Now make sure that above images has been downloaded successfully on your system. Below command list all images.
+#+BEGIN_EXAMPLE
+# docker images
+
+REPOSITORY  TAG         IMAGE ID          CREATED           VIRTUAL SIZE
+ubuntu      latest      36248ae4a9ac      2 hours ago       188 MB
+centos      latest      2933d50b9f77      2 hours ago       196.6 MB
+#+END_EXAMPLE
+**  Remove Docker Images 
+To remove an images, Docker provides *rmi* option. Using this we can delete any docker images from our local system. 
+
+For example use below command with changing *IMAGE ID* with your Docker image id.
+#+BEGIN_EXAMPLE
+# docker rmi  <IMAGE ID>
+#+END_EXAMPLE
+or you can simply remove images using repository name (image name)
+#+BEGIN_EXAMPLE
+# docker rmi ubuntu
+#+END_EXAMPLE
+In case you have two images with same name, add tag name while deletion
+#+BEGIN_EXAMPLE
+# docker rmi  ubuntu:latest
+#+END_EXAMPLE
+*  How to Move Docker Images between Hosts 
+** List Docker Images 
+Fist list docker images on your system using below command.
+#+BEGIN_EXAMPLE
+root@tecadmin:~# docker images
+
+REPOSITORY     TAG        IMAGE ID            CREATED          VIRTUAL SIZE
+centos         latest     2933d50b9f77        11 days ago      196.6 MB
+ubuntu         latest     36248ae4a9ac        11 days ago      188 MB
+#+END_EXAMPLE
+** Save or Archive Image 
+Now use the following command to save image repository named *ubuntu*
+(image id: 36248ae4a9ac) and make a zipped archive named
+*ubuntu-latest.tar.gz*. Remember that save is used for making backup
+of docker images (not containers).
+#+BEGIN_EXAMPLE
+# docker save ubuntu | gzip > ubuntu-latest.tar.gz
+#+END_EXAMPLE
+** Import Image 
+After saving docker image in archive format on your system move it to
+remote system using scp or ftp. After that use below command on remote
+system to import Docker image with name *ubuntu* and tag name
+*latest*.
+#+BEGIN_EXAMPLE
+# zcat ubuntu-latest.gz | docker import - ubuntu:latest
+#+END_EXAMPLE
+The above command will create a docker image with name *ubuntu* and tag name *latest* on your system. You can now launch containers using this image like below.
+#+BEGIN_EXAMPLE
+# docker run -i -t ubuntu /bin/bash
+#+END_EXAMPLE
+*  How to Export and Import Docker Containers 
+** List Containers 
+Fist list all containers on your system using below command. Using *ps -a* will list all containers (running and stopped) from your system.
+#+BEGIN_EXAMPLE
+root@tecadmin:~# docker ps -a
+
+CONTAINER ID   IMAGE    COMMAND      CREATED       STATUS      PORTS  NAMES
+f2582758af13   ubuntu   "/bin/bash"  2 hours ago   Up 2 hours         ubuntu-web
+2b199b9976c4   centos   "/bin/bash"  3 days ago    Up 3 hours         centos-mysql
+
+#+END_EXAMPLE
+** Export Container 
+Finally use the following command to export container named *ubuntu-web* (container id: f2582758af13) and make a zipped archive named *ubuntu-web.tar.gz*. Remember that export is used for making backup of docker containers (not images) in image format.
+#+BEGIN_EXAMPLE
+# docker export ubuntu-web | gzip > ubuntu-web.tar.gz
+#+END_EXAMPLE
+** Import Container 
+After exporting docker container on your system move it to remote server using scp or ftp. After that use below command on remote server to import Docker container on remote server with name ubuntu-web.
+#+BEGIN_EXAMPLE
+# zcat ubuntu-web.gz | docker import - ubuntu-web
+#+END_EXAMPLE
+The above command will create a docker image on your system. You can now launch a container from this image using below command.
+#+BEGIN_EXAMPLE
+# docker run -i -t ubuntu-web /bin/bash
+#+END_EXAMPLE
+*  How to Remove Docker Images and Containers 
+** Remove Docker Images 
+To remove an images, Docker provides *rmi* option. Using this we can delete any docker images from our local system. For example use below command with changing <IMAGE ID> with your Docker image id.
+#+BEGIN_EXAMPLE
+# docker rmi  <IMAGE ID>
+#+END_EXAMPLE
+To find all images on your system use following command. This will help you to find ID of images.
+#+BEGIN_EXAMPLE
+root@tecadmin:~# docker images
+
+REPOSITORY     TAG        IMAGE ID            CREATED          VIRTUAL SIZE
+centos         latest     2933d50b9f77        11 days ago      196.6 MB
+ubuntu         latest     36248ae4a9ac        11 days ago      188 MB
+#+END_EXAMPLE
+** Remove Docker Containers 
+To remove a containers, Docker provides *rm* option. Using this we can delete any docker containers from our local system.
+
+ For example use below command with changing <CONTAINER ID> with your Docker container id.
+#+BEGIN_EXAMPLE
+# docker rm  <CONTAINER ID>
+#+END_EXAMPLE
+To list all containers on your system using *ps* option, but ps will show only running containers. So to view all containers use *-a* parameter with ps.
+#+BEGIN_EXAMPLE
+root@tecadmin:~# docker ps -a
+
+CONTAINER ID   IMAGE    COMMAND      CREATED       STATUS      PORTS  NAMES
+f2582758af13   ubuntu   "/bin/bash"  2 hours ago   Up 2 hours         first_ubuntu
+2b199b9976c4   centos   "/bin/bash"  3 days ago    Up 3 hours         thirsty_yalow
+
+#+END_EXAMPLE
+** Remove All Docker Images
+If you want to remove all docker images. You can use simply following command.
+#+BEGIN_EXAMPLE
+docker rmi $(docker images -q)
+#+END_EXAMPLE
+** Stop & Remove All Docker Containers 
+If you want to remove all docker containers. You can use simply following commands. First command will stop all running docker containers and second command will delete them.
+#+BEGIN_EXAMPLE
+# docker stop $(docker ps -a -q)
+# docker rm $(docker ps -a -q)
+#+END_EXAMPLE
 ** Naming a container
    + If you do not specify the name of the container docker will automatically
      assume any random name.
@@ -413,62 +572,6 @@ This command downloads a test image and runs it in a container. When the contain
    #+BEGIN_SRC command
    $ docker run -h new_ctnd -it ubuntu:14.04 bash
    root@new_cntd:~#
-   #+END_SRC
-** List containers
-   =docker ps= command is used to list containers in host machine. Depending on
-   the flags provided, it displays information of stopped or running containers.  
-   #+BEGIN_SRC command
-   $ docker ps [options]
-   #+END_SRC
-
- + List the containers which are currently running ::
-   #+BEGIN_SRC command 
-   $ docker ps
-   CONTAINER ID    IMAGE          COMMAND    CREATED              STATUS              PORTS           NAMES
-   07c5614d5a40    ubuntu:14.04   "bash"     About a minute ago   Up About a minute                   evil_fermi
-   e76ccff0a41a    ubuntu:14.04   "bash"     4 days ago           Up 12 minutes                       stoic_bhabha
-   #+END_SRC
- 
- + List all the containers(both running and stopped) ::
-   #+BEGIN_SRC command
-   $ docker ps -a
-   CONTAINER ID        IMAGE                    COMMAND             CREATED             STATUS                    PORTS               NAMES
-   07c5614d5a40        ubuntu:14.04             "bash"              5 minutes ago       Up 5 minutes                                  evil_fermi
-   e76ccff0a41a        ubuntu:14.04             "bash"              4 days ago          Up 15 minutes                                 stoic_bhabha
-   ca251b8c44d8        ubuntu:14.04             "bash"              4 days ago          Exited (0) 4 days ago                         sad_wright
-   58d28030aa5e        ubuntu:14.04             "bash"              4 days ago          Exited (0) 4 days ago                         jolly_raman
-   34ab6efd089f        lab/problem-solving:01   "bash"              5 days ago          Exited (0) 4 days ago                         insane_yalow
-   4164528c53c3        ubuntu:14.04             "bash"              5 days ago          Exited (0) 4 days ago                         pensive_hypatia
-   ec164228902a        ubuntu:14.04             "bash"              5 days ago          Exited (0) 21 hours ago                       tiny_aryabhata
-   8c2fc6ba883b        ubuntu:14.04             "bash"              5 days ago          Exited (0) 30 hours ago                       new-name
-   #+END_SRC
-    OR
-   #+BEGIN_SRC command
-   $ docker ps -as
-   CONTAINER ID        IMAGE                    COMMAND             CREATED             STATUS                    PORTS               NAMES               SIZE
-   07c5614d5a40        ubuntu:14.04             "bash"              6 minutes ago       Up 6 minutes                                  evil_fermi          0 B (virtual 188 MB)
-   e76ccff0a41a        ubuntu:14.04             "bash"              4 days ago          Up 17 minutes                                 stoic_bhabha        164 B (virtual 188 MB)
-   ca251b8c44d8        ubuntu:14.04             "bash"              4 days ago          Exited (0) 4 days ago                         sad_wright          203.8 kB (virtual 188.2 MB)
-   58d28030aa5e        ubuntu:14.04             "bash"              4 days ago          Exited (0) 4 days ago                         jolly_raman         63.87 MB (virtual 251.8 MB)
-   34ab6efd089f        lab/problem-solving:01   "bash"              5 days ago          Exited (0) 4 days ago                         insane_yalow        1.385 MB (virtual 788.7 MB)
-   4164528c53c3        ubuntu:14.04             "bash"              5 days ago          Exited (0) 4 days ago                         pensive_hypatia     153.1 MB (virtual 341.1 MB)
-   ec164228902a        ubuntu:14.04             "bash"              5 days ago          Exited (0) 21 hours ago                       tiny_aryabhata      1.25 GB (virtual 1.438 GB)
-   8c2fc6ba883b        ubuntu:14.04             "bash"              5 days ago          Exited (0) 30 hours ago                       new-name            0 B (virtual 188 MB)
-   #+END_SRC
-   + flag =a= to view all containers
-   + flag =s= to view size of containers
-** List images
-   List all the images currently sitting in your local repository/system
-   #+BEGIN_SRC command
-   $ docker images
-   REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE
-   labs/speech-recog     latest              1e85be4efa89        5 days ago          341.1 MB
-   lab/problem-solving   01                  be7d953b67e6        5 days ago          787.3 MB
-   meghanab/myapp        1.0                 08570d8b4a10        13 days ago         267.3 MB
-   meghana/new_image1    0.1                 2934249749c9        2 weeks ago         252.9 MB
-   meghana/new_user      1                   b5900443b2d7        2 weeks ago         188.3 MB
-   centos                7                   904d6c400333        3 weeks ago         196.8 MB
-   ubuntu                14.04               8f1bd21bd25c        4 weeks ago         188 MB
    #+END_SRC
 ** List processes running inside a container 
  + Display the running processes of a container ::
@@ -504,11 +607,11 @@ This command downloads a test image and runs it in a container. When the contain
    #+END_SRC
    For example:
    #+BEGIN_SRC command
-   root@meghana / $ docker ps
+   root@raghu / $ docker ps
    CONTAINER ID   IMAGE          COMMAND      CREATED        STATUS              PORTS               NAMES
    e76ccff0a41a   ubuntu:14.04   "bash"       2 days ago     Up About an hour                        stoic_bhabha
  
-   root@meghana / $ docker exec e76ccff0a41a ping 127.0.0.1 -c 5
+   root@raghu/ $ docker exec e76ccff0a41a ping 127.0.0.1 -c 5
    PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
    64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.050 ms
    64 bytes from 127.0.0.1: icmp_seq=2 ttl=64 time=0.053 ms
