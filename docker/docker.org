@@ -343,6 +343,92 @@ To exit from docker container type *CTRL + P + Q*. This will leave
 container running in background an provide you host system console. If
 you used exit command, it will stop the current container. [[https://docs.docker.com/engine/reference/run/][Click here]]
 to read for more options about docker run command.
+** Creating container  
+   A container is a runtime instance of a docker image.
+ + Create a new container ::
+   #+BEGIN_SRC command
+   $ docker create [OPTIONS] IMAGE [COMMAND] [ARG...]
+   #+END_SRC
+   For example:
+   #+BEGIN_SRC command 
+   $ docker create -it ubuntu:14.04 echo "Hello World"
+   #+END_SRC 
+   + =docker create= command can be used to set up a container configuration ahead of time so
+     that it is ready to start when you need it.
+   + Creates a writeable container layer over the specified image.   
+   + A container created does not start on it's own and is to be started.
+ + Start a container ::
+   #+BEGIN_SRC command
+   $ docker start [OPTIONS] CONTAINER [CONTAINER...]
+   #+END_SRC
+   For Example:
+   #+BEGIN_SRC command
+   $ docker start e76ccff0a41a
+   e76ccff0a41a
+   #+END_SRC
+ + To stop one or more containers ::
+   #+BEGIN_SRC command
+   $ docker stop [OPTIONS] CONTAINER [CONTAINER...]
+   #+END_SRC
+   For Example:
+   #+BEGIN_SRC command
+   $ docker stop e76ccff0a41a
+   e76ccff0a41a
+   #+END_SRC
++  To restart one or more container ::
+   #+BEGIN_SRC command
+   $ docker restart [OPTIONS] CONTAINER [CONTAINER...]
+   #+END_SRC
+   For Example:
+   #+BEGIN_SRC command
+   $ docker restart e76ccff0a41a
+   e76ccff0a41a
+   #+END_SRC
+ + Destroy a container ::
+   #+BEGIN_SRC command
+   $ docker rm [OPTIONS] CONTAINER [CONTAINER...]
+   #+END_SRC
+   + You can destroy one or more containers at a time
+   + You cannot delete a container which is currently running. So first stop the
+     container and then delete it.
+   #+BEGIN_SRC command
+   $ docker stop e76ccff0a41a
+   e76ccff0a41a
+   $ docker rm e76ccff0a41a
+   e76ccff0a41a
+   #+END_SRC
+** Setting up hostname for container
+*** Naming a container
+   + If you do not specify the name of the container docker will automatically
+     assume any random name.
+   + To give name to a container:
+     #+BEGIN_SRC command
+     $ docker run [options] -name <name of container> <image> <command>  
+     #+END_SRC
+     For Example:
+     #+BEGIN_SRC command
+     $ docker run -it -name lab1_cse01 ubuntu:14.04 bash
+     root@8c2fc6ba883b:~#  
+     #+END_SRC
+   + You can always rename your container
+     #+BEGIN_SRC command
+     $ docker rename [OPTIONS] OLD_NAME NEW_NAME
+     #+END_SRC
+     For Example:
+     #+BEGIN_SRC command
+     $ docker rename lab1_cae01 lab2_cse02
+     #+END_SRC
+*** Giving a hostname to container
+ + To give host name to container you must use =-h= flag with the =docker run= command:
+   #+BEGIN_SRC command 
+   $ docker run -h <hostname> [options] [image] [command]
+   #+END_SRC
+   For Example:
+   #+BEGIN_SRC command
+   $ docker run -h new_ctnd -it ubuntu:14.04 bash
+   root@new_cntd:~#
+   #+END_SRC
+
 **  List Docker Containers 
 After existing from Docker container, execute below command to list all running containers.
 #+BEGIN_EXAMPLE
@@ -543,36 +629,6 @@ If you want to remove all docker containers. You can use simply following comman
 # docker stop $(docker ps -a -q)
 # docker rm $(docker ps -a -q)
 #+END_EXAMPLE
-** Naming a container
-   + If you do not specify the name of the container docker will automatically
-     assume any random name.
-   + To give name to a container:
-     #+BEGIN_SRC command
-     $ docker run [options] -name <name of container> <image> <command>  
-     #+END_SRC
-     For Example:
-     #+BEGIN_SRC command
-     $ docker run -it -name lab1_cse01 ubuntu:14.04 bash
-     root@8c2fc6ba883b:~#  
-     #+END_SRC
-   + You can always rename your container
-     #+BEGIN_SRC command
-     $ docker rename [OPTIONS] OLD_NAME NEW_NAME
-     #+END_SRC
-     For Example:
-     #+BEGIN_SRC command
-     $ docker rename lab1_cae01 lab2_cse02
-     #+END_SRC
-** Giving a hostname to container
- + To give host name to container you must use =-h= flag with the =docker run= command:
-   #+BEGIN_SRC command 
-   $ docker run -h <hostname> [options] [image] [command]
-   #+END_SRC
-   For Example:
-   #+BEGIN_SRC command
-   $ docker run -h new_ctnd -it ubuntu:14.04 bash
-   root@new_cntd:~#
-   #+END_SRC
 ** List processes running inside a container 
  + Display the running processes of a container ::
    #+BEGIN_SRC command
