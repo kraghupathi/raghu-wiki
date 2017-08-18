@@ -12,20 +12,14 @@ configuration for managing/deploying multiple reproducible virtual
 environments with the same configuration.
 
 * Install virtualbox and vagrant on debian stretch
- - Download latest version of virtualbox at [[https://www.virtualbox.org/wiki/Linux_Downloads][here]]
+ - Download and install latest version of virtualbox at [[https://www.virtualbox.org/wiki/Linux_Downloads][here]]
   #+BEGIN_EXAMPLE
   wget http://download.virtualbox.org/virtualbox/5.1.26/virtualbox-5.1_5.1.26-117224~Debian~stretch_amd64.deb
-  #+END_EXAMPLE
- - Install
-  #+BEGIN_EXAMPLE
   sudo dpgk -i virtualbox-5.1_5.1.26-117224~Debian~stretch_amd64.deb
   #+END_EXAMPLE
  - Download vagrant on debian
   #+BEGIN_EXAMPLE
   wget https://releases.hashicorp.com/vagrant/1.9.7/vagrant_1.9.7_x86_64.deb
-  #+END_EXAMPLE
- - Install vagrant 
-  #+BEGIN_EXAMPLE
   sudo dpkg -i vagrant_1.9.7_x86_64.deb
   #+END_EXAMPLE
 
