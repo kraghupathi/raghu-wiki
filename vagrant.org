@@ -1,0 +1,79 @@
+#+AUTHOR: Raghupathi Kammari
+#+TITLE: Vagrant tutorial
+#+DATE: 18-Aug-2017
+
+* Vagrant
+[[https://www.vagrantup.com/][Vagrant]] is an open source tool for building a complete virtual
+development environment. Very often, a test environment is required
+for testing the latest release and new tools. Also, it reduces the
+time spent in re-building your OS. By default, vagrant uses [[https://www.virtualbox.org/][virtualbox]]
+for managing the Virtualization. Vagrant acts as the central
+configuration for managing/deploying multiple reproducible virtual
+environments with the same configuration.
+
+* Install virtualbox and vagrant on debian stretch
+ - Download latest version of virtualbox at [[https://www.virtualbox.org/wiki/Linux_Downloads][here]]
+  #+BEGIN_EXAMPLE
+  wget http://download.virtualbox.org/virtualbox/5.1.26/virtualbox-5.1_5.1.26-117224~Debian~stretch_amd64.deb
+  #+END_EXAMPLE
+ - Install
+  #+BEGIN_EXAMPLE
+  sudo dpgk -i virtualbox-5.1_5.1.26-117224~Debian~stretch_amd64.deb
+  #+END_EXAMPLE
+ - Download vagrant on debian
+  #+BEGIN_EXAMPLE
+  wget https://releases.hashicorp.com/vagrant/1.9.7/vagrant_1.9.7_x86_64.deb
+  #+END_EXAMPLE
+ - Install vagrant 
+  #+BEGIN_EXAMPLE
+  sudo dpkg -i vagrant_1.9.7_x86_64.deb
+  #+END_EXAMPLE
+
+* Getting vagrant  machine up:
+Vagrant can quickly deploy the development environment. Get the
+vagrant images from [[http://www.vagrantbox.es/][here]]. The following command will install ubuntu
+box from the vagrant website. A box is nothing more then a specially
+packaged image that can later be used to provision a server.
+
+  #+BEGIN_EXAMPLE
+  $ vagrant box add centos https://github.com/tommy-muehle/puppet-vagrant-boxes/releases/download/1.1.0/centos-7.0-x86_64.box
+  #+END_EXAMPLE
+* Provisioners
+Provisioner will do some task(s) using the vm instance already
+provided. The provisioners are used to set up the virtual server,
+installing all necessary software and executing different tasks. The
+most used provisioners are: Puppet, Chef and Ansible. Shell Script is
+also a very common option. You can find more information about vagrant
+provisioners [[http://docs.vagrantup.com/v2/provisioning/index.html][here]].
+
+* Vagrantfile
+The basic vagrant configuration is based in one file, the
+Vagrantfile. It shall be placed in your repository root. In this file
+you will define which base box you want - a box is, basically, a
+package with an operational system to be run in your virtual machine.
+
+
+* Configure Project:
+Create a root directory for your Project. Then create a vagrant file
+in this folder by calling 'vagrant init', which will be the central
+file for the project configuration.
+
+  #+BEGIN_EXAMPLE
+  $ mkdir vagrant_project
+  $ cd vagrant_project
+  $ vagrant init
+  #+END_EXAMPLE
+
+The above command generates basic Vagrantfile and Edit the Vagrantfile in this directory and replace
+  #+BEGIN_EXAMPLE
+  base = "centos"
+  #+END_EXAMPLE
+* Start Environment:
+ #+BEGIN_EXAMPLE
+ $ vagrant up
+ #+END_EXAMPLE
+
+* Connect using SSH:
+ #+BEGIN_EXAMPLE
+ $ vagrant ssh
+ #+END_EXAMPLE
