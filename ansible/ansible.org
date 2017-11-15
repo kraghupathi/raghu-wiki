@@ -22,7 +22,7 @@ install ansible on Debian-9 machines.
 - Fast to learn and setup
  + It uses a very simple language (YAML, in the form of Ansible
    Playbooks) that allow you to describe your automation jobs in a way
-   that approaches plain English.Why Ansible?
+   that approaches plain English.
 - Efficient
  + Doesn't require a custom agent or software to install
  + Ansible works by connecting to your nodes and pushing out small
@@ -49,13 +49,13 @@ On Debian-9/stretch machines
 Ansible works against multiple systems in your infrastructure at the
 same time. It does this by selecting portions of systems listed in
 Ansible’s inventory file, which defaults to being saved in the
-location /etc/ansible/hosts.
+location =/etc/ansible/hosts=.
 
 A group can have multiple server and one server can be a part of
 multiple groups.  Name of group is enclosed in square brackets
-*[]*. Server names can be their dns names or ip addresses.
+=[]=. Server names can be their dns names or ip addresses.
 
-Here I used the servers 192.168.0.1 and 192.168.0.2
+Here I used the servers =192.168.0.1= and =192.168.0.2=
 
  #+BEGIN_EXAMPLE
  [Web Servers]
@@ -78,7 +78,7 @@ Then copy the ssh key to remote host by using ssh-copy-id command.
  #+END_EXAMPLE
 
 * Ansible Modules
-Ansible ships with a number of modules (called the ‘module library’)
+Ansible ships with a number of modules (called the *module library*)
 that can be executed directly on remote hosts or through Playbooks.
 
 Users can also write their own modules. These modules can control
@@ -88,7 +88,7 @@ or handle executing system commands.
 * Ansible Playbooks
 Playbooks are Ansible configuration,deployment of policies we want to
 apply or enforce in the remote hosts they are in YAML begins with
-*–*. It consists of a listing of modules and the arguments.
+=–=. It consists of a listing of modules and the arguments.
 
 - Example:
  #+BEGIN_EXAMPLE
