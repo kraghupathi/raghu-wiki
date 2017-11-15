@@ -17,16 +17,16 @@ install ansible on Debian-9 machines.
  + Automation of tasks
 * Why Ansible?
 - Simple
- + Easy to write, read, maintain and evolve-without writing
-scripts or custom code
+ + Easy to write, read, maintain and evolve-without writing scripts or
+   custom code
 - Fast to learn and setup
- + It uses a very simple language (YAML, in the form of
-Ansible Playbooks) that allow you to describe your automation jobs in
-a way that approaches plain English.Why Ansible?
+ + It uses a very simple language (YAML, in the form of Ansible
+   Playbooks) that allow you to describe your automation jobs in a way
+   that approaches plain English.Why Ansible?
 - Efficient
  + Doesn't require a custom agent or software to install
- + Ansible works by connecting to your nodes and pushing
-out small programs, called "Ansible modules" to them.
+ + Ansible works by connecting to your nodes and pushing out small
+   programs, called "Ansible modules" to them.
 - Secure
  + No agent
  + Runs on OpenSSH
