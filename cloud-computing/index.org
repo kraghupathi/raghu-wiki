@@ -1,0 +1,252 @@
+#+TITLE: Cloud Computing tutorial for beginners
+#+AUTHOR: kraghupathi
+#+DATE: [12-12-2017 Tue]
+
+* Introduction
+This document describes the cloud computing tutorial for biginners
+
+* Cloud Computing Overview
+Cloud computing provides us means of accessing the applications as
+utilities over the internet. It allows us to create, configure and
+customize the applications online.
+
+* What is Cloud?
+The term *cloud* refers to a *Network* or *Internet*. In other words,
+we can say that cloud is something, which is present ar remote
+location. Cloud can provide services over public and private networks,
+i.e, WAN, LAN or VPN.
+
+Applications such as e-mail,web conferencing, customer relationship
+management(CRM) execute on cloud.
+
+* What is cloud computing?
+Cloud computing refers to manuplating, configuring and accessing the
+hardware and software resources remotely. It offers online data
+storage, infrastructure and application.
+
+Cloud computing offers platform independency as the software is not
+required to be installed locally on the PC. Hence, the cloud computing
+is making our business applications mobile and collaborative.
+** Characteristics
+  * On demand self service
+  * *Ubiquitous network access:* Anywhere, Anytime and Anydevice
+  * Location independent Resource Pooling
+  * Rapid Elasticity
+  * Pay as you go
+** Evolution of Computing
+Computing has progressed through 5 key phases, over last 6 decades
+  + Mainframe
+  + PC
+  + Client Server
+  + Web Services
+  + Cloud
+** Advantages of Cloud Computing
+ * Scalability/Elasticity
+ * Cost saving/less capital expenditure
+ * Higher resource Utilization
+ * Business agility
+ * Disaster recovery and Back up
+** Why use cloud computing?
+Clouds can provide users with a number of different benefits. Many
+businesses large and small use cloud computing today either directly
+(e.g. Google or Amazon) or indirectly (e.g. Twitter) instead of
+traditional on-site alternatives. There are a number of reasons why
+cloud computing is so widely used among businesses today.
+
+ * Reduces TCO
+ * Up to date software
+ * Universal access
+ * Choice of applications
+ * Flexibility
+ * Potential to be greener and more economical
+ * Better Budget Utilization
+
+* Types of clouds
+** Public Cloud
+Public Cloud allows systems and services to be easily accessible to
+general public. The IT giants such as Google, Amazon and Microsoft
+offer cloud services via Internet.
+
+*** Benefits
+There are many benefits of deploying cloud as public cloud model.
+
+ * *Cost Effective*
+Since public cloud shares same resources with large number of customers it turns out inexpensive.
+
+ * *Reliability*
+The public cloud employs large number of resources from different locations. If any of the resources fails, public cloud can employ another one.
+
+ * *Flexibility*
+The public cloud can smoothly integrate with private cloud, which gives customers a flexible approach.
+
+ * *Location Independence*
+Public cloud services are delivered through Internet, ensuring location independence.
+
+ * *Utility Style Costing*
+Public cloud is also based on pay-per-use model and resources are accessible whenever customer needs them.
+
+ * *High Scalability*
+Cloud resources are made available on demand from a pool of resources, i.e., they can be scaled up or down according the requirement.
+
+*** Disadvantages
+Here are some disadvantages of public cloud model:
+
+ * *Low Security*
+In public cloud model, data is hosted off-site and resources are shared publicly, therefore does not ensure higher level of security.
+
+ * *Less Customizable*
+It is comparatively less customizable than private cloud.
+
+** Private Cloud
+Private Cloud allows systems and services to be accessible within an
+organization. The Private Cloud is operated only within a single
+organization. However, it may be managed internally by the organization itself
+or by third-party. 
+*** Benefits
+There are many benefits of deploying cloud as private cloud model.
+ * *High Security and Privacy*
+Private cloud operations are not available to general public and resources are shared from distinct pool of resources. Therefore, it ensures high security and privacy.
+
+ * *More Control*
+The private cloud has more control on its resources and hardware than public cloud because it is accessed only within an organization.
+
+ * *Cost and Energy Efficiency*
+The private cloud resources are not as cost effective as resources in public clouds but they offer more efficiency than public cloud resources.
+
+*** Disadvantages
+Here are the disadvantages of using private cloud model:
+
+ * *Restricted Area of Operation*
+The private cloud is only accessible locally and is very difficult to deploy globally.
+
+ * *High Priced*
+Purchasing new hardware in order to fulfill the demand is a costly transaction.
+
+ * *Limited Scalability*
+The private cloud can be scaled only within capacity of internal hosted resources.
+
+ * *Additional Skills*
+In order to maintain cloud deployment, organization requires skilled expertise.
+** Comunity Cloud
+Community Cloud allows system and services to be accessible by group of
+organizations. It shares the infrastructure between several organizations from
+a specific community. It may be managed internally by organizations or by the
+third-party.
+*** Benefits
+There are many benefits of deploying cloud as community cloud model.
+ * *Cost Effective*
+Community cloud offers same advantages as that of private cloud at low cost.
+
+ * *Sharing Among Organizations*
+Community cloud provides an infrastructure to share cloud resources and capabilities among several organizations.
+
+ * *Security*
+The community cloud is comparatively more secure than the public cloud but less secured than the private cloud.
+
+ * *Issues*
+  + Since all data is located at one place, one must be careful in storing data
+    in community cloud because it might be accessible to others.
+
+  + It is also challenging to allocate responsibilities of governance, security
+    and cost among organizations.
+** Hybrid Cloud
+Hybrid Cloud is a mixture of public and private cloud. Non-critical activities
+are performed using public cloud while the critical activities are performed
+using private cloud.
+*** Benefits
+There are many benefits of deploying cloud as hybrid cloud model.
+ * *Scalability*
+It offers features of both, the public cloud scalability and the private cloud
+scalability.
+
+ * *Flexibility*
+It offers secure resources and scalable public resources.
+
+ * *Cost Efficiency*
+Public clouds are more cost effective than private ones. Therefore, hybrid clouds can be cost saving.
+
+ * *Security*
+The private cloud in hybrid cloud ensures higher degree of security.
+
+*** Disadvantages
+ * *Networking Issues*
+Networking becomes complex due to presence of private and public cloud.
+
+ * *Security Compliance*
+It is necessary to ensure that cloud services are compliant with security policies of the organization.
+
+ *Infrastructure Dependency*
+The hybrid cloud model is dependent on internal IT infrastructure, therefore it is necessary to ensure redundancy across data centers.
+* Cloud Service Models
+Cloud computing is based on service models. These categorized into
+three basic service models which are
+ + Infrastructure-as-a-Service (IaaS)
+ + Platform-as-a-Service (PaaS)
+ + Software-as-a-Service (SaaS)
+
+** Anything-as-a-Service (XaaS)
+Xaas is yet another service model, which includes
+Network-as-a-Service, Business-as-a-Service, Identity-as-a-Service,
+Database-as-a-Service or Strategy-as-a-Service
+
+** Infrastructure-as-a-Service (IaaS)
+IaaS is the mosst basic level of service. Each of the service models
+inherit the security and management mechanism from the underlying
+model.
+
+IaaS provides access to fundamental resources such as physical
+machines, virtual machines, virtual storage, etc.
+
+*Examples:* Amazon Elastic Cloud Compute (Amazon EC2), Amazon Simple
+ Storage Service (Amazon S3), Rackspace Cloud Servers, GoGrid, Joyent,
+ and AppNexus
+** Platform-as-a-Service (PaaS)
+  + PaaS is a category of cloud computing that provides a platform and
+    environment to allow developers to build applications
+  + Allows users to create software applications using tools supplied
+    by the provider. PaaS services can consist of preconfigured
+    features that customers can subscribe to; they can choose to
+    include the features that meet their requirements
+  + The infrastructure and applications are managed for customers and
+    support is available.
+  + Services are constantly updated, with existing features upgraded
+    and additional features added.
+  + PaaS providers can assist developers from the conception of their
+    original ideas to the creation of applications, and through to
+    testing and deployment.
+
+*** Advantages
+  * No investiment in Infrastructure
+  * Makes Development/Quality Content Creation possible for
+    'non-experts'
+  * Flexibility
+  * Adaptability
+  * Security
+
+*Examples:* AWS Elastic Beanstalk, Cloud Foundry, CloudControl,
+Cloudera, EngineYard, Google App Engine
+
+** Software-as-a-Service (SaaS)
+Software as a service (or SaaS) is a way of delivering applications
+over the InternetÅ\as a service. Instead of installing and maintaining
+software, you simply access it via the Internet, freeing yourself from
+complex software and hardware management.
+
+SaaS applications are sometimes called Web-based software, on-demand
+software, or hosted software. Whatever the name, SaaS applications run
+on a SaaS providerÅfs servers. The provider manages access to the
+application, including security, availability, and performance.
+*** Benefits
+Using SaaS has proved to be beneficial in terms of scalability,
+efficiency, performance and much more. Some of the benefits are listed
+below:
+  + Modest Software Tools
+  + Efficient use of Software Licenses
+  + Centralized Management & Data
+  + Platform responsibilities managed by provider
+  + Multitenant solutions
+
+*Examples:* Google-Mail, Drive Calendar etc., Twitter, Facebook and
+Flickr etc. are all examples of SaaS, with users able to access the
+services via any internet enabled device. Enterprise users are able to
+use applications for a range of needs.
