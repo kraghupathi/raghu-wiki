@@ -5,13 +5,13 @@
 * Introduction
 This document about the vim editor commands.
 
-** comment multiple lines in vim editor
+** comment multiple lines
 
 - Pressing *Esc* key
 - Move your cursor to the start of the starting line of the block that you want to comment out press *Ctrl + v* for visual mode and now press the down arrow key to select till the last line you wanna comment.
 - Press *shift+I* and type *#* or *//* and finally press *Esc* key
 
-** Uncomment multiple lines in vim editor
+** Uncomment multiple lines
 
 - Goto to the first line you want to un-comment and press *Ctrl+v* then
   press down arrow key to the last line you wanna un-comment. if the
