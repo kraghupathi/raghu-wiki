@@ -3,32 +3,9 @@ Kubernetes is an open source orchestration system for Docker containers. It mana
 
 Sometimes called kube and k8s (that's 'k' + 8 letters + 's')
 
-## Features of Kubernetes
-1. Automatic Binpacking
-2. Service Discovery & Load balancing
-3. Storage Orchestration
-4. Self-Healing
-5. Secret & Configuration Management
-6. Batch Execution 
-7. Horizontal Scaling
-8. Automatic Rollbacks & Rollouts
-
-
-***1.Automatic Binpacking:*** Kubernetes automatically packages your application and schedules the containers based on their requirements and available resources while not sacrificing availability. To ensure complete utilization and save unused resources, Kubernetes balances between critical and best-effort workloads.
-
-***2.Service Discovery & Load balancing:*** There is no need to worry about networking and communication because Kubernetes will automatically assign IP addresses to containers and a single DNS name for a set of containers, that can load-balance traffic inside the cluster. 
-
-***3. Storage Orchestration:*** You can mount the storage system of your choice. You can either opt for local storage, or choose a public cloud provider such as GCP or AWS, or perhaps use a shared network storage system such as NFS, iSCSI, etc.
-
-***4. Self-Healing:*** Kubernetes can automatically restart containers that fail during execution and kills those containers that don’t respond to user-defined health checks. But if nodes itself die, then it replaces and reschedules those failed containers on other available nodes.
-
-***5. Secret & Configuration Management:*** Kubernetes can help you deploy and update secrets and application configuration without rebuilding your image and without exposing secrets in your stack configuration.
-
-***6. Batch Execution:*** In addition to managing services, Kubernetes can also manage your batch and CI workloads, thus replacing containers that fail, if desired.
-
-***7. Horizontal Scaling:*** Kubernetes needs only 1 command to scale up the containers, or to scale them down when using the CLI. Else, scaling can also be done via the Dashboard (kubernetes UI).
-
-***8. Automatic Rollbacks & Rollouts:*** Kubernetes progressively rolls out changes and updates to your application or its configuration, by ensuring that not all instances are worked at the same instance. Even if something goes wrong, Kubernetes will rollback the change for you.
+# Kubernetes - Cluster Architecture
+Single node kubernetes cluster
+![image](kubernetes/33fe8f6a-3b1a-4d9d-af19-37c1f790734f-1.jpg)
 
 # Kubernetes core concepts
 
@@ -73,6 +50,33 @@ Sometimes called kube and k8s (that's 'k' + 8 letters + 's')
 ***13.Controller-manager:*** This component is responsible for most of the collectors that regulates the state of cluster and performs a task. In general, it can be considered as a daemon which runs in nonterminating loop and is responsible for collecting and sending information to API server.
 
 ***14.Scheduler:*** It is a service in master responsible for distributing the workload. It is responsible for tracking utilization of working load on cluster nodes and then placing the workload on which resources are available and accept the workload.
+
+## Features of Kubernetes
+1. Automatic Binpacking
+2. Service Discovery & Load balancing
+3. Storage Orchestration
+4. Self-Healing
+5. Secret & Configuration Management
+6. Batch Execution 
+7. Horizontal Scaling
+8. Automatic Rollbacks & Rollouts
+
+
+***1.Automatic Binpacking:*** Kubernetes automatically packages your application and schedules the containers based on their requirements and available resources while not sacrificing availability. To ensure complete utilization and save unused resources, Kubernetes balances between critical and best-effort workloads.
+
+***2.Service Discovery & Load balancing:*** There is no need to worry about networking and communication because Kubernetes will automatically assign IP addresses to containers and a single DNS name for a set of containers, that can load-balance traffic inside the cluster. 
+
+***3. Storage Orchestration:*** You can mount the storage system of your choice. You can either opt for local storage, or choose a public cloud provider such as GCP or AWS, or perhaps use a shared network storage system such as NFS, iSCSI, etc.
+
+***4. Self-Healing:*** Kubernetes can automatically restart containers that fail during execution and kills those containers that don’t respond to user-defined health checks. But if nodes itself die, then it replaces and reschedules those failed containers on other available nodes.
+
+***5. Secret & Configuration Management:*** Kubernetes can help you deploy and update secrets and application configuration without rebuilding your image and without exposing secrets in your stack configuration.
+
+***6. Batch Execution:*** In addition to managing services, Kubernetes can also manage your batch and CI workloads, thus replacing containers that fail, if desired.
+
+***7. Horizontal Scaling:*** Kubernetes needs only 1 command to scale up the containers, or to scale them down when using the CLI. Else, scaling can also be done via the Dashboard (kubernetes UI).
+
+***8. Automatic Rollbacks & Rollouts:*** Kubernetes progressively rolls out changes and updates to your application or its configuration, by ensuring that not all instances are worked at the same instance. Even if something goes wrong, Kubernetes will rollback the change for you.
 
 # Installation of Kubernetes on Ubuntu
 ## Prerequisites
