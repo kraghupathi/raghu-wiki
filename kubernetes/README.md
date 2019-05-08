@@ -5,6 +5,7 @@ Sometimes called kube and k8s (that's 'k' + 8 letters + 's')
 
 # Kubernetes - Cluster Architecture
 Single node kubernetes cluster
+
 ![image](kubernetes/33fe8f6a-3b1a-4d9d-af19-37c1f790734f-1.jpg)
 
 # Kubernetes core concepts
