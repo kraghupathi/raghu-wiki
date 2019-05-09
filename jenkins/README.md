@@ -1,10 +1,15 @@
 # What is Continuous Integration?
 Continuous Integration is a software development practice where members of a team integrate their work frequently, usually each person integrates at least daily - leading to multiple integrations per day. Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible
 - At a regular frequency (ideally at every commit), the system is:
+
 -- **Integrated:** All changes up until that point are combined into the project
+
 -- **Built:** The code is compiled into an executable or package
+
 -- **Tested:** Automated test suites are run
+
 -- **Archived:** Versioned and stored so it can be distributed as is, if desired
+
 -- **Deployed:** Loaded onto a system where the developers can interact with it
 
 ## Benefits
@@ -158,6 +163,7 @@ JenkinsFile can be defined by either Web UI or with a JenkinsFile.
 There are two types of syntax used for defining your JenkinsFile.
 
 1.Declarative
+
 2.Scripted
 
 **Declarative:**
@@ -208,9 +214,12 @@ node {
 **1.agent** indicates that Jenkins should allocate an executor and workspace for this part of the
 Pipeline.
 
-**2.** stage describes a stage of this Pipeline.
+**2.stage** describes a stage of this Pipeline.
+
 **3.steps** describes the steps to be run in this **stage**
+
 **4.sh** executes the given shell command
+
 **5.junit** is a Pipeline step provided by the plugin:junit[JUnit plugin] for aggregating test reports.
 
 ## Why use Jenkin's Pipeline?
