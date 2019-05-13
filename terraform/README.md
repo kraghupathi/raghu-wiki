@@ -198,4 +198,172 @@ Terraform has five essential commands that allow us to deal with an end-to-end w
 - **terraform apply:** Apply the changes required to reach the desired state of the configuration.
 - **terraform destroy:** destroys Terraform-managed infrastructure.
 
+# Deploying ec2 instance with Terraform
+Pre-requisite:
+1. AWS account
+2. EC2 Ubuntu instance.
+3. Terraform installed
+4. AWS CLI installed & configured
+
+# Creating the project directory
+In a location of your choice, create a directory named create-ec2-instance
+
+Create the following directory structure (where the .tf files are blank text files):
+
+```
+create-ec2-instance/
+    - providers.tf
+    - main.tf
+    - aws_ami.tf
+    - variables.tf
+    - .gitignore
+```
+
+**.gitignore**
+
+Creating a Git repository with these files. If you do so, you should start with this **.gitignore** content:
+
+```
+# Compiled files
+*.tfstate
+*.tfstate.backup
+
+# Module directory
+.terraform/
+
+# Sensitive Files
+/variables.tf
+```
+Adding/variables.tf to your **.gitignore**  file because we're about to put some AWS secrets into it. Keeping the  secrets out of Github can keep them more secure and resistent to  accidents. In the future, your team may also want to use different  secrets to manage permissions to different resources.
+
+
+- **variables.tf**
+Here is where we'll set some variables to be re-used by the rest of  the configuration. It will also serve as a handy place to keep our AWS  secrets.
+
+Example of variables.tf:
+
+```
+# AWS Config
+
+variable "aws_access_key" {
+  default = "YOUR_ADMIN_ACCESS_KEY"
+}
+
+variable "aws_secret_key" {
+  default = "YOUR_ADMIN_SECRET_KEY"
+}
+
+variable "aws_region" {
+  default = "us-west-2"
+}
+```
+
+Explanation of variables:
+
+**aws_access_key** - Access Key ID: that allows your machine to make calls to the AWS API.
+
+**aws_secret_key** - Secret Access Key that pairs with that Access Key ID
+
+**aws_region** - The region in which our infrastructure is hosted (I'm using  us-west-2 but you can change it if you'd like)
+
+
+- **providers.tf**
+
+Example of providers.tf:
+
+```
+provider "aws" {
+  access_key = "${var.aws_access_key}"
+  secret_key = "${var.aws_secret_key}"
+  region     = "${var.aws_region}"
+
+  version = "~> 1.7"
+}
+```
+
+- **aws_ami.tf**
+
+This file is dedicated to finding the right Ubuntu AMI to install on  our server. AMI IDs change from region to region and change over time as  upgrades come out.
+
+Example of aws_ami.tf:
+
+```
+data "aws_ami" "ubuntu" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"] # Canonical
+}
+```
+
+A data source is a read-only view into data stored  outside of Terraform. The data sources available will change based on  the provider. In this case, we are creating an aws_ami data source with the unique identifier of ubuntu.
+
+The owners of the AMI that we're looking for (the official Ubuntu AMI), will always be Amazon. Therefore, the ID stored in owners is a constant.
+
+We are using filter tags to filter all possible AMIs in the AWS AMI repository by name and virtualization-type.
+
+Lastly, there will likely be multiple results when we apply all of these filters. most_recent  will select the most recent of the possible AMIs and return the  attributes of that for later use in our Terraform configuration.
+
+- **main.tf**
+
+Example of main.tf:
+
+```
+resource "aws_instance" "my-test-instance" {
+  ami             = "${data.aws_ami.ubuntu.id}"
+  instance_type   = "t2.micro"
+
+  tags {
+    Name = "test-instance"
+  }
+}
+```
+
+Explanation:
+1. We are defining an aws_instance with the unique Terraform identifier of my-test-instance
+2. That instance should use the AMI found in aws_ami.tf to initialize the server
+3. That instance should be a t2.micro (the cheapest AWS instance type)
+4. We've attached a Name tag to the instance, test-instance, for easy identification
+
+## Creating the Infrastructure
+Navigate to the project's directory, and run the following:
+
+```
+$ terraform init
+```
+This will download and install the proper version of the AWS provider for your project and place it in a directory called .terraform.
+
+```
+$ terraform plan
+```
+This is exactly what we want, so run the apply command again and you’ll see your new EC2 Instance deploying
+
+```
+$ terraform apply
+```
+It will take the configurations we've  written and use the AWS API to build our servers. 
+
+**Note:** You can type **yes** and hit **Enter** to create the new server.
+
+Your infrastructure is build and check on your AWS console.
+
+## Destroying the Infrastructure
+When you’re done experimenting with Terraform, it’s a good idea to remove all the resources you created so AWS doesn’t charge you for them. Since Terraform keeps track of what resources you created, cleanup is a breeze. All you need to do is run the destroy command:
+
+```
+$ terraform destroy
+```
+You can type **yes** and hit **Enter.** 
+
+Terraform will build the dependency graph and delete all the resources in the right order, using as much parallelism as possible. In about a minute, your AWS account should be clean again.
+
 
