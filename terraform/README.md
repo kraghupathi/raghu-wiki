@@ -283,7 +283,7 @@ provider "aws" {
 
 **aws_ami.tf**
 
-This file is dedicated to finding the right Ubuntu AMI to install on  our server. AMI IDs change from region to region and change over time as  upgrades come out.
+This file is dedicated to finding the right **Ubuntu AMI** to install on  our server. **AMI IDs** change from region to region and change over time as  upgrades come out.
 
 Example of aws_ami.tf:
 
@@ -307,9 +307,9 @@ data "aws_ami" "ubuntu" {
 
 A data source is a read-only view into data stored  outside of Terraform. The data sources available will change based on  the provider. In this case, we are creating an aws_ami data source with the unique identifier of ubuntu.
 
-The owners of the AMI that we're looking for (the official Ubuntu AMI), will always be Amazon. Therefore, the ID stored in owners is a constant.
+The owners of the AMI that we're looking for (the official **Ubuntu AMI**), will always be Amazon. Therefore, the ID stored in owners is a constant.
 
-We are using filter tags to filter all possible AMIs in the AWS AMI repository by name and virtualization-type.
+We are using filter tags to filter all possible AMIs in the **AWS AMI** repository by name and **virtualization-type**.
 
 Lastly, there will likely be multiple results when we apply all of these filters. most_recent  will select the most recent of the possible AMIs and return the  attributes of that for later use in our Terraform configuration.
 
@@ -318,7 +318,7 @@ Lastly, there will likely be multiple results when we apply all of these filters
 Example of main.tf:
 
 ```
-resource "aws_instance" "my-test-instance" {
+resource "aws_instance" "test-instance" {
   ami             = "${data.aws_ami.ubuntu.id}"
   instance_type   = "t2.micro"
 
