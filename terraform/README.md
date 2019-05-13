@@ -237,7 +237,7 @@ Creating a Git repository with these files. If you do so, you should start with 
 Adding/variables.tf to your **.gitignore**  file because we're about to put some AWS secrets into it. Keeping the  secrets out of Github can keep them more secure and resistent to  accidents. In the future, your team may also want to use different  secrets to manage permissions to different resources.
 
 
-- **variables.tf**
+**variables.tf**
 Here is where we'll set some variables to be re-used by the rest of  the configuration. It will also serve as a handy place to keep our AWS  secrets.
 
 Example of variables.tf:
@@ -260,14 +260,14 @@ variable "aws_region" {
 
 Explanation of variables:
 
-**aws_access_key** - Access Key ID: that allows your machine to make calls to the AWS API.
+- **aws_access_key** - Access Key ID: that allows your machine to make calls to the AWS API.
 
-**aws_secret_key** - Secret Access Key that pairs with that Access Key ID
+- **aws_secret_key** - Secret Access Key that pairs with that Access Key ID
 
-**aws_region** - The region in which our infrastructure is hosted (I'm using  us-west-2 but you can change it if you'd like)
+- **aws_region** - The region in which our infrastructure is hosted (I'm using  us-west-2 but you can change it if you'd like)
 
 
-- **providers.tf**
+**providers.tf**
 
 Example of providers.tf:
 
@@ -281,7 +281,7 @@ provider "aws" {
 }
 ```
 
-- **aws_ami.tf**
+**aws_ami.tf**
 
 This file is dedicated to finding the right Ubuntu AMI to install on  our server. AMI IDs change from region to region and change over time as  upgrades come out.
 
@@ -313,7 +313,7 @@ We are using filter tags to filter all possible AMIs in the AWS AMI repository b
 
 Lastly, there will likely be multiple results when we apply all of these filters. most_recent  will select the most recent of the possible AMIs and return the  attributes of that for later use in our Terraform configuration.
 
-- **main.tf**
+**main.tf**
 
 Example of main.tf:
 
