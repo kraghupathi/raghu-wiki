@@ -20,6 +20,7 @@ To install Terraform on any supported system:
 - After downloading Terraform, unzip the package to a directory of your choosing. Terraform runs as a single binary named **terraform**. Any other files in the package can be safely removed and Terraform will still function.
 - Optional but recommended: modify the path to include the directory that contains the Terraform binary.
 -- [How to set the $PATH on Linux and Mac](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux-unix)
+
 -- [How to set the PATH on Windows](https://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows)
 
 ## Verifying the installation
