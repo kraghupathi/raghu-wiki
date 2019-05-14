@@ -198,7 +198,7 @@ Terraform has five essential commands that allow us to deal with an end-to-end w
 - **terraform apply:** Apply the changes required to reach the desired state of the configuration.
 - **terraform destroy:** destroys Terraform-managed infrastructure.
 
-# Deploying ec2 instance with Terraform
+# Deploying ec2 instance with apache2 using Terraform
 Pre-requisite:
 1. AWS account
 2. EC2 Ubuntu instance.
@@ -214,8 +214,9 @@ Create the following directory structure (where the .tf files are blank text fil
 create-ec2-instance/
     - providers.tf
     - main.tf
-    - aws_ami.tf
     - variables.tf
+    - install.sh
+    - output.tf
     - .gitignore
 ```
 
@@ -254,7 +255,30 @@ variable "aws_secret_key" {
 }
 
 variable "aws_region" {
-  default = "us-west-2"
+  default = "us-east-1"
+}
+variable "vpc_cidr" {
+  description = "CIDR for the VPC"
+  default = "10.0.0.0/16"
+}
+
+variable "public_subnet_cidr" {
+  description = "CIDR for the public subnet"
+  default = "10.0.1.0/24"
+}
+
+variable "private_subnet_cidr" {
+  description = "CIDR for the private subnet"
+  default = "10.0.2.0/24"
+}
+
+variable "ami" {
+  description = "Amazon Linux AMI"
+  default = "ami-0565af6e282977273"
+}
+variable "key_path" {
+  description = "SSH Public Key path"
+  default = "~/.ssh/id_rsa.pub"
 }
 ```
 
@@ -266,6 +290,17 @@ Explanation of variables:
 
 - **aws_region** - The region in which our infrastructure is hosted (I'm using  us-west-2 but you can change it if you'd like)
 
+- **vpc_cidr** Create CIDR for the VPC network
+
+- **public_subnet** Create CIDR for the public subnet
+
+- **private_subnet** Create CIDR for the private subnet
+
+- **ami** Specify the AMI ID's
+
+- **key_path** Copy SSH public key to connect instance via SSH
+
+  Note: To generate SSH keys use **ssh-keygen** command
 
 **providers.tf**
 
@@ -277,83 +312,192 @@ provider "aws" {
   secret_key = "${var.aws_secret_key}"
   region     = "${var.aws_region}"
 
-  version = "~> 1.7"
 }
 ```
 
-**aws_ami.tf**
-
-This file is dedicated to finding the right **Ubuntu AMI** to install on  our server. **AMI IDs** change from region to region and change over time as  upgrades come out.
-
-Example of aws_ami.tf:
-
-```
-data "aws_ami" "ubuntu" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  owners = ["099720109477"] # Canonical
-}
-```
-
-A data source is a read-only view into data stored  outside of Terraform. The data sources available will change based on  the provider. In this case, we are creating an aws_ami data source with the unique identifier of ubuntu.
-
-The owners of the AMI that we're looking for (the official **Ubuntu AMI**), will always be Amazon. Therefore, the ID stored in owners is a constant.
-
-We are using filter tags to filter all possible AMIs in the **AWS AMI** repository by name and **virtualization-type**.
-
-Lastly, there will likely be multiple results when we apply all of these filters. most_recent  will select the most recent of the possible AMIs and return the  attributes of that for later use in our Terraform configuration.
 
 **main.tf**
 
 Example of main.tf:
 
 ```
-resource "aws_security_group" "test-security" {
-        name = "test-security"
-        description = "Security Group"
-        
-        ingress {
-                from_port = 22
-                to_port = 0
-                protocol = "tcp"
-                cidr_blocks = ["0.0.0.0/0"]
-        }
+# Define VPC
+resource "aws_vpc" "default" {
+  cidr_block = "${var.vpc_cidr}"
+  enable_dns_hostnames = true
 
-        egress {
-                from_port = 0
-                to_port = 0
-                protocol = "-1"
-                cidr_blocks = ["0.0.0.0/0"]
-        }
+  tags {
+    Name = "Test VPC"
+  }
 }
 
-resource "aws_instance" "test-instance" {
-  ami             = "${data.aws_ami.ubuntu.id}"
-  instance_type   = "t2.micro"
-  key_name = "test-instance"
-  security_groups = ["${aws_security_group.test-security}"]
+# Define the public subnet
+resource "aws_subnet" "public-subnet" {
+  vpc_id = "${aws_vpc.default.id}"
+  cidr_block = "${var.public_subnet_cidr}"
+  availability_zone = "us-east-1a"
+
   tags {
-    Name = "test-instance"
+    Name = "Public Subnet"
+  }
+}
+
+# Define the private subnet
+resource "aws_subnet" "private-subnet" {
+  vpc_id = "${aws_vpc.default.id}"
+  cidr_block = "${var.private_subnet_cidr}"
+  availability_zone = "us-east-1b"
+
+  tags {
+    Name = "Private Subnet"
+  }
+}
+
+# Define the internet gateway
+resource "aws_internet_gateway" "igw" {
+  vpc_id = "${aws_vpc.default.id}"
+
+  tags {
+    Name = "VPC IGW"
+  }
+}
+
+# Define the route table
+resource "aws_route_table" "web-public-rt" {
+  vpc_id = "${aws_vpc.default.id}"
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = "${aws_internet_gateway.igw.id}"
+  }
+
+  tags {
+    Name = "Public Subnet RT"
+  }
+}
+
+# Assign the route table to the public Subnet
+resource "aws_route_table_association" "web-public-rt" {
+  subnet_id = "${aws_subnet.public-subnet.id}"
+  route_table_id = "${aws_route_table.web-public-rt.id}"
+}
+
+# Define the security group for public subnet
+resource "aws_security_group" "sgweb" {
+  name = "vpc_test_web"
+  description = "Allow incoming/Outgoing HTTP connections & SSH access"
+
+  ingress {
+    from_port = 80
+    to_port = 80
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port = 80
+    to_port = 80
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port = 443
+    to_port = 443
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port = -1
+    to_port = -1
+    protocol = "icmp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port = 22
+    to_port = 22
+    protocol = "tcp"
+    cidr_blocks =  ["0.0.0.0/0"]
+  }
+
+  vpc_id="${aws_vpc.default.id}"
+
+  tags {
+    Name = "Web Server SG"
+  }
+}
+
+# Define SSH key pair for our instances
+resource "aws_key_pair" "default" {
+  key_name = "testkeypair"
+  public_key = "${file("${var.key_path}")}"
+}
+
+# Define webserver inside the public subnet
+resource "aws_instance" "wb" {
+   ami  = "${var.ami}"
+   instance_type = "t2.micro"
+   key_name = "${aws_key_pair.default.id}"
+   subnet_id = "${aws_subnet.public-subnet.id}"
+   vpc_security_group_ids = ["${aws_security_group.sgweb.id}"]
+   associate_public_ip_address = true
+   source_dest_check = false
+   user_data = "${file("install.sh")}"
+  tags {
+    Name = "apache2-web-server"
   }
 }
 ```
 
-Explanation:
-1. We are defining an aws_instance with the unique Terraform identifier of my-test-instance
-2. That instance should use the AMI found in aws_ami.tf to initialize the server
-3. That instance should be a t2.micro (the cheapest AWS instance type)
-4. We've attached a Name tag to the instance, test-instance, for easy identification
+**Install.sh**
+we pass to the instance **userdata** a shell script **install.sh** which contains commands to install an Apache Server:
 
+Example of install.sh:
+
+```
+#!/bin/sh
+apt-get update
+apt-get install -y apache2
+service start apache2
+chkonfig apache2 on
+echo "<html><h1>Welcome to Aapache Web Server</h2></html>" > /var/www/html/index.html
+```
+
+**Output.tf**
+
+Example of output.tf:
+
+```
+output "VPC ID" {
+  value = "${aws_vpc.default.id}"
+}
+
+output "Public Subnet ID" {
+  value = "${aws_subnet.public-subnet.id}"
+}
+
+output "Private Subnet ID" {
+  value = "${aws_subnet.private-subnet.id}"
+}
+
+output "Internet Gateway ID" {
+  value = "${aws_internet_gateway.igw.id}"
+}
+
+output "Route Table ID" {
+  value = "${aws_route_table.web-public-rt.id}"
+}
+
+output "Security Group ID" {
+  value = "${aws_security_group.sgweb.id}"
+}
+
+output "EC2 Instance IP" {
+  value = "${aws_instance.wb.public_ip}"
+}
+```
 ## Creating the Infrastructure
 Navigate to the project's directory, and run the following:
 
@@ -385,5 +529,4 @@ $ terraform destroy
 You can type **yes** and hit **Enter.** 
 
 Terraform will build the dependency graph and delete all the resources in the right order, using as much parallelism as possible. In about a minute, your AWS account should be clean again.
-
 
