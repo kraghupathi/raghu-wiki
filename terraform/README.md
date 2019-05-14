@@ -239,6 +239,7 @@ Adding/variables.tf to your **.gitignore**  file because we're about to put some
 
 
 **variables.tf**
+
 Here is where we'll set some variables to be re-used by the rest of  the configuration. It will also serve as a handy place to keep our AWS  secrets.
 
 Example of variables.tf:
